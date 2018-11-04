@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>特売情報管理ページ</title>
+    <script type="text/javascript">
+          </script>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+          <!--JS -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!--  <style>
+          .m-30 {
+              margin-top: 30px;
+          }
+      </style>
+-->
+  </head>
+  <body>
+    <h5>特売情報選択</h5>
+
+<div class="dropdown">
+  <!--カテゴリ選択-->
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+        カテゴリ選択
+        <span class="caret"></span><!--三角印-->
+    </button>
+    <ul class="dropdown-menu" role="menu"　onChange="select2()">
+        <li>
+            <a href="#">肉</a>
+        </li>
+        <li>
+            <a href="#">野菜</a>
+        </li>
+        <li>
+            <a href="#">魚</a>
+        </li>
+        <li>
+            <a href="#">惣菜</a>
+        </li>
+        <li>
+            <a href="#">果物</a>
+        </li>
+        <li>
+            <a href="#">加工品</a>
+        </li>
+        <li>
+            <a href="#">冷凍食品</a>
+        </li>
+        <li>
+            <a href="#">パン</a>
+        </li>
+    </ul>
+</div>
+<!--商品選択-->
+<div class="dropdown">
+<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+    商品選択
+    <span class="caret"></span><!--三角印-->
+</button>
+<ul name="select2">
+
+</ul>
+</div>
+  </body>
+</html>
