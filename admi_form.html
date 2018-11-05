@@ -7,17 +7,31 @@
 
     var count_cord = 1;//グローバル変数（危ないやつ）
     //テーブルに追加する
+    function creatTable0() {
+      if(count_col != 1){
+            var table = document.getElementById("table");
+            var tenpo_name = document.getElementById ("tenpo_name").value;
+            var cellphone = document.getElementById ("cellphone").value;
+            var address = document.getElementById ("address").value;
+            var tentyouName = document.getElementById ("tentyouName").value;
+            if ((tenpo_name || cellphone || address || tentyouName) == null) {
+             alert("空欄があります");
+            } else {
+              creatTable();
+            }
+          }
+    }
     function creatTable (){
       // 表の作成開始
-if(count_col != 1){
+//if(count_col != 1){
       var table = document.getElementById("table");
       var tenpo_name = document.getElementById ("tenpo_name").value;
       var cellphone = document.getElementById ("cellphone").value;
       var address = document.getElementById ("address").value;
       var tentyouName = document.getElementById ("tentyouName").value;
-      if ((tenpo_name.value || cellphone.value || address.value || tentyouName.value) == null) {
-        alert("空欄があります");
-      } else {
+  //    if ((tenpo_name.value || cellphone.value || address.value || tentyouName.value) == "") {
+//        alert("空欄があります");
+//      } else {
       var data = [count_cord, tenpo_name, cellphone, address, tentyouName];
       // 表に2次元配列の要素を格納
       table.style.border ="1px solid";         //枠
@@ -29,8 +43,8 @@ if(count_col != 1){
               cell.style.border ="1px solid"; //枠
           }
           count_cord++;
-        }
-      }
+    //    }
+    //  }
     }
     var count_col=0;
     function deleteTable() {
@@ -52,17 +66,32 @@ if(count_col != 1){
        var newButton2 = document.createElement("BUTTON");
        newButton2.textContent="削除";
        cell.appendChild(newButton2);
+       newButton2.onclick = function() {
+         table.deleteRow(1);
+       }
       }
       var newButton = document.createElement("BUTTON");
       newButton.textContent="編集終了";
       document.getElementById("table").appendChild(newButton);
+      //--編集終了のボタンを押したときの反応
+                newButton.onclick= function() {
+      // 削除を削除
+                  for ( var i = 0; i < rows; i++) {
+                    if (i == 0) continue;
+                    table.rows[i].deleteCell(-1);
+                  }
+                  newButton.parentNode.removeChild(newButton);
+
+                  count_col = 0;
+
+      }
 }
 
     }
     </script>
   </head>
   <body>
-  <h5>新規店舗登録フォーム</h5>
+  <h5>新規店舗登録フォームはこちら↓↓↓</h5>
     <form><!--入力フォーム-->
       <div><!--かたまりみたいな-->
       <!--空白ちゃんと考えて空けてるから消さないでね-->
@@ -74,11 +103,13 @@ if(count_col != 1){
         <input id ="address" name="address" type="text" size="30">
         　店長の名前　:
         <input id ="tentyouName" name="tentyouName" type="text" size="15">
-  　      　  <input name="button" type="button" value="登録" onClick="creatTable()">
+  　      　  <input name="button" type="button" value="登録" onClick="creatTable0()">
       </div>
     </form>
     <h5>登録された店舗</h5>
-    <input name="delete" type="button" value="登録情報編集" onClick="deleteTable()">
+
+    <input name="delete" type="button" value="登録情報の削除" onClick="deleteTable()" style="position: relative; left: 370px; top: 0px;">
+    <input name="edit" type="button" value="登録情報の編集" onClick="editTable()"  style="position: relative; left: 370px; top: 0px;">
     <br><br>
     <table border="1" id = "table">
       <tr>
