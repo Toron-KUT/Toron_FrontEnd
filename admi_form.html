@@ -1,8 +1,14 @@
-<!DOCTYPE html>
-<html lang="ja">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Type" content="text/html; charset=shift_jis" />
     <title>管理者用店舗管理ページ</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
     <script type="text/javascript">
 
     var count_cord = 1;//グローバル変数（危ないやつ）
@@ -91,7 +97,12 @@
     </script>
   </head>
   <body>
-  <h5>新規店舗登録フォームはこちら↓↓↓</h5>
+    <div id="wrapper">
+    <div id="contents">
+    <!--  <h1>*** 株式会社マルナカ | 店舗管理ページ***</h1>
+    --> <h3> <p class="logo"><a href="index.html">*** 株式会社マルナカ | 店舗管理ページ***</a></p></h3>
+      <p class="description">*** 管理者専用ページです。登録店舗の編集を行えます ***</p>
+  <h5>***新規店舗登録フォームはこちら***</h5>
     <form><!--入力フォーム-->
       <div><!--かたまりみたいな-->
       <!--空白ちゃんと考えて空けてるから消さないでね-->
@@ -106,7 +117,7 @@
   　      　  <input name="button" type="button" value="登録" onClick="creatTable0()">
       </div>
     </form>
-    <h5>登録された店舗</h5>
+    <h5>***登録された店舗***</h5>
 
     <input name="delete" type="button" value="登録情報の削除" onClick="deleteTable()" style="position: relative; left: 370px; top: 0px;">
     <input name="edit" type="button" value="登録情報の編集" onClick="editTable()"  style="position: relative; left: 370px; top: 0px;">
