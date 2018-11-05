@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <title>特売情報管理ページ</title>
+    <title>特価情報管理ページ</title>
     <script type = "text/javascript">
   <!--
   function functionName()
@@ -94,7 +94,7 @@
 
 <!--以下通常のドロップボタン-->
 <body bgcolor onLoad="functionName()">
-      <h5>特売情報選択</h5>
+      <h5>特価情報選択</h5>
 <form name="formName" method="post" action="./pathToProgramFile">
 <!--選択肢その1-->
 <select name = "selectName1" onChange="functionName()">
@@ -111,14 +111,21 @@
 <!--選択肢その2（選択肢その1の項目によって変化）-->
 <select name = "selectName2">
 </select>
-
+<select name = "selectName3" onChange="functionName()">
+<option value = "しらんがな">選択してください</option>
+<option value = "10">10%</option>
+<option value = "20">20%</option>
+<option value = "30">30%</option>
+<option value = "40">40%</option>
+<option value = "50">50%</option>
+</select>
 <input name="button" type="button" value="登録" onClick="creatTable()">
 <h5>登録された商品</h5>
 <input name="delete" type="button" value="登録情報編集" onClick="deleteTable()">
 <br><br>
 <table border="1" id = "table">
   <tr>
-    <th>商品コード</th><th>商品名</th><th>商品価格</th>
+    <th>商品コード</th><th>商品名</th><th>定価</th><th>商品価格</th>
   </tr>
 </table>
 </body>
