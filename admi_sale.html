@@ -2,7 +2,12 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
     <title>特売情報管理ページ</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
     <script type = "text/javascript">
   <!--
   function functionName()
@@ -88,38 +93,96 @@
     //    count_cord.toString(10);
       }
   }
+  var count_col;
+  function deleteTable() {
+    //count_col +=1;
+    //if(count_col ==1){
 
+
+    var table = document.getElementById("table");
+    var rows = table.rows.length;
+
+
+    //
+    for (var i = 0; i < rows; i ++) {
+      if(i == 0)continue;
+      var cell = table.rows[i].insertCell(-1);
+
+  //  alert();
+//cell.innerHTML ="削除";
+     var newButton2 = document.createElement("BUTTON");
+     newButton2.textContent="削除";
+     cell.appendChild(newButton2);
+     newButton2.onclick = function() {
+       table.deleteRow(1);
+     }
+    }
+    var newButton = document.createElement("BUTTON");
+    newButton.textContent="編集終了";
+    document.getElementById("table").appendChild(newButton);
+    //--編集終了のボタンを押したときの反応
+              newButton.onclick= function() {
+    // 削除を削除
+                for ( var i = 0; i < rows; i++) {
+                  if (i == 0) continue;
+                  table.rows[i].deleteCell(-1);
+                }
+                newButton.parentNode.removeChild(newButton);
+
+                count_col = 0;
+
+    }
+//}
+
+  }
   </script>
 </head>
 
 <!--以下通常のドロップボタン-->
 <body bgcolor onLoad="functionName()">
+  <div id="wrapper">
+  <div id="contents">
+    <h3> <p class="logo">*** 株式会社マルナカ | 特売情報管理ページ***</p></h3>
+     <p class="description">*** 管理者専用ページです。特売情報の編集を行えます ***</p>
       <h5>特売情報選択</h5>
-<form name="formName" method="post" action="./pathToProgramFile">
+      <form name="formName" method="post" action="./pathToProgramFile">
 <!--選択肢その1-->
-<select name = "selectName1" onChange="functionName()">
-<option value = "しらんがな">選択してください</option>
-<option value = "肉">肉</option>
-<option value = "野菜">野菜</option>
-<option value = "魚">魚</option>
-<option value = "パン">パン</option>
-<option value = "果物">果物</option>
-<option value = "乳製品">乳製品</option>
-<option value = "惣菜">惣菜</option>
-</select>
+        <select name = "selectName1" onChange="functionName()">
+          <option value = "しらんがな">選択してください</option>
+          <option value = "肉">肉</option>
+          <option value = "野菜">野菜</option>
+          <option value = "魚">魚</option>
+          <option value = "パン">パン</option>
+          <option value = "果物">果物</option>
+          <option value = "乳製品">乳製品</option>
+          <option value = "惣菜">惣菜</option>
+        </select>
 
 <!--選択肢その2（選択肢その1の項目によって変化）-->
-<select name = "selectName2">
-</select>
+        <select name = "selectName2"></select>
 
-<input name="button" type="button" value="登録" onClick="creatTable()">
-<h5>登録された商品</h5>
-<input name="delete" type="button" value="登録情報編集" onClick="deleteTable()">
-<br><br>
-<table border="1" id = "table">
-  <tr>
-    <th>商品コード</th><th>商品名</th><th>商品価格</th>
-  </tr>
-</table>
-</body>
+        <input name="button" type="button" value="登録" onClick="creatTable()">
+        <h5>登録された商品</h5>
+        <input name="delete" type="button" value="登録情報削除" onClick="deleteTable()">
+        <br><br>
+        <table border="1" id = "table">
+          <tr>
+            <th>商品コード</th><th>商品名</th><th>商品価格</th>
+          </tr>
+          <tr>
+            <th>00001</th><th>牛肉</th><th>59</th>
+          </tr>
+          <tr>
+            <th>00004</th><th>キャベツ</th><th>150</th>
+          </tr>
+        </table>
+
+        <div align="right">
+          <p >*** サイト内リンク ***</p>
+          <ul class="localnavi">
+            <li><a href="#"> 店舗管理ページ </a></li>
+            <li><a href="#"> 特売情報管理ページ </a></li>
+          </ul>
+        </div>
+      </body>
 </html>
