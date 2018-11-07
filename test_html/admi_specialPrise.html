@@ -2,7 +2,11 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css" />
     <title>特価情報管理ページ</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
     <script type = "text/javascript">
   <!--
   function functionName()
@@ -88,12 +92,92 @@
     //    count_cord.toString(10);
       }
   }
+  function soldFlag() {
+    var table = document.getElementById("table");
+    var rows = table.rows.length;
 
+
+    //
+    for (var i = 0; i < rows; i ++) {
+      if(i == 0)continue;
+      var cell = table.rows[i].insertCell(-1);
+
+  //  alert();
+//cell.innerHTML ="削除";
+     var newButton2 = document.createElement("BUTTON");
+     newButton2.textContent="品切れ";
+     cell.appendChild(newButton2);
+     newButton2.onclick = function() {
+       table.style.color = "#444"
+     }
+    }
+    var newButton = document.createElement("BUTTON");
+    newButton.textContent="編集終了";
+    document.getElementById("table").appendChild(newButton);
+    //--編集終了のボタンを押したときの反応
+              newButton.onclick= function() {
+    // 削除を削除
+                for ( var i = 0; i < rows; i++) {
+                  if (i == 0) continue;
+                  table.rows[i].deleteCell(-1);
+                }
+                newButton.parentNode.removeChild(newButton);
+
+                count_col = 0;
+
+    }
+  }
+  var count_col;
+  function deleteTable() {
+    //count_col +=1;
+    //if(count_col ==1){
+
+
+    var table = document.getElementById("table");
+    var rows = table.rows.length;
+
+
+    //
+    for (var i = 0; i < rows; i ++) {
+      if(i == 0)continue;
+      var cell = table.rows[i].insertCell(-1);
+
+  //  alert();
+//cell.innerHTML ="削除";
+     var newButton2 = document.createElement("BUTTON");
+     newButton2.textContent="削除";
+     cell.appendChild(newButton2);
+  //   newButton2.onclick = function() {
+    //   table.deleteRow(1);
+    // }
+    }
+    var newButton = document.createElement("BUTTON");
+    newButton.textContent="編集終了";
+    document.getElementById("table").appendChild(newButton);
+    //--編集終了のボタンを押したときの反応
+              newButton.onclick= function() {
+    // 削除を削除
+                for ( var i = 0; i < rows; i++) {
+                  if (i == 0) continue;
+                  table.rows[i].deleteCell(-1);
+                }
+                newButton.parentNode.removeChild(newButton);
+
+                count_col = 0;
+
+    }
+//}
+
+  }
   </script>
 </head>
 
 <!--以下通常のドロップボタン-->
 <body bgcolor onLoad="functionName()">
+  <div id="wrapper">
+  <div id="contents">
+   <h3> <p class="logo">*** 株式会社マルナカ | 特価情報管理ページ***</p></h3>
+    <p class="description">*** 管理者専用ページです。特価情報の編集を行えます ***</p>
       <h5>特価情報選択</h5>
 <form name="formName" method="post" action="./pathToProgramFile">
 <!--選択肢その1-->
@@ -121,12 +205,19 @@
 </select>
 <input name="button" type="button" value="登録" onClick="creatTable()">
 <h5>登録された商品</h5>
-<input name="delete" type="button" value="登録情報編集" onClick="deleteTable()">
+<input name="delete" type="button" value="登録情報削除" onClick="deleteTable()">
+<input name="delete" type="button" value="品切れ商品の登録" onClick="soldFlag()">
 <br><br>
 <table border="1" id = "table">
   <tr>
     <th>商品コード</th><th>商品名</th><th>定価</th><th>商品価格</th>
   </tr>
+  <tr>
+    <th>00001</th><th>牛肉</th><th>559</th><th>500</th>
+  </tr>
+  <tr>
+  <th>00004</th><th>キャベツ</th><th>150</th><th>78</th>
+</tr>
 </table>
 </body>
 </html>

@@ -1,19 +1,5 @@
 @charset "UTF-8";
 
-/* -------------------------------------------------------------
-
-[1] ���C�A�E�g�Ɋւ����w��
-[2] �R���e���c�u���b�N���Ɋւ����w��
-[3] �T�C�h�o�[�u���b�N���Ɋւ����w��
-[4] �t�b�^�[�u���b�N���Ɋւ����w��
-[5] CSS�f�U�C���T���v�������N�w��
-
-----------------------------------------------------------------
-CSS�f�U�C���T���v [ URL ] http://www.css-designsample.com
-------------------------------------------------------------- */
-
-
-/* �ꊇ�őS�Ă̗v�f�̗]�����[���Ɏw�� */
 * {
   margin: 0;
   padding: 0;
@@ -21,12 +7,12 @@ CSS�f�U�C���T���v [ URL ] http://www.css-designsample.com
 
 /* �S�̓I�ȃ����N */
 
-a:link,
+
 a:visited,
 a:hover,
 a:active { text-decoration: underline; }
 
-a:link { color: #00f; }
+
 
 a:visited { color: #90f; }
 
@@ -57,14 +43,14 @@ body {
   float: left;
   padding: 10px 10px 0;
 }
-
+/*
 #sidebar {
   width: 200px;
   float: right;
   padding: 350px 20px 0;
-  background: url(img/bg-sidebar.jpg) no-repeat 50% 20px;
-}
 
+}
+*/
 #footer { padding: 40px 0 10px; }
 
 /* -------------------------------------------------------------
@@ -115,7 +101,7 @@ h2,h3,h4,h5,h6 {
   margin-bottom: 1em;
   padding: 0 0 5px 25px;
   background: url(img/bg-h.gif) no-repeat 0 0;
-  color: #993300;
+  color: #E87c6f/*993300*/;
 }
 
 h3,h4,h5,h6 { margin-top: 3em; }
