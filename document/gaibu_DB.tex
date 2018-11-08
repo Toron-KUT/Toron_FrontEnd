@@ -1,0 +1,155 @@
+\documentclass[a4j]{jarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{here}
+\usepackage{ascmac}
+\usepackage{url}
+\title{
+\vspace{30mm}
+株式会社マルナカ様\\
+購入商品情報管理システム\\
+外部設計書v1
+\vspace{90mm}
+}
+\author{
+株式会社Toron
+}
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{データベース設計}
+\begin{table}[H]
+\caption{購入情報}
+\label{tab:DB1}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+属性　&データ型&データ長&SQLite&キー:テーブル名\\ \hline\hline
+ユーザID &半角英数字型&7文字固定長&TEXT&PK(商品ID、購入日と複合)、 FK: ユーザ情報 \\ \hline
+商品ID &半角英数字型&10文字固定長&TEXT&PK(ユーザID、購入日と複合) FK: 商品\\ \hline
+商品個数 &整数型&2桁固定長&INTEGER&- \\ \hline
+購入日  &日付型&20文字固定長&NUMERIC&PK(商品ID、ユーザIDと複合) \\ \hline
+店舗ID &半角英数字型&3文字固定長&TEXT&FK:店舗 \\ \hline
+購入価格&整数型&5桁固定長&INTEGER&- \\ \hline
+作成日時  &日付型&20文字固定長&NUMERIC&- \\ \hline
+更新日時 &日付型&20文字固定長&NUMERIC&-  \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+\begin{table}[H]
+\caption{ユーザ情報}
+\label{tab:DB2}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+属性　&データ型&データ長&SQLite&キー:テーブル名\\ \hline\hline
+ユーザID &半角英数字型&7文字固定長&TEXT&PK  \\ \hline
+ログインID &半角英数字型&10文字可変長&TEXT&- \\ \hline
+ユーザネーム &全角文字型&15文字可変長&TEXT&- \\ \hline
+パスワード &半角英数字型&16文字固定長&TEXT&-  \\ \hline
+WAON番号  &半角英数字型&16文字固定長&TEXT&-  \\ \hline
+セキュリティーコード &半角英数字型&16文字固定長&TEXT&-  \\ \hline
+管理者フラグ &半角英数字型&1文字固定長&TEXT&-  \\ \hline
+ 店舗ID &半角英数字型&3文字固定長&TEXT&FK:店舗 \\ \hline
+ポイント  &整数型&桁固定長&INTEGER&- \\ \hline
+ 作成日時  &日付型&20文字固定長&NUMERIC&- \\ \hline
+更新日時 &日付型&20文字固定長&NUMERIC&-  \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\caption{商品}
+\label{tab:DB3}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+属性　&データ型&データ長&SQLite&キー:テーブル名\\ \hline\hline
+商品ID &半角英数字型&10文字固定長&TEXT&PK \\ \hline
+商品名&全角文字型&50文字可変長&TEXT&- \\ \hline
+値段&整数型&5桁固定長&INTEGER&-\\ \hline
+カテゴリID &半角英数字型&2文字固定長&TEXT&FK:カテゴリ \\ \hline
+特売フラグ  &半角英数字型&1文字固定長&TEXT&-  \\ \hline
+作成日時  &日付型&20文字固定長&NUMERIC&- \\ \hline
+更新日時 &日付型&20文字固定長&NUMERIC&-  \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\caption{店舗}
+\label{tab:DB4}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+属性　&データ型&データ長&SQLite&キー:テーブル名\\ \hline\hline
+店舗ID &半角英数字型&3文字固定長&TEXT&PK \\ \hline
+店舗名 &全角文字型&文字可変長&TEXT& \\ \hline
+ユーザID &半角英数字型&7文字固定長&TEXT&FK:ユーザ情報  \\ \hline
+作成日時  &日付型&20文字固定長&NUMERIC&- \\ \hline
+更新日時 &日付型&20文字固定長&NUMERIC&-  \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\caption{保有食品}
+\label{tab:DB5}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+属性　&データ型&データ長&SQLite&キー:テーブル名\\ \hline\hline
+ユーザID &半角英数字型&7文字固定長&TEXT&FK:ユーザ  \\ \hline
+商品ID &半角英数字型&10文字固定長&TEXT&FK: 商品\\ \hline
+商品個数 &整数型&2桁固定長&INTEGER&- \\ \hline
+購入日  &日付型&20文字固定長&NUMERIC&FK:購入情報 \\ \hline
+ 作成日時  &日付型&20文字固定長&NUMERIC&- \\ \hline
+更新日時 &日付型&20文字固定長&NUMERIC&-  \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+\begin{table}[H]
+\caption{カテゴリ}
+\label{tab:DB6}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+属性　&データ型&データ長&SQLite&キー:テーブル名\\ \hline\hline
+カテゴリID &半角英数字型&2文字固定長&TEXT&PK \\ \hline
+カテゴリ名&全角文字列型&10文字可変長&TEXT&- \\ \hline
+商品ID &半角英数字型&10文字固定長&TEXT&FK: 商品\\ \hline
+作成日時  &日付型&20文字固定長&NUMERIC&- \\ \hline
+更新日時 &日付型&20文字固定長&NUMERIC& - \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\caption{特価}
+\label{tab:DB7}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+属性　&データ型&データ長&SQLite&キー:テーブル名\\ \hline\hline
+商品ID &半角英数字型&10文字固定長&TEXT&PK(店舗IDと複合)、FK: 商品\\ \hline
+割引値 &整数型&3桁固定長&INTEGER&- \\ \hline
+割引率フラグ &半角英数字型&1文字固定長&TEXT&-  \\ \hline
+売り切れフラグ&半角英数字型&1文字固定長&TEXT&-  \\ \hline
+店舗ID &半角英数字型&3文字固定長&TEXT&PK(商品IDと複合)、FK:店舗 \\ \hline
+ 作成日時  &日付型&20文字固定長&NUMERIC&- \\ \hline
+更新日時 &日付型&20文字固定長&NUMERIC&-  \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+\end{document}
+
+
+\end{document}
