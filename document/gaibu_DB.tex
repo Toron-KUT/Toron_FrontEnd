@@ -19,10 +19,14 @@
 \newpage
 \tableofcontents
 \newpage
-
-\section{データベース設計}
+\section{データ設計}
+本システムに用いるデータについて以下に示す．
+\subsection{データベース設計}
+本システムのデータベースには，7個のデータテーブルが存在する．各データテーブルを構成する属性をデータモデルを用いて以下に示す．
+\subsubsection{購入テーブル}
+購入情報テーブルでは各店舗で購入された商品の情報を管理する．表\ref{tab:DB1}にこのテーブルのデータモデルを示す．
 \begin{table}[H]
-\caption{購入情報}
+\caption{購入モデル}
 \label{tab:DB1}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
@@ -38,10 +42,11 @@
 \end{tabular}
 \end{center}
 \end{table}
-
+\subsubsection{ユーザテーブル}
+ユーザ情報テーブルでは登録されたユーザの情報を管理する．表\ref{tab:DB2}にこのテーブルのデータモデルを示す．
 
 \begin{table}[H]
-\caption{ユーザ情報}
+\caption{ユーザモデル}
 \label{tab:DB2}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
@@ -61,9 +66,10 @@ WAON番号  &半角英数字型&16文字固定長&TEXT&-  \\ \hline
 \end{tabular}
 \end{center}
 \end{table}
-
+\subsubsection{商品テーブル}
+商品テーブルではマルナカに登録されている各商品の情報を管理する．表\ref{tab:DB3}にこのテーブルのデータモデルを示す．
 \begin{table}[H]
-\caption{商品}
+\caption{商品モデル}
 \label{tab:DB3}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
@@ -79,9 +85,10 @@ WAON番号  &半角英数字型&16文字固定長&TEXT&-  \\ \hline
 \end{tabular}
 \end{center}
 \end{table}
-
+\subsubsection{店舗テーブル}
+店舗テーブルではマルナカの各店舗の情報を管理する．表\ref{tab:DB4}にこのテーブルのデータモデルを示す．
 \begin{table}[H]
-\caption{店舗}
+\caption{店舗モデル}
 \label{tab:DB4}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
@@ -95,9 +102,10 @@ WAON番号  &半角英数字型&16文字固定長&TEXT&-  \\ \hline
 \end{tabular}
 \end{center}
 \end{table}
-
+\subsubsection{保有食品テーブル}
+保有食品テーブルでは各ユーザーが保有する食品の情報を管理する．表\ref{tab:DB5}にこのテーブルのデータモデルを示す．
 \begin{table}[H]
-\caption{保有食品}
+\caption{保有食品モデル}
 \label{tab:DB5}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
@@ -112,10 +120,11 @@ WAON番号  &半角英数字型&16文字固定長&TEXT&-  \\ \hline
 \end{center}
 \end{table}
 
-
+\subsubsection{カテゴリテーブル}
+カテゴリテーブルではマルナカで販売している商品のカテゴリ情報を管理する．表\ref{tab:DB6}にこのテーブルのデータモデルを示す．
 
 \begin{table}[H]
-\caption{カテゴリ}
+\caption{カテゴリモデル}
 \label{tab:DB6}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
@@ -129,9 +138,10 @@ WAON番号  &半角英数字型&16文字固定長&TEXT&-  \\ \hline
 \end{tabular}
 \end{center}
 \end{table}
-
+\subsubsection{特価テーブル}
+特価テーブルではマルナカの各店舗の特価情報を管理する．表\ref{tab:DB7}にこのテーブルのデータモデルを示す．
 \begin{table}[H]
-\caption{特価}
+\caption{特価モデル}
 \label{tab:DB7}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
@@ -147,14 +157,15 @@ WAON番号  &半角英数字型&16文字固定長&TEXT&-  \\ \hline
 \end{tabular}
 \end{center}
 \end{table}
-
+\subsubsection{各テーブルの関係性}
+本システムでデータベースを利用するマルナカdeお買い物・管理者ページ・レジシステムが各データベースに対して可能な操作を図\ref{tab:DB権限}に示す．
 \begin{table}[H]
 \caption{各テーブルに対して可能な操作を示した表}
 \label{tab:DB権限}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}%操作ができないテーブルがあるのはおかしい%管理者ページと店長ページをまとめて書いて、管理サーバ？か何かたす？
 \hline
-&&\multicolumn{4}{|c|}{アンドロイドアプリ}&\multicolumn{4}{|c|}{管理者ページ}&\multicolumn{4}{|c|}{レジシステム}\\ \hline
+&&\multicolumn{4}{|c|}{マルナカdeお買い物}&\multicolumn{4}{|c|}{管理者ページ}&\multicolumn{4}{|c|}{レジシステム}\\ \hline
 データテーブル&&追加&参照&更新&削除&追加&参照&更新&削除&追加&参照&更新&削除\\ \hline\hline
 購入情報	&&　&〇&	&	& 	&	&	&	&〇&&&\\ \hline
 ユーザ情報	&&〇　&〇&〇	&	&	&〇&〇&〇& &〇&&\\ \hline
@@ -168,4 +179,8 @@ WAON番号  &半角英数字型&16文字固定長&TEXT&-  \\ \hline
 \end{center}
 \end{table}
 
+\subsection{データファイル設計}
+商品のカテゴリで表示する画像ファイルは携帯端末で管理する．また，カテゴリの新規追加に伴う画像ファイルの変更，追加はマルナカdeお買い物を更新することで行う．\\
+\subsection{データの連携}
+マルナカdeお買い物とサーバ間のデータの送受信はJSON形式で行う．
 \end{document}
