@@ -28,13 +28,12 @@
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 属性　&データ型&データ長&SQLite&キー:テーブル名\\ \hline\hline
-ユーザID &半角英数字型&7文字固定長&TEXT&PK(商品ID、購入日と複合)、 FK: ユーザ情報 \\ \hline
-商品ID &半角英数字型&10文字固定長&TEXT&PK(ユーザID、購入日と複合) FK: 商品\\ \hline
+ユーザID &半角英数字型&7文字固定長&TEXT&PK(商品ID、作成日時と複合)、 FK: ユーザ情報 \\ \hline
+商品ID &半角英数字型&10文字固定長&TEXT&PK(ユーザID、作成日時と複合) FK: 商品\\ \hline
 商品個数 &整数型&2桁固定長&INTEGER&- \\ \hline
-購入日  &日付型&20文字固定長&NUMERIC&PK(商品ID、ユーザIDと複合) \\ \hline
 店舗ID &半角英数字型&3文字固定長&TEXT&FK:店舗 \\ \hline
 購入価格&整数型&5桁固定長&INTEGER&- \\ \hline
-作成日時  &日付型&20文字固定長&NUMERIC&- \\ \hline
+作成日時  &日付型&20文字固定長&NUMERIC&PK(商品ID、ユーザIDと複合) \\ \hline
 更新日時 &日付型&20文字固定長&NUMERIC&-  \\ \hline
 \end{tabular}
 \end{center}
@@ -107,7 +106,6 @@ WAON番号  &半角英数字型&16文字固定長&TEXT&-  \\ \hline
 ユーザID &半角英数字型&7文字固定長&TEXT&FK:ユーザ  \\ \hline
 商品ID &半角英数字型&10文字固定長&TEXT&FK: 商品\\ \hline
 商品個数 &整数型&2桁固定長&INTEGER&- \\ \hline
-購入日  &日付型&20文字固定長&NUMERIC&FK:購入情報 \\ \hline
  作成日時  &日付型&20文字固定長&NUMERIC&- \\ \hline
 更新日時 &日付型&20文字固定長&NUMERIC&-  \\ \hline
 \end{tabular}
@@ -156,15 +154,15 @@ WAON番号  &半角英数字型&16文字固定長&TEXT&-  \\ \hline
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}%操作ができないテーブルがあるのはおかしい%管理者ページと店長ページをまとめて書いて、管理サーバ？か何かたす？
 \hline
-&&\multicolumn{4}{|c|}{アンドロイドアプリ}&\multicolumn{4}{|c|}{管理者ページ}&\multicolumn{4}{|c|}{店長用特売ページ}\\ \hline
+&&\multicolumn{4}{|c|}{アンドロイドアプリ}&\multicolumn{4}{|c|}{管理者ページ}&\multicolumn{4}{|c|}{レジシステム}\\ \hline
 データテーブル&&追加&参照&更新&削除&追加&参照&更新&削除&追加&参照&更新&削除\\ \hline\hline
-購入情報	&&　&〇&	&	& 	&	&	&	&&&&\\ \hline
-ユーザ情報	&&　&〇&〇	&	&	&〇&	&	& &〇&&\\ \hline
+購入情報	&&　&〇&	&	& 	&	&	&	&〇&&&\\ \hline
+ユーザ情報	&&〇　&〇&〇	&	&	&〇&〇&〇& &〇&&\\ \hline
 商品		&&　&〇&	&	& 	&〇&	&	& &〇&&\\ \hline
 店舗		&&　&〇&	&	&〇&〇&〇&〇& &〇&&\\ \hline
-保有食品	&&　&〇&	&〇& 	&	&	&	& &&&\\ \hline
-カテゴリ		&&　&〇&	&	&	&？&	&	& &？&&\\ \hline
-特価		&&　&〇&	&	&〇&〇&〇&〇& &&&\\ \hline
+保有食品	&&　&〇&〇&〇& 	&	&	&	& 〇&&&\\ \hline
+カテゴリ		&&　&〇&	&	&	&〇&	&	& &〇&&\\ \hline
+特価		&&　&〇&	&	&〇&〇&〇&〇& &〇&&\\ \hline
 
 \end{tabular}
 \end{center}
