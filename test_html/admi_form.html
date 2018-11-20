@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <title>管理者用店舗管理ページ</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
+    <script type="text/javascript">
+
+    var count_cord = 1;//グローバル変数（危ないやつ）
+    //テーブルに追加する
+    function creatTable0() {
+      if(count_col != 1){
+            var table = document.getElementById("table");
+            var tenpo_name = document.getElementById ("tenpo_name").value;
+          //  var cellphone = document.getElementById ("cellphone").value;
+          //  var address = document.getElementById ("address").value;
+            var tentyouName = document.getElementById ("tentyouName").value;
+            if ((tenpo_name || tentyouName) == null) {
+             alert("空欄があります");
+            } else {
+              creatTable();
+            }
+          }
+    }
+    function creatTable (){
+      // 表の作成開始
+//if(count_col != 1){
+      var table = document.getElementById("table");
+      var tenpo_name = document.getElementById ("tenpo_name").value;
+  //    var cellphone = document.getElementById ("cellphone").value;
+  //    var address = document.getElementById ("address").value;
+      var tentyouName = document.getElementById ("tentyouName").value;
+  //    if ((tenpo_name.value || cellphone.value || address.value || tentyouName.value) == "") {
+//        alert("空欄があります");
+//      } else {
+      var data = [count_cord, tenpo_name, tentyouName];
+      // 表に2次元配列の要素を格納
+      table.style.border ="1px solid";         //枠
+        var rows = table.insertRow(-1);        // 新しい行の追加//-1で下に追加する
+          for(j = 0; j < 3; j++){
+            var  cell=rows.insertCell(-1);    //列
+              cellNode = document.createTextNode(data[j]);
+              cell.appendChild(cellNode);     //データノードの作成、ノードの連結
+              cell.style.border ="1px solid"; //枠
+          }
+          count_cord++;
+    //    }
+    //  }
+    }
+    var count_col=0;
+    function deleteTable() {
+      count_col +=1;
+      if(count_col ==1){
+
+
+      var table = document.getElementById("table");
+      var rows = table.rows.length;
+
+
+      //
+      for (var i = 0; i < rows; i ++) {
+        if(i == 0)continue;
+        var cell = table.rows[i].insertCell(-1);
+
+    //  alert();
+//cell.innerHTML ="削除";
+       var newButton2 = document.createElement("BUTTON");
+       newButton2.textContent="削除";
+       cell.appendChild(newButton2);
+       newButton2.onclick = function() {
+         table.deleteRow(1);
+       }
+      }
+      var newButton = document.createElement("BUTTON");
+      newButton.textContent="編集終了";
+      document.getElementById("table").appendChild(newButton);
+      //--編集終了のボタンを押したときの反応
+                newButton.onclick= function() {
+      // 削除を削除
+                  for ( var i = 0; i < rows; i++) {
+                    if (i == 0) continue;
+                    table.rows[i].deleteCell(-1);
+                  }
+                  newButton.parentNode.removeChild(newButton);
+
+                  count_col = 0;
+
+      }
+}
+
+    }
+    </script>
+  </head>
+  <body>
+    <div id="wrapper">
+    <div id="contents">
+    <!--  <h1>*** 株式会社マルナカ | 店舗管理ページ***</h1>
+    --> <h3> <p class="logo">*** 株式会社マルナカ | 店舗管理ページ***</p></h3>
+      <p class="description">*** 管理者専用ページです。登録店舗の編集を行えます ***</p>
+  <h5>***新規店舗登録フォームはこちら***</h5>
+    <form><!--入力フォーム-->
+      <div><!--かたまりみたいな-->
+      <!--空白ちゃんと考えて空けてるから消さないでね-->
+        店舗名　　:
+        <input id="tenpo_name" name="tenpo_name" type="text" size="30">
+<!--        　電話番号　　:
+        <input id ="cellphone" name="cellphone" type="text" size="15"><br>
+        店舗住所　:
+        <input id ="address" name="address" type="text" size="30">  -->
+            　店長の名前　:
+        <input id ="tentyouName" name="tentyouName" type="text" size="15">
+  　      　  <input name="button" type="button" value="登録" onClick="creatTable0()">
+      </div>
+    </form>
+    <h5>***登録された店舗***</h5>
+
+    <input name="delete" type="button" value="登録情報の削除" onClick="deleteTable()" style="position: relative; left: 370px; top: 0px;">
+    <input name="edit" type="button" value="登録情報の編集" onClick="editTable()"  style="position: relative; left: 370px; top: 0px;">
+    <br><br>
+    <table border="1" id = "table">
+      <tr>
+        <th>店舗コード</th><th>店舗名</th><th>店長の名前</th>
+      </tr>
+    </table>
+    <div align="right">
+      <p >*** サイト内リンク ***</p>
+      <ul class="localnavi">
+        <li><a href="#"> 店舗管理ページ </a></li>
+        <li><a href="#"> 特売情報管理ページ </a></li>
+      </ul>
+    </div>
+    <div align="right">
+     <input name="button" type="button" value="ログアウト" onClick="">
+   </div>
+  </body>
+</html>
