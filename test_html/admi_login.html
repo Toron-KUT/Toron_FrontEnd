@@ -3,13 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Style-Type" content="text/css" />
-    <title>管理者ログインページ</title>
+    <title>管理者・店長ログインページ</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
     <script type = "text/javascript">
   <!--
-
+  function creatTable() {
+    alert("ログイン情報が間違っています");
+  }
   //-->
   </script>
 </head>
@@ -18,21 +20,22 @@
   <div id="contents">
     <h3><p class="logo" >管理者・店長専用ログインページ</p></h3>
      <p class="description"></p>
-<h5>管理者専用ログインフォーム</h5>
+<h5>管理者・店長ログインフォーム</h5>
 <form>
 　　　　　ID　:
-  <input id="login_id" name="login_id" type="password" size="30">
+  <input id="login_id" name="login_id" type="text" size="30">
 <br>
   PassWord　:
     <input id="login_pass" name="login_pass" type="password" size="30">
   <input name="button" type="button" value="送信" onClick="creatTable()">
-  <h5>店長専用ログインフォーム</h5>
+<!--  <h5>店長専用ログインフォーム</h5>
   <form>
   　　　　　ID　:
-    <input id="login_id" name="login_id" type="password" size="30">
+    <input id="login_id" name="login_id" type="text" size="30">
   <br>
     PassWord　:
       <input id="login_pass" name="login_pass" type="password" size="30">
     <input name="button" type="button" value="送信" onClick="creatTable()">
+    -->
 </body>
 </html>
