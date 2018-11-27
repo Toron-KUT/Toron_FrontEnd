@@ -1,0 +1,189 @@
+\documentclass[a4j]{jarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{here}
+\usepackage{ascmac}
+\usepackage{url}
+\title{
+\vspace{30mm}
+株式会社マルナカ様\\
+購入商品情報管理システム\\
+外部設計書v1.0
+\vspace{90mm}
+}
+\author{
+株式会社Toron
+}
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+\section{jsメソッド}
+\subsection{ユーザログイン情報取得}
+\begin{itemize}
+\item メソッド名：AuthentivationUsed\\
+Webページでログインする際に、入力されたログイン情報がデータベースに登録されているか問い合わせを行うメソッドである。
+引数として、入力されたユーザIDとパスワードを受け取る。データベース
+また返り値としてデータベース上にログイン情報が存在したか判定を行った結果を返す。
+
+\item メソッド名：SetJSON\\
+
+JSONファイルを作成するメソッドである。引数は、ユーザIDとパスワード
+
+\item メソッド名：GetAutheticationUser\\
+
+サーバーにJSONファイルを送信するためのメソッドである。
+引数はJSONData
+
+\item メソッド名：CheckAutheticationUser\\
+
+サーバ内で該当するユーザ情報が登録されているかJSONファイルをもとに検索するメソッド
+多分ウェブじゃない
+引数はJSONData
+返り値はIdentifivationNumber
+この返り値が0の場合、入力されたユーザ情報は該当しない等のエラー
+1はユーザ情報が店長
+2は管理者
+
+\item メソッド名：ChangePage\\
+
+ページの遷移を行うメソッド
+引数はIdentifivationNumber
+
+\subsection{店舗情報登録}
+%
+\item メソッド名：GetShopData\\
+
+現在登録されている店舗情報をサーバから取得するためのメソッド
+引数はなく、返り値はJSONData中の店舗情報等
+
+\item メソッド名：GetShop\\
+
+サーバ内で検索するメソッド
+ウェブじゃない
+
+\item メソッド名：CleateTable\\
+JSONデータや入力情報をもとにWebページ上で表を作成するメソッドである。\\
+引数として、表に書き込むデータを受け取る。
+	\begin{itemize}
+		\item 引数1:
+	\end{itemize}
+\item メソッド名：RegistrationShop\\
+
+追加の店舗情報をデータベースに登録するメソッド
+引数は店舗IDと店舗名、店長のユーザID
+返り値はBoolean Success
+この返り値が0の場合、なんらかのエラーで登録ができなかった
+1の場合登録成功
+
+\item メソッド名：SetRegistrationShop\\
+
+うぇぶでない
+
+\subsection{店舗情報更新}
+
+
+
+\item メソッド名：UpdateShop\\
+
+店舗情報を変更する際の処理を行うメソッド
+引数は店舗IDと店舗名、店長のユーザID
+返り値はBoolean Success
+返り値は0の場合、なんらかのエラーで登録ができなかった
+1の場合変更成功
+
+\item メソッド名：SetJSON\\
+
+店舗情報を変更する際に変更情報をサーバに送信するためにJSONファイルを作成するメソッド
+引数は店舗IDと店舗名、店長のユーザID
+返り値はJSONData
+
+\item メソッド名：UpdateShop\\
+
+サーバーにJSONファイルを送信するためのメソッドである。
+引数はJSONData
+
+\item メソッド名：UpdateTable\\
+
+うぇぶでない
+\subsection{店舗情報削除}
+%
+\item メソッド名：DeleteShop\\
+
+店舗情報を削除する際の処理を行うメソッド
+引数は店舗IDと店舗名、店長のユーザID
+返り値はBoolean Success
+返り値は0の場合、なんらかのエラーで登録ができなかった
+1の場合変更成功
+
+\item メソッド名：DeleteTable\\
+
+表から削除が完了したデータを削除するメソッド
+引数は店舗IDと店舗名、店長のユーザID
+返り値なし
+
+\subsection{ログアウト}
+%
+\item メソッド名：LogOutUser\\
+ログアウトボタンを押すと、ログイン前の状態に遷移する動作をさせるメソッド
+引数返り値なし
+%
+\subsection{特売情報登録}
+\item メソッド名：GetsaleData\\
+
+登録済みの特売情報をJSONファイルで取得するメソッド
+引数なし
+返り値はJSONファイル中の表作成に必要なデータと、カテゴリーと商品名
+
+\item メソッド名：GetSale\\
+
+うぇぶじゃない
+
+\item メソッド名：SetChoice\\
+
+カテゴリーと商品名の選択肢を作成するメソッド
+引数はJSONDataの必要なデータ
+返り値なし
+
+\item メソッド名：SetRegistrationSale\\
+
+特売にする商品のデータベースに登録を行うメソッド
+引数は（ないきがするーー）商品ID
+返り値はBoolean Success
+返り値は0の場合、なんらかのエラーで登録ができなかった
+1の場合変更成功
+
+\item メソッド名：SetDeleteSale\\
+特売にする商品のデータベースから削除を行うメソッド
+引数は（ないきがするーー）商品ID
+返り値はBoolean Success
+返り値は0の場合、なんらかのエラーで削除ができなかった
+1の場合削除成功
+
+\subsection{特価情報登録}
+%
+\item メソッド名：SetRegistrationSpecialSale\\
+特価にする商品のデータベースに登録を行うメソッド
+引数は店舗IDと商品IDと割引率と割引フラグ
+返り値はBoolean Success
+返り値は0の場合、なんらかのエラーで登録ができなかった
+1の場合変更成功
+%
+\item メソッド名：SetDeleteSpecialSale\\
+特価にする商品のデータベースに削除を行うメソッド
+引数は店舗IDと商品IDと割引率と割引フラグ
+返り値はBoolean Success
+返り値は0の場合、なんらかのエラーで削除ができなかった
+1の場合変更成功
+%
+\item メソッド名：SetUpdateSpecialeSale
+売り切れた特価商品にイベントを起こすメソッドデータベースにフラグもたてる
+引数は店舗IDと商品ID
+返り値はBoolean Success
+返り値は0の場合、なんらかのエラーで削除ができなかった
+1の場合変更成功
+
+\end{itemize}
+
+\end{document}
