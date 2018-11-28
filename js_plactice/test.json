@@ -1,4 +1,6 @@
 {
-"shopId" : ["nankoku"],
-"userId" :["大西","200298"],
+  "仮":{
+    "shop_id" : ["nankoku"],
+    "use_id" :["200298"],
+  }
 }
