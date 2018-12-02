@@ -19,7 +19,7 @@
 \newpage
 \tableofcontents
 \newpage
-\section{jsメソッド}
+\section{モジュール設計(Webページ)}
 \subsection{ユーザログイン情報取得}
 \begin{itemize}
 \item メソッド名：AuthentivationUsed\\
@@ -292,5 +292,90 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 		\item 値が1:データベースに更新成功
 	\end{itemize}
 \end{itemize}
+\section{シーケンス図(Webページ)}
+本節では、Webの管理ページを構成するオブジェクト間やサーバとの相互関係を示す。
 
+\subsection{ログイン画面ユーザ認証}
+Webのログイン画面でログインを行う際の相互関係を図\ref {tab:oonishi1}に示す。
+\begin{figure}[hb]
+\begin{center}
+\resizebox{16cm}{!}{\includegraphics{oonishi1.jpg}}
+\caption{ログイン画面ユーザ認証のシーケンス図}
+\label{oonishi1}
+\end{center}
+\end{figure}　　
+\subsection{店舗情報管理画面店舗登録}
+Webの店舗情報管理画面で店舗登録を行う際の相互関係を図\ref {tab:oonishi2}に示す。
+\begin{figure}[hb]
+\begin{center}
+\resizebox{16cm}{!}{\includegraphics{oonishi2.jpg}}
+\caption{店舗情報管理画面店舗登録のシーケンス図}
+\label{oonishi2}
+\end{center}
+\end{figure}
+\subsection{店舗情報管理画面店舗更新}
+Webの店舗情報管理画面で店長の更新を行う際の相互関係を図\ref {tab:oonishi3}に示す。
+\begin{figure}[hb]
+\begin{center}
+\resizebox{16cm}{!}{\includegraphics{oonishi3.jpg}}
+\caption{店舗情報管理画面店舗更新のシーケンス図}
+\label{oonishi3}
+\end{center}
+\end{figure}
+\subsection{店舗情報管理画面店舗削除}
+Webの店舗情報管理画面で店舗削除を行う際の相互関係を図\ref {tab:oonishi4}に示す。
+\begin{figure}[hb]
+\begin{center}
+\resizebox{16cm}{!}{\includegraphics{oonishi4.jpg}}
+\caption{店舗情報管理画面店舗削除のシーケンス図}
+\label{oonishi4}
+\end{center}
+\end{figure}
+\subsection{ユーザログアウト}%%関係なくない？
+Web上でログアウトを行う際の関係を図\ref {tab:oonishi5}に示す。
+\subsection{特売情報管理画面特売情報登録}
+Webの特売情報管理画面で特売情報登録を行う際の相互関係を図\ref {tab:oonishi21}に示す。
+\begin{figure}[hb]
+\begin{center}
+\resizebox{16cm}{!}{\includegraphics{oonishi21.jpg}}
+\caption{特売情報管理画面特売情報登録のシーケンス図}
+\label{oonishi21}
+\end{center}
+\end{figure}
+\subsection{特売情報管理画面特売情報削除}
+Webの特売情報管理画面で特売情報削除を行う際の相互関係を図\ref {tab:oonishi22}に示す。
+\begin{figure}[hb]
+\begin{center}
+\resizebox{16cm}{!}{\includegraphics{oonishi22.jpg}}
+\caption{特売情報管理画面特売情報削除のシーケンス図}
+\label{oonishi22}
+\end{center}
+\end{figure}
+\subsection{特価情報管理画面特価情報登録}
+Webの特価情報管理画面で特価情報登録を行う際の相互関係を図\ref {tab:oonishi23}に示す。
+\begin{figure}[hb]
+\begin{center}
+\resizebox{16cm}{!}{\includegraphics{oonishi23.jpg}}
+\caption{特売情報管理画面特売情報登録のシーケンス図}
+\label{oonishi23}
+\end{center}
+\end{figure}
+\subsection{特価情報管理画面特価情報更新}
+Webの特価情報管理画面で特価情報更新を行う際の相互関係を図\ref {tab:oonishi24}に示す。
+\begin{figure}[hb]
+\begin{center}
+\resizebox{16cm}{!}{\includegraphics{oonishi24.jpg}}
+\caption{特売情報管理画面特売情報更新のシーケンス図}
+\label{oonishi24}
+\end{center}
+\end{figure}
+\subsection{特価情報管理画面特価情報削除}
+Webの特価情報管理画面で特価情報削除を行う際の相互関係を図\ref {tab:oonishi25}に示す。
+\begin{figure}[hb]
+\begin{center}
+\resizebox{16cm}{!}{\includegraphics{oonishi25.jpg}}
+\caption{特売情報管理画面特売情報削除のシーケンス図}
+\label{oonishi25}
+\end{center}
+\end{figure}
 \end{document}
