@@ -19,6 +19,116 @@
 \newpage
 \tableofcontents
 \newpage
+\section{コーディング規約}
+
+本節では本システムを開発する際のコーティング規約を示す。また、命名規則として英単語を使用する。
+\subsection{Java}
+
+本小節ではJavaを使用する際のコーディング規約を示す。1レベルインデントするごとに半角空白を4つ使用する。
+\begin{itemize}
+	\item クラス\\
+		クラス名にはアッパーキャメルケース表記を使用する。
+	\begin{itemize}
+		\item 2つ以上の英単語を使用する
+		\item 単語の頭文字は大文字を使用する
+		\item 名称には英字のみを使用する
+	\end{itemize}
+		クラスの役割に応じて表 \ref {tab: o1} に示す単語を名称の最後に使用する。
+		%
+		\begin{table}[H]
+			\caption{Javaのクラス名に使用する単語}
+			\label{tab:o1}
+			\begin{center}
+			\begin{tabular}{|c|c|}
+			\hline
+			画面定義 & Activity\\\hline
+			画面一部定義 & Fragment\\\hline
+			\end{tabular}
+			\end{center}
+			\end{table}
+	\item メソッド\\
+		メソッド名にはアッパーキャメルケース表記を使用する。
+	\begin{itemize}
+		\item 2つ以上の英単語を使用する
+		\item 単語の頭文字は大文字を使用する
+		\item 名称には英字のみを使用する
+	\end{itemize}
+		メソッドの実装に応じて表 \ref {tab: o2} に示す単語を名称の最初に使用する。
+		%
+				\begin{table}[H]
+			\caption{Javaのメソッド名に使用する単語}
+			\label{tab:o2}
+			\begin{center}
+			\begin{tabular}{|c|c|}
+			\hline
+			データの取得 & Get\\\hline
+			データの設定 & Set\\\hline
+			データの表示 & Display\\\hline
+			データの並び替え & Sort\\\hline
+			データの更新  & Updata\\\hline
+			データの削除  & Delete\\\hline
+			データの照合 & Check\\\hline
+			\end{tabular}
+			\end{center}
+			\end{table}
+	\item 変数・定数\\
+		変数名または定数名にはアッパーキャメルケース表記を使用する。
+	\begin{itemize}
+		\item 2つ以上の英単語を使用する
+		\item 単語の頭文字は大文字を使用する
+		\item 名称には英字のみを使用する
+	\end{itemize}
+
+
+\end{itemize}
+\subsection{Javascript}
+
+本小節ではJavascriptのコーディング規約を示す。
+
+\begin{itemize}
+	\item メソッド\\
+		メソッド名にはアッパーキャメルケース表記を使用する。
+	\begin{itemize}
+		\item 2つ以上の英単語を使用する
+		\item 単語の頭文字は大文字を使用する
+		\item 名称には英字のみを使用する
+	\end{itemize}
+		メソッドの実装に応じて表 \ref {tab: o2} に示す単語を名称の最初に使用する。
+				\begin{table}[H]
+			\caption{Javaのメソッド名に使用する単語}
+			\label{tab:o2}
+			\begin{center}
+			\begin{tabular}{|c|c|}
+			\hline
+			データの取得 & Get\\\hline
+			データの設定 & Set\\\hline
+			データの更新  & Updata\\\hline
+			データの削除  & Delete\\\hline
+			\end{tabular}
+			\end{center}
+			\end{table}
+	\item 変数・定数\\
+		変数名または定数名にはローワーキャメルケース表記を使用する。
+	\begin{itemize}
+		\item 2つ以上の英単語を使用する
+		\item 名称の頭文字は小文字を使用し、後続する単語の頭文字は大文字を使用する
+		\item 名称には英字のみを使用する
+	\end{itemize}
+\end{itemize}
+\subsection{データベース}
+本小節ではデータベースのコーディング規約を示す。
+	\begin{itemize}
+	\item 共通\\
+		スネークケース表記を使用する。
+	\begin{itemize}
+		\item 使用する文字は全て大文字とする
+		\item 単語が連なる場合は後続する単語の前にアンダースコアを使用する
+	\end{itemize}
+	\item テーブル\\
+		変数名または定数名にはローワーキャメルケース表記を使用する。
+	\item カラム
+		主キーの名称はテーブル名、アンダースコア、idで命名する。
+\end{itemize}
 \section{モジュール設計(Webページ)}
 \subsection{ユーザログイン情報取得}
 \begin{itemize}

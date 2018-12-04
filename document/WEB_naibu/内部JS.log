@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.4.23)  4 DEC 2018 14:36
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.4.23)  4 DEC 2018 16:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -135,86 +135,96 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
  [2]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 23.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 25.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 23.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 25.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 25.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 29.
  (c:/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 25.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 29.
 
-[3] [4] [5] [6] [7] [8]
+
+LaTeX Warning: Reference `tab: o1' on page 3 undefined on input line 36.
+
+
+LaTeX Warning: Reference `tab: o2' on page 3 undefined on input line 56.
+
+[3]
+
+LaTeX Warning: Reference `tab: o2' on page 4 undefined on input line 96.
+
+[4] [5] [6] [7] [8] [9] [10]
 File: oonishi1.jpg Graphic file (type bmp)
 <oonishi1.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 351--352
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 461--462
  [] 
  []
 
 File: oonishi2.jpg Graphic file (type bmp)
 <oonishi2.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 360--361
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 470--471
  [] 
  []
 
 File: oonishi3.jpg Graphic file (type bmp)
 <oonishi3.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 369--370
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 479--480
  [] 
  []
 
-[9]
+[11]
 File: oonishi4.jpg Graphic file (type bmp)
 <oonishi4.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 378--379
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 488--489
  [] 
  []
 
 
-LaTeX Warning: Reference `tab:oonishi5' on page 10 undefined on input line 384.
+LaTeX Warning: Reference `tab:oonishi5' on page 12 undefined on input line 494.
 
 
 File: oonishi21.jpg Graphic file (type bmp)
 <oonishi21.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 389--390
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 499--500
  [] 
  []
 
 File: oonishi22.jpg Graphic file (type bmp)
 <oonishi22.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 398--399
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 508--509
  [] 
  []
 
 File: oonishi23.jpg Graphic file (type bmp)
 <oonishi23.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 407--408
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 517--518
  [] 
  []
 
 File: oonishi24.jpg Graphic file (type bmp)
 <oonishi24.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 416--417
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 526--527
  [] 
  []
 
 File: oonishi25.jpg Graphic file (type bmp)
 <oonishi25.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 425--426
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 535--536
  [] 
  []
 
-[10] [11] [12] [13] [14] (./“à•”JS.aux)
+[12] [13] [14] [15] [16] (./“à•”JS.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -223,12 +233,12 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 954 strings out of 493640
- 11886 string characters out of 6151719
+ 961 strings out of 493640
+ 11949 string characters out of 6151719
  74817 words of memory out of 5000000
- 4561 multiletter control sequences out of 15000+600000
+ 4568 multiletter control sequences out of 15000+600000
  13799 words of font info for 54 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 25i,7n,23p,202b,331s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 25i,9n,23p,202b,349s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on “à•”JS.dvi (14 pages, 27388 bytes).
+Output written on “à•”JS.dvi (16 pages, 33840 bytes).
