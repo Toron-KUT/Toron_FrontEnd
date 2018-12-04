@@ -69,6 +69,7 @@ JSONファイルを作成するメソッドである。引数は、ユーザID�
 	\begin{itemize}
 		\item 引数1:IdentifivationNumber
 	\end{itemize}
+	
 \subsection{店舗情報登録}
 %
 \item メソッド名：GetShopData\\
@@ -88,7 +89,7 @@ JSONファイルを作成するメソッドである。引数は、ユーザID�
 
 \item メソッド名：CleateTable\\
 JSONデータや入力情報をもとにWebページ上で表を作成するメソッドである。\\
-引数として、JSONDataもしくは、表に書き込む店舗ID、店舗名、店長のユーザIDのデータを受け取る。
+引数として、JSONDataもしくは、フォームに入力された店舗ID、店舗名、店長のユーザIDのデータを受け取る。
 	\begin{itemize}
 		\item 引数1:JSONData
 		
@@ -125,12 +126,12 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 店舗情報を変更する際の処理を行うメソッドである。
 引数は店舗IDと店舗名、店長のユーザIDである。
-返り値はBoolean Successである。
+返り値はBooleanSuccessである。
 	\begin{itemize}
 		\item 引数1:shop\_ID
 		\item 引数2:shopName
 		\item 引数3:user\_ID
-		\item 返り値:Boolean Success
+		\item 返り値:BooleanSuccess
 	\end{itemize}
 また返り値の値の意味は次に示す。
 	\begin{itemize}
@@ -157,8 +158,18 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 		\item 引数1:JSONData
 	\end{itemize}
 %サーバ側
+\item メソッド名：UpdateShop\\
 \item メソッド名：UpdateTable\\
+データベース上で変更が完了したらWebページ上の店舗一覧に変更を加えるメソッドである。
+引数として入力された店舗情報を受け取る。
+返り値はない。
 
+	\begin{itemize}
+		\item 引数1:shop\_ID
+		\item 引数2:shopName
+		\item 引数3:user\_ID
+		\item 返り値:JSONData
+	\end{itemize}
 \subsection{店舗情報削除}
 %
 \item メソッド名：DeleteShop\\
@@ -197,7 +208,7 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 引数と返り値はない。
 %
 \subsection{特売情報登録}
-\item メソッド名：GetsaleData\\
+\item メソッド名：GetSaleData\\
 
 登録済みの特売情報をJSONファイルで取得するメソッドである。
 引数はない。
@@ -207,6 +218,14 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 %サーバ側
 \item メソッド名：GetSale\\
 
+\item メソッド名:CleateTable\\
+JSONデータや入力情報をもとにWebページ上で表を作成するメソッドである。\\
+引数として、JSONData内の店舗ID、店舗名、店長のユーザIDもしくは、フォームに入力されたデータを受け取る。
+	\begin{itemize}	
+		\item 引数1:shop\_ID
+		\item 引数2:shopName
+		\item 引数3:user\_ID
+	\end{itemize}
 \item メソッド名：SetChoice\\
 
 カテゴリーと商品名の選択肢を作成するメソッド
@@ -245,6 +264,36 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 	\end{itemize}
 \subsection{特価情報登録}
 %
+\item メソッド名：GetSpecialSaleData\\
+
+登録済みの特価情報をJSONファイルで取得するメソッドである。
+引数はない。
+返り値はJSONファイルである。
+
+カテゴリーと商品名の選択肢を作成するメソッド
+引数はJSONDataであり、JSONファイル中のカテゴリ名と商品名を必要とする。
+返り値はない。
+	\begin{itemize}
+		\item 引数1:JSONData
+	\end{itemize}
+	\item メソッド名:CleateTable\\
+JSONデータや入力情報をもとにWebページ上で表を作成するメソッドである。\\
+引数として、JSONData内の店舗ID、店舗名、店長のユーザIDもしくは、フォームに入力されたデータを受け取る。
+	\begin{itemize}	
+		\item 引数1:shop\_ID
+		\item 引数2:shopName
+		\item 引数3:user\_ID
+	\end{itemize}
+\item メソッド名：SetChoice\\
+
+カテゴリーと商品名の選択肢を作成するメソッドである。
+引数はJSONDataであり、JSONファイル中のカテゴリ名と商品名を必要とする。
+返り値はない。
+	\begin{itemize}
+		\item 引数1:shop\_ID
+		\item 引数2:Registration\_ID
+	\end{itemize}
+			
 \item メソッド名：SetRegistrationSpecialSale\\
 特価にする商品のデータベースに登録を行うメソッドである。
 引数は店舗IDと商品IDと割引率と割引フラグである。
@@ -296,86 +345,86 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 本節では、Webの管理ページを構成するオブジェクト間やサーバとの相互関係を示す。
 
 \subsection{ログイン画面ユーザ認証}
-Webのログイン画面でログインを行う際の相互関係を図\ref {tab:oonishi1}に示す。
+Webのログイン画面でログインを行う際の相互関係を図 \ref {tab:oonishi1}に示す。
 \begin{figure}[hb]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi1.jpg}}
 \caption{ログイン画面ユーザ認証のシーケンス図}
-\label{oonishi1}
+\label{tab:oonishi1}
 \end{center}
 \end{figure}　　
 \subsection{店舗情報管理画面店舗登録}
-Webの店舗情報管理画面で店舗登録を行う際の相互関係を図\ref {tab:oonishi2}に示す。
+Webの店舗情報管理画面で店舗登録を行う際の相互関係を図 \ref {tab:oonishi2}に示す。
 \begin{figure}[hb]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi2.jpg}}
 \caption{店舗情報管理画面店舗登録のシーケンス図}
-\label{oonishi2}
+\label {tab:oonishi2}
 \end{center}
 \end{figure}
 \subsection{店舗情報管理画面店舗更新}
-Webの店舗情報管理画面で店長の更新を行う際の相互関係を図\ref {tab:oonishi3}に示す。
+Webの店舗情報管理画面で店長の更新を行う際の相互関係を図 \ref {tab:oonishi3}に示す。
 \begin{figure}[hb]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi3.jpg}}
 \caption{店舗情報管理画面店舗更新のシーケンス図}
-\label{oonishi3}
+\label{tab:oonishi3}
 \end{center}
 \end{figure}
 \subsection{店舗情報管理画面店舗削除}
-Webの店舗情報管理画面で店舗削除を行う際の相互関係を図\ref {tab:oonishi4}に示す。
+Webの店舗情報管理画面で店舗削除を行う際の相互関係を図 \ref {tab:oonishi4}に示す。
 \begin{figure}[hb]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi4.jpg}}
 \caption{店舗情報管理画面店舗削除のシーケンス図}
-\label{oonishi4}
+\label{tab:oonishi4}
 \end{center}
 \end{figure}
 \subsection{ユーザログアウト}%%関係なくない？
-Web上でログアウトを行う際の関係を図\ref {tab:oonishi5}に示す。
+Web上でログアウトを行う際の関係を図 \ref {tab:oonishi5}に示す。
 \subsection{特売情報管理画面特売情報登録}
-Webの特売情報管理画面で特売情報登録を行う際の相互関係を図\ref {tab:oonishi21}に示す。
+Webの特売情報管理画面で特売情報登録を行う際の相互関係を図 \ref {tab:oonishi21}に示す。
 \begin{figure}[hb]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi21.jpg}}
 \caption{特売情報管理画面特売情報登録のシーケンス図}
-\label{oonishi21}
+\label{tab:oonishi21}
 \end{center}
 \end{figure}
 \subsection{特売情報管理画面特売情報削除}
-Webの特売情報管理画面で特売情報削除を行う際の相互関係を図\ref {tab:oonishi22}に示す。
+Webの特売情報管理画面で特売情報削除を行う際の相互関係を図 \ref {tab:oonishi22}に示す。
 \begin{figure}[hb]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi22.jpg}}
 \caption{特売情報管理画面特売情報削除のシーケンス図}
-\label{oonishi22}
+\label{tab:oonishi22}
 \end{center}
 \end{figure}
 \subsection{特価情報管理画面特価情報登録}
-Webの特価情報管理画面で特価情報登録を行う際の相互関係を図\ref {tab:oonishi23}に示す。
+Webの特価情報管理画面で特価情報登録を行う際の相互関係を図 \ref {tab:oonishi23}に示す。
 \begin{figure}[hb]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi23.jpg}}
 \caption{特売情報管理画面特売情報登録のシーケンス図}
-\label{oonishi23}
+\label{tab:oonishi23}
 \end{center}
 \end{figure}
 \subsection{特価情報管理画面特価情報更新}
-Webの特価情報管理画面で特価情報更新を行う際の相互関係を図\ref {tab:oonishi24}に示す。
+Webの特価情報管理画面で特価情報更新を行う際の相互関係を図 \ref {tab:oonishi24}に示す。
 \begin{figure}[hb]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi24.jpg}}
 \caption{特売情報管理画面特売情報更新のシーケンス図}
-\label{oonishi24}
+\label{tab:oonishi24}
 \end{center}
 \end{figure}
 \subsection{特価情報管理画面特価情報削除}
-Webの特価情報管理画面で特価情報削除を行う際の相互関係を図\ref {tab:oonishi25}に示す。
+Webの特価情報管理画面で特価情報削除を行う際の相互関係を図 \ref {tab:oonishi25}に示す。
 \begin{figure}[hb]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi25.jpg}}
 \caption{特売情報管理画面特売情報削除のシーケンス図}
-\label{oonishi25}
+\label{tab:oonishi25}
 \end{center}
 \end{figure}
 \end{document}
