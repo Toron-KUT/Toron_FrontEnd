@@ -1,0 +1,8 @@
+maruoka/	...プロジェクトを総括するディレクトリ
+   |- web/		...Webページを実装するディレクトリ
+   |   |-AdmiLogin.js		
+   |   |-AdmiJSON.js		
+   |   |-AdmiForm.js		
+   |   |-LogOutUser.js		
+   |   |-AdmiSale.js		
+   |   |-AdmiSpecialSale.js	

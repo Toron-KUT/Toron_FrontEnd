@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.4.23)  6 DEC 2018 12:25
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.4.23)  6 DEC 2018 15:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -158,83 +158,88 @@ LaTeX Warning: Reference `tab: o2' on page 3 undefined on input line 56.
 
 LaTeX Warning: Reference `tab: o2' on page 4 undefined on input line 96.
 
-[4] [5] [6] [7] [8] [9] [10]
+[4]
+
+LaTeX Warning: Reference `tab:oonishimoj' on page 5 undefined on input line 136
+.
+
+[5] [6] [7] [8] [9] [10] [11]
 File: oonishi1.jpg Graphic file (type bmp)
 <oonishi1.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 463--464
- [] 
- []
-
-[11]
-File: oonishi2.jpg Graphic file (type bmp)
-<oonishi2.jpg>
-
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 472--473
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 482--483
  [] 
  []
 
 [12]
-File: oonishi3.jpg Graphic file (type bmp)
-<oonishi3.jpg>
+File: oonishi2.jpg Graphic file (type bmp)
+<oonishi2.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 481--482
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 491--492
  [] 
  []
 
 [13]
-File: oonishi4.jpg Graphic file (type bmp)
-<oonishi4.jpg>
+File: oonishi3.jpg Graphic file (type bmp)
+<oonishi3.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 490--491
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 500--501
  [] 
  []
 
 [14]
+File: oonishi4.jpg Graphic file (type bmp)
+<oonishi4.jpg>
 
-LaTeX Warning: Reference `tab:oonishi5' on page 15 undefined on input line 496.
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 509--510
+ [] 
+ []
+
+[15]
+
+LaTeX Warning: Reference `tab:oonishi5' on page 16 undefined on input line 515.
 
 
 File: oonishi21.jpg Graphic file (type bmp)
 <oonishi21.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 501--502
- [] 
- []
-
-[15]
-File: oonishi22.jpg Graphic file (type bmp)
-<oonishi22.jpg>
-
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 510--511
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 520--521
  [] 
  []
 
 [16]
-File: oonishi23.jpg Graphic file (type bmp)
-<oonishi23.jpg>
+File: oonishi22.jpg Graphic file (type bmp)
+<oonishi22.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 519--520
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 529--530
  [] 
  []
 
 [17]
-File: oonishi24.jpg Graphic file (type bmp)
-<oonishi24.jpg>
+File: oonishi23.jpg Graphic file (type bmp)
+<oonishi23.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 528--529
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 538--539
  [] 
  []
 
 [18]
-File: oonishi25.jpg Graphic file (type bmp)
-<oonishi25.jpg>
+File: oonishi24.jpg Graphic file (type bmp)
+<oonishi24.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 537--538
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 547--548
  [] 
  []
 
-[19] [20] (./“à•”JS.aux)
+[19]
+File: oonishi25.jpg Graphic file (type bmp)
+<oonishi25.jpg>
+
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 556--557
+ [] 
+ []
+
+[20] [21] (./“à•”JS.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -243,12 +248,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 961 strings out of 493640
- 11941 string characters out of 6151719
+ 962 strings out of 493640
+ 11957 string characters out of 6151719
  74817 words of memory out of 5000000
- 4568 multiletter control sequences out of 15000+600000
+ 4569 multiletter control sequences out of 15000+600000
  13799 words of font info for 54 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  25i,9n,23p,202b,349s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on “à•”JS.dvi (20 pages, 33828 bytes).
+Output written on “à•”JS.dvi (21 pages, 34836 bytes).
