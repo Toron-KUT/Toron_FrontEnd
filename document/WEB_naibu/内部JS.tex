@@ -130,6 +130,8 @@
 		主キーの名称はテーブル名、アンダースコア、idで命名する。
 \end{itemize}
 \section{モジュール設計(Webページ)}
+
+本節ではWebページのモジュール設計を示す。
 \subsection{ユーザログイン情報取得}
 \begin{itemize}
 \item メソッド名：AuthentivationUsed\\
@@ -138,7 +140,7 @@ Webページでログインする際に、入力されたログイン情報が�
 また返り値はである。これは、データベース上にログイン情報が存在したか判定を行った結果を返すものである。
 
 	\begin{itemize}
-		\item 引数1:user\_ID
+		\item 引数1:userID
 		\item 引数2:password
 		\item 返り値:IdentifivationNumber
 	\end{itemize}
@@ -146,7 +148,7 @@ Webページでログインする際に、入力されたログイン情報が�
 
 JSONファイルを作成するメソッドである。引数は、ユーザIDとパスワードである。生成したJSONファイルを返り値とする。
 	\begin{itemize}
-		\item 引数1:user\_ID
+		\item 引数1:userID
 		\item 引数2:password
 		\item 返り値:JSONData
 	\end{itemize}
@@ -199,25 +201,22 @@ JSONファイルを作成するメソッドである。引数は、ユーザID�
 
 \item メソッド名：CleateTable\\
 JSONデータや入力情報をもとにWebページ上で表を作成するメソッドである。\\
-引数として、JSONDataもしくは、フォームに入力された店舗ID、店舗名、店長のユーザIDのデータを受け取る。
+引数として、JSONData内の店舗ID、店舗名、店長のユーザIDのデータもしくは、フォームに入力されたこれらのデータを受け取る。
 	\begin{itemize}
-		\item 引数1:JSONData
-		
-		
-		\item 引数1:shop\_ID
+		\item 引数1:shopID
 		\item 引数2:shopName
-		\item 引数3:user\_ID
+		\item 引数3:userID
 	\end{itemize}
 \item メソッド名：RegistrationShop\\
 
 追加の店舗情報をデータベースに登録するメソッドである。
 引数は店舗IDと店舗名、店長のユーザIDである。
-返り値はBooleanSuccessである。
+返り値はbooleanSuccessである。
 	\begin{itemize}
-		\item 引数1:shop\_ID
+		\item 引数1:shopID
 		\item 引数2:shopName
-		\item 引数3:user\_ID
-		\item 返り値:Boolean Success
+		\item 引数3:userID
+		\item 返り値:booleanSuccess
 	\end{itemize}
 また返り値の値の意味は次に示す。
 	\begin{itemize}
@@ -236,12 +235,12 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 店舗情報を変更する際の処理を行うメソッドである。
 引数は店舗IDと店舗名、店長のユーザIDである。
-返り値はBooleanSuccessである。
+返り値はbooleanSuccessである。
 	\begin{itemize}
-		\item 引数1:shop\_ID
+		\item 引数1:shopID
 		\item 引数2:shopName
-		\item 引数3:user\_ID
-		\item 返り値:BooleanSuccess
+		\item 引数3:userID
+		\item 返り値:booleanSuccess
 	\end{itemize}
 また返り値の値の意味は次に示す。
 	\begin{itemize}
@@ -255,9 +254,9 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 引数は店舗IDと店舗名、店長のユーザIDである。
 返り値はJSONDataである。
 	\begin{itemize}
-		\item 引数1:shop\_ID
+		\item 引数1:shopID
 		\item 引数2:shopName
-		\item 引数3:user\_ID
+		\item 引数3:userID
 		\item 返り値:JSONData
 	\end{itemize}
 \item メソッド名：UpdateShop\\
@@ -275,9 +274,9 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 返り値はない。
 
 	\begin{itemize}
-		\item 引数1:shop\_ID
+		\item 引数1:shopID
 		\item 引数2:shopName
-		\item 引数3:user\_ID
+		\item 引数3:userID
 		\item 返り値:JSONData
 	\end{itemize}
 \subsection{店舗情報削除}
@@ -286,13 +285,13 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 店舗情報を削除する際の処理を行うメソッドである。
 引数は店舗IDと店舗名、店長のユーザIDである。
-返り値はBoolean Successである。
+返り値はbooleanSuccessである。
 
 	\begin{itemize}
-		\item 引数1:shop\_ID
+		\item 引数1:shopID
 		\item 引数2:shopName
-		\item 引数3:user\_ID
-		\item 返り値:Boolean Success
+		\item 引数3:userID
+		\item 返り値:booleanSuccess
 	\end{itemize}
 また返り値の値の意味は次に示す。
 	\begin{itemize}
@@ -306,9 +305,9 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 引数は店舗IDと店舗名、店長のユーザIDである。
 返り値はない。
 	\begin{itemize}
-		\item 引数1:shop\_ID
+		\item 引数1:shopID
 		\item 引数2:shopName
-		\item 引数3:user\_ID
+		\item 引数3:userID
 	\end{itemize}
 
 \subsection{ログアウト}
@@ -332,9 +331,10 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 JSONデータや入力情報をもとにWebページ上で表を作成するメソッドである。\\
 引数として、JSONData内の店舗ID、店舗名、店長のユーザIDもしくは、フォームに入力されたデータを受け取る。
 	\begin{itemize}	
-		\item 引数1:shop\_ID
+		\item 引数1:shopID
 		\item 引数2:shopName
-		\item 引数3:user\_ID
+		\item 引数3:userID
+		\item 返り値:booleanSuccess
 	\end{itemize}
 \item メソッド名：SetChoice\\
 
@@ -349,10 +349,11 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 特売にする商品のデータベースに登録を行うメソッド
 引数は商品IDである%かな？
-返り値はBooleanSuccessである。
+返り値はbooleanSuccessである。
 
 	\begin{itemize}
-		\item 引数1:Registration\_ID
+		\item 引数1:RegistrationID
+		\item 返り値:booleanSuccess
 	\end{itemize}
 また返り値の値の意味は次に示す。
 	\begin{itemize}
@@ -362,10 +363,11 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 \item メソッド名：SetDeleteSale\\
 特売にする商品のデータベースから削除を行うメソッドである。
 引数は商品IDである。
-返り値はBoolean Successである。
+返り値はbooleanSuccessである。
 
 	\begin{itemize}
-		\item 引数1:Registration\_ID
+		\item 引数1:RegistrationID
+		\item 返り値:booleanSuccess
 	\end{itemize}
 また返り値の値の意味は次に示す。
 	\begin{itemize}
@@ -390,9 +392,9 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 JSONデータや入力情報をもとにWebページ上で表を作成するメソッドである。\\
 引数として、JSONData内の店舗ID、店舗名、店長のユーザIDもしくは、フォームに入力されたデータを受け取る。
 	\begin{itemize}	
-		\item 引数1:shop\_ID
+		\item 引数1:shopID
 		\item 引数2:shopName
-		\item 引数3:user\_ID
+		\item 引数3:userID
 	\end{itemize}
 \item メソッド名：SetChoice\\
 
@@ -400,17 +402,17 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 引数はJSONDataであり、JSONファイル中のカテゴリ名と商品名を必要とする。
 返り値はない。
 	\begin{itemize}
-		\item 引数1:shop\_ID
-		\item 引数2:Registration\_ID
+		\item 引数1:shopID
+		\item 引数2:productID
 	\end{itemize}
 			
 \item メソッド名：SetRegistrationSpecialSale\\
 特価にする商品のデータベースに登録を行うメソッドである。
 引数は店舗IDと商品IDと割引率と割引フラグである。
-返り値はBooleanSuccessである。
+返り値はbooleanSuccessである。
 	\begin{itemize}
-		\item 引数1:shop\_ID
-		\item 引数2:Registration\_ID
+		\item 引数1:shopID
+		\item 引数2:productID
 		\item 引数3:rate
 		\item 引数4:rateFlag
 	\end{itemize}
@@ -423,10 +425,10 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 \item メソッド名：SetDeleteSpecialSale\\
 特価にする商品のデータベースに削除を行うメソッドである。
 引数は店舗IDと商品IDと割引率と割引フラグである。
-返り値はBooleanSuccessである。
+返り値はbooleanSuccessである。
 	\begin{itemize}
-		\item 引数1:shop\_ID
-		\item 引数2:Registration\_ID
+		\item 引数1:shopID
+		\item 引数2:productID
 		\item 引数3:rate
 		\item 引数4:rateFlag
 	\end{itemize}
@@ -439,10 +441,10 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 \item メソッド名：SetUpdateSpecialeSale
 売り切れた特価商品にイベントを起こすメソッドである。この際にデータベースのsoldoutの更新も行う。
 引数は店舗IDと商品IDである。
-返り値はBooleanSuccessである。
+返り値はbooleanSuccessである。
 	\begin{itemize}
-		\item 引数1:shop\_ID
-		\item 引数2:Registration\_ID
+		\item 引数1:shopID
+		\item 引数2:productID
 
 	\end{itemize}
 また返り値の値の意味は次に示す。
@@ -456,7 +458,7 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 \subsection{ログイン画面ユーザ認証}
 Webのログイン画面でログインを行う際の相互関係を図 \ref {tab:oonishi1}に示す。
-\begin{figure}[hb]
+\begin{figure}[H]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi1.jpg}}
 \caption{ログイン画面ユーザ認証のシーケンス図}
@@ -465,7 +467,7 @@ Webのログイン画面でログインを行う際の相互関係を図 \ref {t
 \end{figure}　　
 \subsection{店舗情報管理画面店舗登録}
 Webの店舗情報管理画面で店舗登録を行う際の相互関係を図 \ref {tab:oonishi2}に示す。
-\begin{figure}[hb]
+\begin{figure}[H]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi2.jpg}}
 \caption{店舗情報管理画面店舗登録のシーケンス図}
@@ -474,7 +476,7 @@ Webの店舗情報管理画面で店舗登録を行う際の相互関係を図 \
 \end{figure}
 \subsection{店舗情報管理画面店舗更新}
 Webの店舗情報管理画面で店長の更新を行う際の相互関係を図 \ref {tab:oonishi3}に示す。
-\begin{figure}[hb]
+\begin{figure}[H]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi3.jpg}}
 \caption{店舗情報管理画面店舗更新のシーケンス図}
@@ -483,7 +485,7 @@ Webの店舗情報管理画面で店長の更新を行う際の相互関係を�
 \end{figure}
 \subsection{店舗情報管理画面店舗削除}
 Webの店舗情報管理画面で店舗削除を行う際の相互関係を図 \ref {tab:oonishi4}に示す。
-\begin{figure}[hb]
+\begin{figure}[H]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi4.jpg}}
 \caption{店舗情報管理画面店舗削除のシーケンス図}
@@ -494,7 +496,7 @@ Webの店舗情報管理画面で店舗削除を行う際の相互関係を図 \
 Web上でログアウトを行う際の関係を図 \ref {tab:oonishi5}に示す。
 \subsection{特売情報管理画面特売情報登録}
 Webの特売情報管理画面で特売情報登録を行う際の相互関係を図 \ref {tab:oonishi21}に示す。
-\begin{figure}[hb]
+\begin{figure}[H]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi21.jpg}}
 \caption{特売情報管理画面特売情報登録のシーケンス図}
@@ -503,7 +505,7 @@ Webの特売情報管理画面で特売情報登録を行う際の相互関係�
 \end{figure}
 \subsection{特売情報管理画面特売情報削除}
 Webの特売情報管理画面で特売情報削除を行う際の相互関係を図 \ref {tab:oonishi22}に示す。
-\begin{figure}[hb]
+\begin{figure}[H]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi22.jpg}}
 \caption{特売情報管理画面特売情報削除のシーケンス図}
@@ -512,7 +514,7 @@ Webの特売情報管理画面で特売情報削除を行う際の相互関係�
 \end{figure}
 \subsection{特価情報管理画面特価情報登録}
 Webの特価情報管理画面で特価情報登録を行う際の相互関係を図 \ref {tab:oonishi23}に示す。
-\begin{figure}[hb]
+\begin{figure}[H]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi23.jpg}}
 \caption{特売情報管理画面特売情報登録のシーケンス図}
@@ -521,7 +523,7 @@ Webの特価情報管理画面で特価情報登録を行う際の相互関係�
 \end{figure}
 \subsection{特価情報管理画面特価情報更新}
 Webの特価情報管理画面で特価情報更新を行う際の相互関係を図 \ref {tab:oonishi24}に示す。
-\begin{figure}[hb]
+\begin{figure}[H]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi24.jpg}}
 \caption{特売情報管理画面特売情報更新のシーケンス図}
@@ -530,7 +532,7 @@ Webの特価情報管理画面で特価情報更新を行う際の相互関係�
 \end{figure}
 \subsection{特価情報管理画面特価情報削除}
 Webの特価情報管理画面で特価情報削除を行う際の相互関係を図 \ref {tab:oonishi25}に示す。
-\begin{figure}[hb]
+\begin{figure}[H]
 \begin{center}
 \resizebox{16cm}{!}{\includegraphics{oonishi25.jpg}}
 \caption{特売情報管理画面特売情報削除のシーケンス図}
