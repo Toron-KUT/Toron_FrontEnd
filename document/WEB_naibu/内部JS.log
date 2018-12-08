@@ -1,73 +1,72 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2018.4.23)  6 DEC 2018 15:23
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.sjis) (TeX Live 2018/W32TeX) (preloaded format=platex 2018.5.16)  8 DEC 2018 19:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./“à•”JS.tex
-(./“à•”JS.tex
-pLaTeX2e <2017/10/28>+4 (based on LaTeX2e <2017-04-15>)
-Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
-(c:/texlive/2017/texmf-dist/tex/platex/base/jarticle.cls
-Document Class: jarticle 2017/09/19 v1.7g Standard pLaTeX class
-\c@@paper=\count82
-(c:/texlive/2017/texmf-dist/tex/platex/base/jsize10.clo
-File: jsize10.clo 2017/09/19 v1.7g Standard pLaTeX file (size option)
+**å†…éƒ¨JS.tex
+(./å†…éƒ¨JS.tex
+pLaTeX2e <2018-04-01>+2 (based on LaTeX2e <2018-04-01> patch level 4)
+(c:/texlive/2018/texmf-dist/tex/platex/base/jarticle.cls
+Document Class: jarticle 2018/02/04 v1.7h Standard pLaTeX class
+\c@@paper=\count83
+(c:/texlive/2018/texmf-dist/tex/platex/base/jsize10.clo
+File: jsize10.clo 2018/02/04 v1.7h Standard pLaTeX file (size option)
 )
-\c@part=\count83
-\c@section=\count84
-\c@subsection=\count85
-\c@subsubsection=\count86
-\c@paragraph=\count87
-\c@subparagraph=\count88
-\c@figure=\count89
-\c@table=\count90
+\c@part=\count84
+\c@section=\count85
+\c@subsection=\count86
+\c@subsubsection=\count87
+\c@paragraph=\count88
+\c@subparagraph=\count89
+\c@figure=\count90
+\c@table=\count91
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \symmincho=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
-(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 613.
+(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 614.
 \toclineskip=\dimen118
 \@lnumwidth=\dimen119
 \bibindent=\dimen120
-\heisei=\count91
+\heisei=\count92
 )
-(c:/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
+(c:/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-(c:/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
+(c:/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks15
 )
-(c:/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
+(c:/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-(c:/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
+(c:/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(c:/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+(c:/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: dvipdfmx.def on input line 99.
 
-(c:/texlive/2017/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+(c:/texlive/2018/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
 File: dvipdfmx.def 2017/06/24 v5.0g Graphics/color driver for dvipdfmx
 ))
 \Gin@req@height=\dimen121
 \Gin@req@width=\dimen122
 )
-(c:/texlive/2017/texmf-dist/tex/latex/here/here.sty)
-(c:/texlive/2017/texmf-dist/tex/latex/float/float.sty
+(c:/texlive/2018/texmf-dist/tex/latex/here/here.sty)
+(c:/texlive/2018/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count92
+\c@float@type=\count93
 \float@exts=\toks16
 \float@box=\box42
 \@float@everytoks=\toks17
 \@floatcapt=\box43
 )
-(c:/texlive/2017/texmf-dist/tex/platex/base/ascmac.sty
-Package: ascmac 2017/12/17 v2.0f ascmac wrapper (community edition) 
+(c:/texlive/2018/texmf-dist/tex/latex/ascmac/ascmac.sty
+Package: ascmac 2018/03/09 v2.0h ascmac wrapper (community edition) 
 
-(c:/texlive/2017/texmf-dist/tex/platex/base/tascmac.sty
-Package: tascmac 2017/12/17 v2.0f ascmac package (community edition) 
+(c:/texlive/2018/texmf-dist/tex/latex/ascmac/tascmac.sty
+Package: tascmac 2018/03/09 v2.0h ascmac package (community edition) 
 \@savetbaselineshift=\dimen123
 \@saveybaselineshift=\dimen124
 \scb@x=\box44
@@ -76,23 +75,21 @@ Package: tascmac 2017/12/17 v2.0f ascmac package (community edition)
 \@nbox=\box46
 \@nbody=\box47
 \@scw=\dimen126
+\ascmac@hoboxa=\box48
+\ascmac@hoboxb=\box49
 \@itemh=\dimen127
 \@iboxpos=\toks18
-\@iboxstr=\box48
-\@bwsp=\box49
-\@@bwsp=\box50
-\@bcal=\count93
+\@iboxstr=\box50
+\@bwsp=\box51
+\@@bwsp=\box52
+\@bcal=\count94
 \shaderule=\dimen128
 ))
-(c:/texlive/2017/texmf-dist/tex/latex/url/url.sty
+(c:/texlive/2018/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-) (./“à•”JS.aux
-
-LaTeX Warning: Label `tab:o2' multiply defined.
-
-)
-\openout1 = `“à•”JS.aux'.
+) (./å†…éƒ¨JS.aux)
+\openout1 = `å†…éƒ¨JS.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
@@ -123,7 +120,8 @@ LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 20.
- (./“à•”JS.toc
+
+(./å†…éƒ¨JS.toc
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 1.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
@@ -134,7 +132,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 2.
 )
 \tf@toc=\write3
-\openout3 = `“à•”JS.toc'.
+\openout3 = `å†…éƒ¨JS.toc'.
 
  [2]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
@@ -142,40 +140,29 @@ LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 25.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 29.
- (c:/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
+ (c:/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 29.
 
+[3] [4]
 
-LaTeX Warning: Reference `tab: o1' on page 3 undefined on input line 36.
-
-
-LaTeX Warning: Reference `tab: o2' on page 3 undefined on input line 56.
-
-[3]
-
-LaTeX Warning: Reference `tab: o2' on page 4 undefined on input line 96.
-
-[4]
-
-LaTeX Warning: Reference `tab:oonishimoj' on page 5 undefined on input line 136
+LaTeX Warning: Reference `tab:oonishimoj' on page 5 undefined on input line 135
 .
 
-[5] [6] [7] [8] [9] [10] [11]
+[5] [6] [7] [8] [9] [10] [11] [12]
 File: oonishi1.jpg Graphic file (type bmp)
 <oonishi1.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 482--483
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 497--498
  [] 
  []
 
-[12]
 File: oonishi2.jpg Graphic file (type bmp)
 <oonishi2.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 491--492
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 506--507
  [] 
  []
 
@@ -183,7 +170,7 @@ Overfull \hbox (37.2457pt too wide) in paragraph at lines 491--492
 File: oonishi3.jpg Graphic file (type bmp)
 <oonishi3.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 500--501
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 515--516
  [] 
  []
 
@@ -191,19 +178,19 @@ Overfull \hbox (37.2457pt too wide) in paragraph at lines 500--501
 File: oonishi4.jpg Graphic file (type bmp)
 <oonishi4.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 509--510
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 524--525
  [] 
  []
 
 [15]
 
-LaTeX Warning: Reference `tab:oonishi5' on page 16 undefined on input line 515.
+LaTeX Warning: Reference `tab:oonishi5' on page 16 undefined on input line 530.
 
 
 File: oonishi21.jpg Graphic file (type bmp)
 <oonishi21.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 520--521
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 535--536
  [] 
  []
 
@@ -211,7 +198,7 @@ Overfull \hbox (37.2457pt too wide) in paragraph at lines 520--521
 File: oonishi22.jpg Graphic file (type bmp)
 <oonishi22.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 529--530
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 544--545
  [] 
  []
 
@@ -219,7 +206,7 @@ Overfull \hbox (37.2457pt too wide) in paragraph at lines 529--530
 File: oonishi23.jpg Graphic file (type bmp)
 <oonishi23.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 538--539
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 553--554
  [] 
  []
 
@@ -227,7 +214,7 @@ Overfull \hbox (37.2457pt too wide) in paragraph at lines 538--539
 File: oonishi24.jpg Graphic file (type bmp)
 <oonishi24.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 547--548
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 562--563
  [] 
  []
 
@@ -235,25 +222,22 @@ Overfull \hbox (37.2457pt too wide) in paragraph at lines 547--548
 File: oonishi25.jpg Graphic file (type bmp)
 <oonishi25.jpg>
 
-Overfull \hbox (37.2457pt too wide) in paragraph at lines 556--557
+Overfull \hbox (37.2457pt too wide) in paragraph at lines 571--572
  [] 
  []
 
-[20] [21] (./“à•”JS.aux)
+[20] [21] (./å†…éƒ¨JS.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 962 strings out of 493640
- 11957 string characters out of 6151719
- 74817 words of memory out of 5000000
- 4569 multiletter control sequences out of 15000+600000
+ 963 strings out of 493279
+ 12028 string characters out of 6148106
+ 81000 words of memory out of 5000000
+ 4903 multiletter control sequences out of 15000+600000
  13799 words of font info for 54 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 25i,9n,23p,202b,349s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 25i,8n,23p,200b,342s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on “à•”JS.dvi (21 pages, 34836 bytes).
+Output written on å†…éƒ¨JS.dvi (21 pages, 35580 bytes).
