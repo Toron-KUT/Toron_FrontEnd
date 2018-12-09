@@ -94,7 +94,7 @@
 	\end{itemize}
 		メソッドの実装に応じて表 \ref {tab:o3} に示す単語を名称の最初に使用する。
 				\begin{table}[H]
-			\caption{Javaのメソッド名に使用する単語}
+			\caption{Javascriptのメソッド名に使用する単語}
 			\label{tab:o3}
 			\begin{center}
 			\begin{tabular}{|c|c|}
@@ -132,7 +132,15 @@
 
 \section{モジュール設計(Webページ)}
 
-本節ではWebページのモジュール設計を示す。また、本システムで用いるサーバのディレクトリ構造を図\ref {tab:oonishimoj}に示す。%%図未挿入
+本節ではWebページのモジュール設計を示す。また、本システムで用いるサーバのディレクトリ構造を図\ref {tab:oonishimoj}に示す。
+
+\begin{figure}[H]
+\begin{center}
+\resizebox{16cm}{!}{\includegraphics{webmoj.PNG}}
+\caption{モジュール構成図}
+\label{tab:oonishimoj}
+\end{center}
+\end{figure}
 \subsection{管理者ページmaruokaディレクトリ}
 webに関するすべての機能に関連するファイルが設置されているディレクトリである。\\
 本小節では内包されている各ファイルについて示す。
@@ -253,6 +261,7 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 	\end{itemize}
 
 \item メソッド名：UpdateTable\\
+
 データベース上で変更が完了したらWebページ上の店舗一覧に変更を加えるメソッドである。\\
 引数として入力された店舗情報を受け取る。\\
 返り値はない。
@@ -293,6 +302,7 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 		\item 引数3:userID
 	\end{itemize}
 \subsubsection{AdmiJSON.js}
+
 登録された内容をデータベースに転送を行うための
 クラスである。
 
@@ -308,9 +318,11 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 		\item 返り値:JSONData
 	\end{itemize}
 \subsubsection{LogOutUser.js}
+
 ログイン状態であるユーザのログアウト処理を行うためのクラスである。
 %
 \item メソッド名：LogOutUser\\
+
 ログアウトボタンを押すと、ログイン前の状態に遷移する動作をさせるメソッドである。\\
 引数と返り値はない。
 %
@@ -329,6 +341,7 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 
 \item メソッド名:CleateTable\\
+
 JSONデータや入力情報をもとにWebページ上で表を作成するメソッドである。\\
 引数として、JSONData内の店舗ID、店舗名、店長のユーザIDもしくは、フォームに入力されたデータを受け取る。
 	\begin{itemize}	
@@ -362,6 +375,7 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 		\item 値が1:データベースに登録成功
 	\end{itemize}
 \item メソッド名：SetDeleteSale\\
+
 特売にする商品のデータベースから削除を行うメソッドである。\\
 引数は商品IDである。\\
 返り値はbooleanSuccessである。
@@ -376,6 +390,7 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 		\item 値が1:データベースに削除成功
 	\end{itemize}
 	\subsubsection{AdmiJSON.js}
+	
 入力された内容からJSONファイルを作成し、それをデータベースに転送を行うクラスである。\\
 
 \item メソッド名：SetJSON\\
@@ -388,6 +403,7 @@ JSONファイルを作成するメソッドである。\\
 		\item 返り値:JSONData
 	\end{itemize}
 \subsubsection{AdmiLogin.js}
+
 特価情報の登録・更新・削除画面を提供するクラスである。
 %
 \item メソッド名：GetSpecialSaleData\\
@@ -401,6 +417,7 @@ JSONファイルを作成するメソッドである。\\
 		\item 引数1:JSONData
 	\end{itemize}
 	\item メソッド名:CleateTable\\
+	
 JSONデータや入力情報をもとにWebページ上で表を作成するメソッドである。\\
 引数として、JSONData内の店舗ID、店舗名、店長のユーザIDもしくは、フォームに入力されたデータを受け取る。
 	\begin{itemize}	
@@ -526,8 +543,7 @@ Webの店舗情報管理画面で店舗削除を行う際の相互関係を図 \
 \label{tab:oonishi4}
 \end{center}
 \end{figure}
-\subsection{ユーザログアウト}%%関係なくない？
-Web上でログアウトを行う際の関係を図 \ref {tab:oonishi5}に示す。
+
 \subsection{特売情報管理画面特売情報登録}
 Webの特売情報管理画面で特売情報登録を行う際の相互関係を図 \ref {tab:oonishi21}に示す。
 \begin{figure}[H]

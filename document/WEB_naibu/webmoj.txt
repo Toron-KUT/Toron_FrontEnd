@@ -1,8 +1,43 @@
-maruoka/	...プロジェクトを総括するディレクトリ
-   |- web/		...Webページを実装するディレクトリ
-   |   |-AdmiLogin.js		
-   |   |-AdmiJSON.js		
-   |   |-AdmiForm.js		
-   |   |-LogOutUser.js		
-   |   |-AdmiSale.js		
-   |   |-AdmiSpecialSale.js	
+
+
+ maruoka/	...プロジェクトを総括するディレクトリ
+
+    |- js/		...Webページを実装するディレクトリ
+
+    |   |-AdmiLogin.js		
+
+    |   |-AdmiJSON.js		
+
+    |   |-AdmiForm.js		
+
+    |   |-LogOutUser.js		
+
+    |   |-AdmiSale.js		
+
+    |   |-AdmiSpecialSale.js	
+
+    |
+    |- php/
+    |   |-ConnectServer  ...データベースにアクセスし、処理を実行するディレクトリ
+    |	       |-getLoginInfo.php
+    |	       |-getUserInfo.php
+    |	       |-updateHoldingFood.php
+    |	       |-deleteHoldingFood.php
+    |	       |-getPurchaseHistory.php
+    |	       |-getSpecialSale.php
+    |	       |-getSpecialPrice.php
+    |	       |-getStore.php
+    |	       |-updateFavaritStore.php
+    |	       |-updatePassChange.php
+    |	       |-webLogin.php
+    |	       |-showStore.php
+    |	       |-insertStore.php
+    |	       |-updateStore.php
+    |	       |-deleteStore.php
+    |	       |-showSpecialSale.php
+    |	       |-updateSetSpecialSale.php
+    |	       |-updateDeleteSpecialSale.php
+    |	       |-showSpecialPlice.php
+    |	       |-updateSpecialPrice.php
+    |	       |-deleteSpecialPrive.php
+    |	       |-soldout.php
