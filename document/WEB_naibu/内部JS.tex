@@ -33,7 +33,7 @@
 		\item 単語の頭文字は大文字を使用する
 		\item 名称には英字のみを使用する
 	\end{itemize}
-		クラスの役割に応じて表 \ref {tab: o1} に示す単語を名称の最後に使用する。
+		クラスの役割に応じて表 \ref{tab:o1} に示す単語を名称の最後に使用する。
 		%
 		\begin{table}[H]
 			\caption{Javaのクラス名に使用する単語}
@@ -42,7 +42,6 @@
 			\begin{tabular}{|c|c|}
 			\hline
 			画面定義 & Activity\\\hline
-			画面一部定義 & Fragment\\\hline
 			\end{tabular}
 			\end{center}
 			\end{table}
@@ -53,7 +52,7 @@
 		\item 単語の頭文字は大文字を使用する
 		\item 名称には英字のみを使用する
 	\end{itemize}
-		メソッドの実装に応じて表 \ref {tab: o2} に示す単語を名称の最初に使用する。
+		メソッドの実装に応じて表 \ref {tab:o2} に示す単語を名称の最初に使用する。
 		%
 				\begin{table}[H]
 			\caption{Javaのメソッド名に使用する単語}
@@ -93,10 +92,10 @@
 		\item 単語の頭文字は大文字を使用する
 		\item 名称には英字のみを使用する
 	\end{itemize}
-		メソッドの実装に応じて表 \ref {tab: o2} に示す単語を名称の最初に使用する。
+		メソッドの実装に応じて表 \ref {tab:o3} に示す単語を名称の最初に使用する。
 				\begin{table}[H]
 			\caption{Javaのメソッド名に使用する単語}
-			\label{tab:o2}
+			\label{tab:o3}
 			\begin{center}
 			\begin{tabular}{|c|c|}
 			\hline
@@ -142,9 +141,10 @@ webに関するすべての機能に関連するファイルが設置されて�
 \begin{itemize}
 
 \item メソッド名：AuthentivationUsed\\
+
 Webページでログインする際に、入力されたログイン情報がデータベースに登録されているか問い合わせを行うメソッドである。\\
 引数として、入力されたユーザIDとパスワードを受け取る。\\
-また返り値はである。これは、データベース上にログイン情報が存在したか判定を行った結果を返すものである。\\
+また返り値はIdentifivationNumberである。これは、データベース上にログイン情報が存在したか判定を行った結果を返すものである。\\
 
 	\begin{itemize}
 		\item 引数1:userID
@@ -155,7 +155,7 @@ Webページでログインする際に、入力されたログイン情報が�
 入力された内容をデータベースに転送を行うクラスである。
 \item メソッド名：SetJSON\\
 
-JSONファイルを作成するメソッドである。引数は、ユーザIDとパスワードである。生成したJSONファイルを返り値とする。
+JSONファイルを作成するメソッドである。\\引数は、ユーザIDとパスワードである。\\生成したJSONファイルを返り値とする。
 	\begin{itemize}
 		\item 引数1:userID
 		\item 引数2:password
@@ -293,7 +293,8 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 		\item 引数3:userID
 	\end{itemize}
 \subsubsection{AdmiJSON.js}
-登録された内容をデータベースに転送を行うクラスである。
+登録された内容をデータベースに転送を行うための
+クラスである。
 
 \item メソッド名：SetJSON\\
 
@@ -314,6 +315,7 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 引数と返り値はない。
 %
 \subsubsection{AdmiLogin.js}
+
 特売情報の登録・削除画面を提供するクラスである。
 \item メソッド名：GetSaleData\\
 
@@ -375,6 +377,10 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 	\end{itemize}
 	\subsubsection{AdmiJSON.js}
 入力された内容からJSONファイルを作成し、それをデータベースに転送を行うクラスである。\\
+
+\item メソッド名：SetJSON\\
+
+JSONファイルを作成するメソッドである。\\
 引数は商品IDである。\\
 返り値はJSONDataである。
 	\begin{itemize}
@@ -413,6 +419,7 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 	\end{itemize}
 			
 \item メソッド名：SetRegistrationSpecialSale\\
+
 特価にする商品のデータベースに登録を行うメソッドである。\\
 引数は店舗IDと商品IDと割引率と割引フラグである。\\
 返り値はbooleanSuccessである。
@@ -429,6 +436,7 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 	\end{itemize}
 %
 \item メソッド名：SetDeleteSpecialSale\\
+
 特価にする商品のデータベースに削除を行うメソッドである。\\
 引数は店舗IDと商品IDと割引率と割引フラグである。\\
 返り値はbooleanSuccessである。
@@ -444,7 +452,8 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 		\item 値が1:データベースに削除成功
 	\end{itemize}
 %
-\item メソッド名：SetUpdateSpecialeSale
+\item メソッド名：SetUpdateSpecialeSale\\
+
 売り切れた特価商品にイベントを起こすメソッドである。この際にデータベースのsoldoutの更新も行う。\\
 引数は店舗IDと商品IDである。\\
 返り値はbooleanSuccessである。
@@ -458,9 +467,14 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 		\item 値が0:データベース上から正しく更新できなかった場合
 		\item 値が1:データベースに更新成功
 	\end{itemize}
-\end{itemize}
-	\subsubsection{AdmiJSON.js}
-入力された内容からJSONファイルを作成し、それをデータベースに転送を行うクラスである。\\
+
+\subsubsection{AdmiJSON.js}
+
+入力された内容からJSONファイルを作成し、それをデータベースに転送を行うためのクラスである。\\
+
+\item メソッド名：SetJSON\\
+
+JSONファイルを作成するメソッドである。\\
 引数は店舗ID、商品ID、割引率と割引フラグである。\\
 返り値はJSONDataである。
 	\begin{itemize}
@@ -472,6 +486,7 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 	\begin{itemize}
 		\item 返り値:JSONData
 	\end{itemize}
+\end{itemize}
 \section{シーケンス図(Webページ)}
 本節では、Webの管理ページを構成するオブジェクト間やサーバとの相互関係を示す。
 
