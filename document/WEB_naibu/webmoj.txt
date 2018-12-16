@@ -21,7 +21,8 @@
     |   |-ConnectServer  ...データベースにアクセスし、処理を実行するディレクトリ
     |	       |-getLoginInfo.php
     |	       |-getUserInfo.php
-    |	       |-updateHoldingFood.php
+    |          |-insertNewUser.php
+    |	       |-updataHoldingFood.php
     |	       |-deleteHoldingFood.php
     |	       |-getPurchaseHistory.php
     |	       |-getSpecialSale.php
@@ -41,3 +42,4 @@
     |	       |-updateSpecialPrice.php
     |	       |-deleteSpecialPrive.php
     |	       |-soldout.php
+
