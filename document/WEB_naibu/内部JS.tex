@@ -82,7 +82,7 @@
 \end{itemize}
 \subsection{Javascript}
 
-本小節ではJavascriptのコーディング規約を示す。
+本小節ではJavascriptのコーディング規約を示す。1レベルインデントするごとに半角空白を4つ使用する。
 
 \begin{itemize}
 	\item メソッド\\
@@ -113,6 +113,34 @@
 		\item 名称の頭文字は小文字を使用し、後続する単語の頭文字は大文字を使用する
 		\item 名称には英字のみを使用する
 	\end{itemize}
+\end{itemize}
+\subsection{php}
+
+本小節ではphpのコーディング規約を示す。1レベルインデントするごとに半角空白を4つ使用する。
+
+\begin{itemize}
+	\item メソッド\\
+		メソッド名にはローワーキャメルケース表記を使用する。
+	\begin{itemize}
+		\item 2つ以上の英単語を使用する
+		\item 名称の頭文字は小文字を使用し、後続する単語の頭文字は大文字を使用する
+		\item 名称には英字のみを使用する
+	\end{itemize}
+		メソッドの実装に応じて表 \ref {tab:ophp} に示す単語を名称の最初に使用する。
+				\begin{table}[H]
+			\caption{phpのメソッド名に使用する単語}
+			\label{tab:ophp}
+			\begin{center}
+			\begin{tabular}{|c|c|}
+			\hline
+			データの取得 & get\\\hline
+			データの追加 & insert\\\hline
+			データの更新  & dpdata\\\hline
+			データの削除  & Delete\\\hline
+			データの表示 &show\\\hline
+			\end{tabular}
+			\end{center}
+			\end{table}
 \end{itemize}
 \subsection{データベース}
 本小節ではデータベースのコーディング規約を示す。
@@ -152,37 +180,37 @@ webに関するすべての機能に関連するファイルが設置されて�
 
 Webページでログインする際に、入力されたログイン情報がデータベースに登録されているか問い合わせを行うメソッドである。\\
 引数として、入力されたユーザIDとパスワードを受け取る。\\
-また返り値はIdentifivationNumberである。これは、データベース上にログイン情報が存在したか判定を行った結果を返すものである。\\
+また戻り値はIdentifivationNumberである。これは、データベース上にログイン情報が存在したか判定を行った結果を返すものである。\\
 
 	\begin{itemize}
 		\item 引数1:userID
 		\item 引数2:password
-		\item 返り値:IdentifivationNumber
+		\item 戻り値:IdentifivationNumber
 	\end{itemize}
 	\subsubsection{AdmiJSON.js}
 入力された内容をデータベースに転送を行うクラスである。
 \item メソッド名：SetJSON\\
 
-JSONファイルを作成するメソッドである。\\引数は、ユーザIDとパスワードである。\\生成したJSONファイルを返り値とする。
+JSONファイルを作成するメソッドである。\\引数は、ユーザIDとパスワードである。\\生成したJSONファイルを戻り値とする。
 	\begin{itemize}
 		\item 引数1:userID
 		\item 引数2:password
-		\item 返り値:JSONData
+		\item 戻り値:JSONData
 	\end{itemize}
 \item メソッド名：GetAutheticationUser\\
 
 サーバーにJSONファイルを送信するためのメソッドである。\\
-引数はJSONDataである。
+引数はAdmiJSON.jsで生成されたJSONDataである。
 	\begin{itemize}
 		\item 引数1:JSONData
 	\end{itemize}
-	
+
 %サーバー側
 \item メソッド名：CheckAutheticationUser\\
 
 サーバ内で該当するユーザ情報が登録されているかJSONファイルをもとに検索するメソッドである。\\
 引数はJSONDataである。\\
-返り値はIdentifivationNumberである。この変数の値は次のような意味を示す。
+戻り値はIdentifivationNumberである。この変数の値は次のような意味を示す。
 	\begin{itemize}
 		\item 値が1:ユーザが店長である場合
 		\item 値が2:ユーザが管理者である場合
@@ -204,9 +232,9 @@ JSONファイルを作成するメソッドである。\\引数は、ユーザID
 \item メソッド名：GetShopData\\
 
 現在登録されている店舗情報をサーバから取得するためのメソッドである。このメソッドは、webページを開いた時点で呼ばれる。\\
-引数はなく、返り値はJSONDataとなる。
+引数はなく、戻り値はJSONDataとなる。
 	\begin{itemize}
-		\item 引数1:JSONData
+		\item 戻り値:JSONData
 	\end{itemize}
 
 \item メソッド名：CleateTable\\
@@ -221,14 +249,14 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 追加の店舗情報をデータベースに登録するメソッドである。\\
 引数は店舗IDと店舗名、店長のユーザIDである。\\
-返り値はbooleanSuccessである。
+戻り値はboolean型のsuccessである。
 	\begin{itemize}
 		\item 引数1:shopID
 		\item 引数2:shopName
 		\item 引数3:userID
-		\item 返り値:booleanSuccess
+		\item 戻り値:success
 	\end{itemize}
-また返り値の値の意味は次に示す。
+また戻り値の値の意味は次に示す。
 	\begin{itemize}
 		\item 値が0:データベースに正しく値が書き込めなかった場合
 		\item 値が1:データベース更新成功
@@ -239,14 +267,14 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 店舗情報を変更する際の処理を行うメソッドである。\\
 引数は店舗IDと店舗名、店長のユーザIDである。\\
-返り値はbooleanSuccessである。
+戻り値はboolean型のsuccessである。
 	\begin{itemize}
 		\item 引数1:shopID
 		\item 引数2:shopName
 		\item 引数3:userID
-		\item 返り値:booleanSuccess
+		\item 戻り値:success
 	\end{itemize}
-また返り値の値の意味は次に示す。
+また戻り値の値の意味は次に示す。
 	\begin{itemize}
 		\item 値が0:データベースに正しく値が書き換えれなかった場合
 		\item 値が1:データベース更新成功
@@ -264,28 +292,27 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 データベース上で変更が完了したらWebページ上の店舗一覧に変更を加えるメソッドである。\\
 引数として入力された店舗情報を受け取る。\\
-返り値はない。
+戻り値はない。
 
 	\begin{itemize}
 		\item 引数1:shopID
 		\item 引数2:shopName
 		\item 引数3:userID
-		\item 返り値:JSONData
 	\end{itemize}
 
 \item メソッド名：DeleteShop\\
 
 店舗情報を削除する際の処理を行うメソッドである。\\
 引数は店舗IDと店舗名、店長のユーザIDである。\\
-返り値はbooleanSuccessである。
+戻り値はboolean型のsuccessである。
 
 	\begin{itemize}
 		\item 引数1:shopID
 		\item 引数2:shopName
 		\item 引数3:userID
-		\item 返り値:booleanSuccess
+		\item 戻り値:success
 	\end{itemize}
-また返り値の値の意味は次に示す。
+また戻り値の値の意味は次に示す。
 	\begin{itemize}
 		\item 値が0:データベース上から正しく削除できなかった場合
 		\item 値が1:データベースから削除成功
@@ -295,7 +322,7 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 表から削除が完了したデータを削除するメソッドである。\\
 引数は店舗IDと店舗名、店長のユーザIDである。\\
-返り値はない。
+戻り値はない。
 	\begin{itemize}
 		\item 引数1:shopID
 		\item 引数2:shopName
@@ -310,12 +337,12 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 店舗情報を変更する際に変更情報をサーバに送信するためにJSONファイルを作成するメソッドである。\\
 引数は店舗IDと店舗名、店長のユーザIDである。\\
-返り値はJSONDataである。
+戻り値はJSONDataである。
 	\begin{itemize}
 		\item 引数1:shopID
 		\item 引数2:shopName
 		\item 引数3:userID
-		\item 返り値:JSONData
+		\item 戻り値:JSONData
 	\end{itemize}
 \subsubsection{LogOutUser.js}
 
@@ -324,7 +351,7 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 \item メソッド名：LogOutUser\\
 
 ログアウトボタンを押すと、ログイン前の状態に遷移する動作をさせるメソッドである。\\
-引数と返り値はない。
+引数と戻り値はない。
 %
 \subsubsection{AdmiLogin.js}
 
@@ -333,10 +360,10 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 登録済みの特売情報をJSONファイルで取得するメソッドである。\\
 引数はない。\\
-返り値はJSONファイルである。
+戻り値はJSONファイルである。
 %中の表作成に必要なデータと、カテゴリーと商品名
-	\begin{itemize}	
-		\item 返り値:JSONData
+	\begin{itemize}
+		\item 戻り値:JSONData
 	\end{itemize}
 
 
@@ -344,32 +371,32 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 JSONデータや入力情報をもとにWebページ上で表を作成するメソッドである。\\
 引数として、JSONData内の店舗ID、店舗名、店長のユーザIDもしくは、フォームに入力されたデータを受け取る。
-	\begin{itemize}	
+	\begin{itemize}
 		\item 引数1:shopID
 		\item 引数2:shopName
 		\item 引数3:userID
-		\item 返り値:booleanSuccess
+		\item 戻り値:success
 	\end{itemize}
 \item メソッド名：SetChoice\\
 
 カテゴリーと商品名の選択肢を作成するメソッドである。\\
 引数はJSONDataであり、JSONファイル中のカテゴリ名と商品名を必要とする。\\
-返り値はない。
+戻り値はない。
 	\begin{itemize}
 		\item 引数1:JSONData
 	\end{itemize}
-	
+
 \item メソッド名：SetRegistrationSale\\
 
 特売にする商品のデータベースに登録を行うメソッド\\
 引数は商品IDである。\\%かな？\\
-返り値はbooleanSuccessである。
+戻り値はboolean型のsuccessである。
 
 	\begin{itemize}
 		\item 引数1:RegistrationID
-		\item 返り値:booleanSuccess
+		\item 戻り値:success
 	\end{itemize}
-また返り値の値の意味は次に示す。
+また戻り値の値の意味は次に示す。
 	\begin{itemize}
 		\item 値が0:データベース上から正しく登録できなかった場合
 		\item 値が1:データベースに登録成功
@@ -378,29 +405,29 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 特売にする商品のデータベースから削除を行うメソッドである。\\
 引数は商品IDである。\\
-返り値はbooleanSuccessである。
+戻り値はboolean型のsuccessである。
 
 	\begin{itemize}
 		\item 引数1:RegistrationID
-		\item 返り値:booleanSuccess
+		\item 戻り値:success
 	\end{itemize}
-また返り値の値の意味は次に示す。
+また戻り値の値の意味は次に示す。
 	\begin{itemize}
 		\item 値が0:データベース上から正しく削除できなかった場合
 		\item 値が1:データベースに削除成功
 	\end{itemize}
 	\subsubsection{AdmiJSON.js}
-	
+
 入力された内容からJSONファイルを作成し、それをデータベースに転送を行うクラスである。\\
 
 \item メソッド名：SetJSON\\
 
 JSONファイルを作成するメソッドである。\\
 引数は商品IDである。\\
-返り値はJSONDataである。
+戻り値はJSONDataである。
 	\begin{itemize}
 		\item 引数1:productID
-		\item 返り値:JSONData
+		\item 戻り値:JSONData
 	\end{itemize}
 \subsubsection{AdmiLogin.js}
 
@@ -410,17 +437,17 @@ JSONファイルを作成するメソッドである。\\
 
 登録済みの特価情報をJSONファイルで取得するメソッドである。\\
 引数はない。\\
-返り値はJSONファイルである。
+戻り値はJSONファイルである。
 
 
 	\begin{itemize}
 		\item 引数1:JSONData
 	\end{itemize}
 	\item メソッド名:CleateTable\\
-	
+
 JSONデータや入力情報をもとにWebページ上で表を作成するメソッドである。\\
 引数として、JSONData内の店舗ID、店舗名、店長のユーザIDもしくは、フォームに入力されたデータを受け取る。
-	\begin{itemize}	
+	\begin{itemize}
 		\item 引数1:shopID
 		\item 引数2:shopName
 		\item 引数3:userID
@@ -429,24 +456,24 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 カテゴリーと商品名の選択肢を作成するメソッドである。\\
 引数はJSONDataであり、JSONファイル中のカテゴリ名と商品名を必要とする。\\
-返り値はない。
+戻り値はない。
 	\begin{itemize}
 		\item 引数1:shopID
 		\item 引数2:productID
 	\end{itemize}
-			
+
 \item メソッド名：SetRegistrationSpecialSale\\
 
 特価にする商品のデータベースに登録を行うメソッドである。\\
 引数は店舗IDと商品IDと割引率と割引フラグである。\\
-返り値はbooleanSuccessである。
+戻り値はboolean型のsuccessである。
 	\begin{itemize}
 		\item 引数1:shopID
 		\item 引数2:productID
 		\item 引数3:rate
 		\item 引数4:rateFlag
 	\end{itemize}
-また返り値の値の意味は次に示す。
+また戻り値の値の意味は次に示す。
 	\begin{itemize}
 		\item 値が0:データベース上から正しく登録できなかった場合
 		\item 値が1:データベースに登録成功
@@ -456,14 +483,14 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 特価にする商品のデータベースに削除を行うメソッドである。\\
 引数は店舗IDと商品IDと割引率と割引フラグである。\\
-返り値はbooleanSuccessである。
+戻り値はboolean型のsuccessである。
 	\begin{itemize}
 		\item 引数1:shopID
 		\item 引数2:productID
 		\item 引数3:rate
 		\item 引数4:rateFlag
 	\end{itemize}
-また返り値の値の意味は次に示す。
+また戻り値の値の意味は次に示す。
 	\begin{itemize}
 		\item 値が0:データベース上から正しく削除できなかった場合
 		\item 値が1:データベースに削除成功
@@ -473,13 +500,12 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 売り切れた特価商品にイベントを起こすメソッドである。この際にデータベースのsoldoutの更新も行う。\\
 引数は店舗IDと商品IDである。\\
-返り値はbooleanSuccessである。
+戻り値はboolean型のsuccessである。
 	\begin{itemize}
 		\item 引数1:shopID
 		\item 引数2:productID
-
 	\end{itemize}
-また返り値の値の意味は次に示す。
+また戻り値の値の意味は次に示す。
 	\begin{itemize}
 		\item 値が0:データベース上から正しく更新できなかった場合
 		\item 値が1:データベースに更新成功
@@ -493,7 +519,7 @@ JSONデータや入力情報をもとにWebページ上で表を作成するメ�
 
 JSONファイルを作成するメソッドである。\\
 引数は店舗ID、商品ID、割引率と割引フラグである。\\
-返り値はJSONDataである。
+戻り値はJSONDataである。
 	\begin{itemize}
 		\item 引数1:shopID
 		\item 引数2:productID
@@ -501,7 +527,7 @@ JSONファイルを作成するメソッドである。\\
 		\item 引数4:rateFlag
 	\end{itemize}
 	\begin{itemize}
-		\item 返り値:JSONData
+		\item 戻り値:JSONData
 	\end{itemize}
 \end{itemize}
 \section{シーケンス図(Webページ)}
