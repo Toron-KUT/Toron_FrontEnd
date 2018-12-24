@@ -40,10 +40,8 @@
               cell.appendChild(cellNode);     //データノードの作成、ノードの連結
               cell.style.border ="1px solid"; //枠
           }
-
-    //    }
-    //  }
     }
+
     var count_col=0;
     var editFlag = 0;
     function deleteTable() {
@@ -61,16 +59,12 @@
         var cell = table.rows[i].insertCell(-1);
 
     //  alert();
-//cell.innerHTML ="削除";
-       var newButton2 = document.createElement("BUTTON");
-       newButton2.textContent="削除";
-       cell.appendChild(newButton2);
-       newButton2.onclick = function() {
-         table.deleteRow(1);
-       }
+    cell.innerHTML = '<input type="button" value="削除" name="addDelete" onclick="dB(this)">';
       }
+      var endEdit = table.rows[rows].insertCell(1);
+      endEdit.innerHTML = '<input type="button" value="編集終了" name="exitDelete" onclick="exitB(this)">';
     //  if (editFlag == 0){
-      var newButton = document.createElement("BUTTON");
+  /*    var newButton = document.createElement("BUTTON");
       newButton.textContent="編集終了";
       document.getElementById("table").appendChild(newButton);
       //--編集終了のボタンを押したときの反応
@@ -84,9 +78,25 @@
 
                   count_col = 0;
 
-      }
+      }*/
 }
 
+    }
+//
+    function dB(obj) {
+      tr = obj.parentNode.parentNode;
+      tr.parentNode.deleteRow(tr.sectionRowIndex);
+    }
+    function exitB(obj) {
+      var table = document.getElementById("table");
+      var rows = table.rows.length;
+      for ( var i = 0; i < rows; i++) {
+        if (i == 0) continue;
+        table.rows[i].deleteCell(-1);
+      }
+      newButton.parentNode.removeChild(newButton);
+
+      count_col = 0;
     }
     </script>
   </head>
