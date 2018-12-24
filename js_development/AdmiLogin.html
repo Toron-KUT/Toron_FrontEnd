@@ -10,21 +10,21 @@
     <script type = "text/javascript">
   <!--
   function AuthentivationUsed(userId, password){
-    <!--Webページでログインする際に、入力されたログイン情報がデータベースに登録されているか問い合わせを行うメソッドである-->
+  //  <!--Webページでログインする際に、入力されたログイン情報がデータベースに登録されているか問い合わせを行うメソッドである-->
 
-    <!--戻り値はidentifi-->
+  //  <!--戻り値はidentifi-->
     changepage(IdentificationNumber);
   }
   function changepage(IdentificationNumber) {
     var IdentificationNumber = 2;
     if (IdentificationNumber == 0) {
-      <!--管理社-->
-      window.location.replace = "admi_form.html";
+    //  <!--管理社-->
+      window.location.replace = "AdmiSale.html";
     } else if (IdentificationNumber == 1) {
-      <!--店長-->
-      window.location.replace = "admi_specialPrise.html";
+      //<!--店長-->
+      window.location.replace = "AdmiSpecialPrise.html";
     } else {
-      window.location.replace = "admi_specialPrise.html";
+      window.location.replace = "AdmiSpecialPrise.html";//テスト用
       alert("ログイン情報に誤りがあります");
     }
   }
@@ -44,14 +44,6 @@
   PassWord　:
     <input id="login_pass" name="login_pass" type="password" size="30">
   <input name="button" type="button" value="送信" onClick="changepage()">
-<!--  <h5>店長専用ログインフォーム</h5>
-  <form>
-  　　　　　ID　:
-    <input id="login_id" name="login_id" type="text" size="30">
-  <br>
-    PassWord　:
-      <input id="login_pass" name="login_pass" type="password" size="30">
-    <input name="button" type="button" value="送信" onClick="creatTable()">
-    -->
+</form>
 </body>
 </html>
