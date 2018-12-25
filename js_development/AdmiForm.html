@@ -61,14 +61,16 @@
     //  alert();
     cell.innerHTML = '<input type="button" value="削除" name="addDelete" onclick="dB(this)">';
       }
-      var endEdit = table.rows[rows].insertCell(1);
-      endEdit.innerHTML = '<input type="button" value="編集終了" name="exitDelete" onclick="exitB(this)">';
+    //  var endEdit = table.rows[].insertCell(1);
+      //endEdit.innerHTML = '<input type="button" value="編集終了" name="exitDelete" onclick="exitB(this)">';
     //  if (editFlag == 0){
-  /*    var newButton = document.createElement("BUTTON");
+      var newButton = document.createElement("BUTTON");
       newButton.textContent="編集終了";
       document.getElementById("table").appendChild(newButton);
       //--編集終了のボタンを押したときの反応
                 newButton.onclick= function() {
+                  var table = document.getElementById("table");
+                  var rows = table.rows.length;
       // 削除を削除
                   for ( var i = 0; i < rows; i++) {
                     if (i == 0) continue;
@@ -78,7 +80,7 @@
 
                   count_col = 0;
 
-      }*/
+      }
 }
 
     }
@@ -87,17 +89,7 @@
       tr = obj.parentNode.parentNode;
       tr.parentNode.deleteRow(tr.sectionRowIndex);
     }
-    function exitB(obj) {
-      var table = document.getElementById("table");
-      var rows = table.rows.length;
-      for ( var i = 0; i < rows; i++) {
-        if (i == 0) continue;
-        table.rows[i].deleteCell(-1);
-      }
-      newButton.parentNode.removeChild(newButton);
 
-      count_col = 0;
-    }
     </script>
   </head>
   <body>
