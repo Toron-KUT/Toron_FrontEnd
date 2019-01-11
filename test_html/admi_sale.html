@@ -8,10 +8,21 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
+    <script type=text/javascript>
+    var select1_data =["肉","野菜","魚介類・水産加工品","米・麺・パン・粉類","果物","乳製品・豆乳","惣菜"];
+    </script>
     <script type = "text/javascript">
   <!--
-  function functionName()
-  {
+
+  function SetChoice() {
+      var select1 = document.forms.formName.selectName1; //変数select1を宣言
+      select1.options.length = 0;
+      select1.options[0] = new Option("選択してください");
+      for(var i = 0;i<select1_data.length;i++){
+        select1.options[i+1]=new Option(select1_data[i]);
+      }
+  }
+  function functionName()  {
   var select1 = document.forms.formName.selectName1; //変数select1を宣言
   var select2 = document.forms.formName.selectName2; //変数select2を宣言
 
@@ -139,7 +150,7 @@
 </head>
 
 <!--以下通常のドロップボタン-->
-<body bgcolor onLoad="functionName()">
+<body bgcolor onLoad="SetChoice()">
   <div id="wrapper">
   <div id="contents">
     <h3> <p class="logo">*** 株式会社マルナカ | 特売情報管理ページ***</p></h3>
@@ -148,21 +159,6 @@
       <form name="formName" method="post" action="./pathToProgramFile">
 <!--選択肢その1-->
         <select name = "selectName1" onChange="functionName()">
-          <option value = "しらんがな">選択してください</option>
-          <option value = "肉">肉</option>
-          <option value = "野菜">野菜</option>
-          <option value = "魚介類・水産加工品">魚介類・水産加工品</option>
-          <option value = "パン">米・麺・パン・粉類</option>
-          <option value = "果物">果物</option>
-          <option value = "乳製品">乳製品・豆乳</option>
-          <option value = "惣菜">惣菜</option>
-          <option value = "">インスタント・レトルト</option>
-          <option value = "">飲料水</option>
-          <option value = "">冷凍食品</option>
-          <option value = "">菓子</option>
-          <option value = "">酒</option>
-          <option value = "">その他（食品）</option>
-          <option value = "">その他（食品以外）</option>
         </select>
 
 <!--選択肢その2（選択肢その1の項目によって変化）-->
@@ -182,8 +178,8 @@
         <div align="right">
           <p >*** サイト内リンク ***</p>
           <ul class="localnavi">
-            <li><a href="#"> 店舗管理ページ </a></li>
-            <li><a href="#"> 特売情報管理ページ </a></li>
+            <li><a href="AdmiForm.html"> 店舗管理ページ </a></li>
+            <li><a href="AdmiSale.html"> 特売情報管理ページ </a></li>
           </ul>
         </div>
         <div align="right">
