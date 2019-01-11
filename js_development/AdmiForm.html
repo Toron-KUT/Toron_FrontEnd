@@ -47,14 +47,10 @@
     function deleteTable(id) {
       count_col +=1;
       if(count_col ==1){
-
-
       var table = document.getElementById("table");
       var rows = table.rows.length;
 
-
       //
-
       for (var i = 0; i < rows; i ++) {
         if(i == 0)continue;
         var cell = table.rows[i].insertCell(-1);
@@ -63,7 +59,7 @@
     if(id=="delete"){
     cell.innerHTML = '<input type="button" value="削除" name="addDelete" onclick="dB(this)">';
   } else if(id=="edit"){
-      cell.innerHTML = '<input type="button" value="編集" name="addDelete" onclick="editTable(this)">';
+      cell.innerHTML = '<input type="button" value="編集" name="addDelete" onclick="editTable(this, name)">';
   }
       }
     //  var endEdit = table.rows[].insertCell(1);
@@ -76,6 +72,7 @@
                 newButton.onclick= function() {
                   var table = document.getElementById("table");
                   var rows = table.rows.length;
+
       // 削除を削除
                   for ( var i = 0; i < rows; i++) {
                     if (i == 0) continue;
@@ -89,9 +86,45 @@
 }
 
     }
-function editTable() {
+function editTable(obj, name) {
+  var table = document.getElementById("table");
 
 
+  tr = obj.parentNode.parentNode;
+  tr1 =obj.parentNode;
+  var rows2 = tr.sectionRowIndex;
+  var cols = tr.sectionColIndex;
+  alert(rows2);
+//rows.innerHTML ="修正完了";
+for(var i = 0;i<4;i++){
+table.rows[rows2].deleteCell(-1);
+}
+
+//table.rows[rows2].deleteCell(rows2-1);
+//table.rows[rows2].deleteCell(rows2-1);
+  //tr.parentNode.deleteRow(tr.sectionRowIndex);
+  if(name =="perf"){
+    var cell = table.rows[rows2].insertCell(-1);
+    var cell = table.rows[rows2].insertCell(-1);
+    var cell = table.rows[rows2].insertCell(-1);
+   var cell = table.rows[rows2].insertCell(-1);
+
+   cell.innerHTML = '<input type="button" value="編集" name="addDelete" onclick="editTable(this, name)">';
+  }else{
+ //var newForm1;
+//  var newForm2 = document.createElement("div");
+var cell = table.rows[rows2].insertCell(-1);
+  cell.innerHTML = '<input type="text" name="newForm1" size="8" value="あ">';
+  var cell = table.rows[rows2].insertCell(-1);
+  cell.innerHTML = '<input type="text" name="newForm2" size="8" value="い">';
+  var cell = table.rows[rows2].insertCell(-1);
+  cell.innerHTML = '<input type="text" name="newForm3" size="8" value="う">';
+var cell = table.rows[rows2].insertCell(-1);
+
+//newForm2.appendChild(newForm1);
+  //tr.appendChild(newForm2);
+cell.innerHTML = '<input type="button" value="修正完了" name="perf" onclick="editTable(this,name)">';
+}
 }
     function dB(obj) {
       tr = obj.parentNode.parentNode;
