@@ -8,7 +8,7 @@
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
     <script type = "text/javascript">
-    var select_data =[["肉","牛肉","鶏肉","豚肉"],["野菜","キャベツ","きゅうり"],["果物","リンゴ"],["魚","刺身"]]
+    var select_data =[["肉","牛肉","鶏肉","豚肉"],["野菜","キャベツ","きゅうり"],["果物","リンゴ"],["魚","刺身"]];
     </script>
     <script type = "text/javascript">
   <!--
@@ -37,7 +37,7 @@
     }
   }
   function creatdata() {
-    if(count_col != 1){
+    if((count_col || editFlag) != 1 ){
       var select1 = document.forms.formName.selectName1;
       var select2 = document.forms.formName.selectName2; //変数select1を宣言
       var select3 = document.forms.formName.selectName3;
@@ -110,8 +110,50 @@
     tr = obj.parentNode.parentNode;
     tr.parentNode.deleteRow(tr.sectionRowIndex);
   }
+
+  function SetUpdataSpecialSale(){
+    editFlag +=1;
+    if(editFlag ==1){
+
+
+    var table = document.getElementById("table");
+    var rows = table.rows.length;
+
+
+    //
+    for (var i = 0; i < rows; i ++) {
+      if(i == 0)continue;
+      var cell = table.rows[i].insertCell(-1);
+
+  //  alert();
+  cell.innerHTML = '<input type="button" value="soldout" name="addDelete" onclick="chengeColor(this)">';
+    }
+    var newButton = document.createElement("BUTTON");
+    newButton.textContent="編集終了";
+    document.getElementById("table").appendChild(newButton);
+    //--編集終了のボタンを押したときの反応
+              newButton.onclick= function() {
+                var table = document.getElementById("table");
+                var rows = table.rows.length;
+    // 削除を削除
+                for ( var i = 0; i < rows; i++) {
+                  if (i == 0) continue;
+                  table.rows[i].deleteCell(-1);
+                }
+                newButton.parentNode.removeChild(newButton);
+
+              editFlag= 0;
+
+    }
+}
+}
+function chengeColor(obj) {
+  tr = obj.parentNode.parentNode;
+  tr.style.color = "red";
+}
   </script>
 </head>
+
 
 <!--以下通常のドロップボタン-->
 <body bgcolor onLoad="SetChoice1()">
@@ -141,7 +183,7 @@
 <input name="button" type="button" value="登録" onClick="creatdata()">
 <h5>登録された商品</h5>
 <input name="delete" type="button" value="登録情報削除" onClick="deleteTable()">
-<input name="delete" type="button" value="品切れ商品の登録" onClick="soldFlag()">
+<input name="delete" type="button" value="品切れ商品の登録" onClick="SetUpdataSpecialSale()">
 <br><br>
 <table border="1" id = "table">
   <tr>
