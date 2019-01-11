@@ -37,7 +37,7 @@
     }
   }
   function creatdata() {
-    if(count_col != 1){
+    if((count_col || editFlag) != 1 ){
       var select1 = document.forms.formName.selectName1;
       var select2 = document.forms.formName.selectName2; //変数select1を宣言
       var select3 = document.forms.formName.selectName3;
@@ -142,7 +142,7 @@
                 }
                 newButton.parentNode.removeChild(newButton);
 
-                count_col = 0;
+              editFlag= 0;
 
     }
 }
