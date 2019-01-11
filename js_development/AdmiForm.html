@@ -44,7 +44,7 @@
 
     var count_col=0;
     var editFlag = 0;
-    function deleteTable() {
+    function deleteTable(id) {
       count_col +=1;
       if(count_col ==1){
 
@@ -54,12 +54,17 @@
 
 
       //
+
       for (var i = 0; i < rows; i ++) {
         if(i == 0)continue;
         var cell = table.rows[i].insertCell(-1);
 
     //  alert();
+    if(id=="delete"){
     cell.innerHTML = '<input type="button" value="削除" name="addDelete" onclick="dB(this)">';
+  } else if(id=="edit"){
+      cell.innerHTML = '<input type="button" value="編集" name="addDelete" onclick="editTable(this)">';
+  }
       }
     //  var endEdit = table.rows[].insertCell(1);
       //endEdit.innerHTML = '<input type="button" value="編集終了" name="exitDelete" onclick="exitB(this)">';
@@ -85,6 +90,7 @@
 
     }
 function editTable() {
+
 
 }
     function dB(obj) {
@@ -114,8 +120,8 @@ function editTable() {
     </form>
     <h5>***登録された店舗***</h5>
 
-    <input name="delete" type="button" value="登録情報の削除" onClick="deleteTable()" style="position: relative; left: 370px; top: 0px;">
-    <input name="edit" type="button" value="登録情報の編集" onClick="editTable()"  style="position: relative; left: 370px; top: 0px;">
+    <input id="delete"name="delete" type="button" value="登録情報の削除" onClick="deleteTable(id)" style="position: relative; left: 370px; top: 0px;">
+    <input id="edit"name="edit" type="button" value="登録情報の編集" onClick="deleteTable(id)"  style="position: relative; left: 370px; top: 0px;">
     <br><br>
     <table border="1" id = "table">
       <tr>
