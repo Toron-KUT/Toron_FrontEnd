@@ -10,147 +10,43 @@
     <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
     <script type=text/javascript>
     var select1_data =["肉","野菜","魚介類・水産加工品","米・麺・パン・粉類","果物","乳製品・豆乳","惣菜"];
+    var select2_data =[["肉","牛肉","鶏肉","豚肉"],["キャベツ","きゅうり"],["リンゴ"],["刺身"]]
     </script>
     <script type = "text/javascript">
   <!--
 
-  function SetChoice() {
+  function SetChoice1() {
       var select1 = document.forms.formName.selectName1; //変数select1を宣言
       select1.options.length = 0;
       select1.options[0] = new Option("選択してください");
+      var select2 = document.forms.formName.selectName2; //変数select2を宣言
+
+      select2.options.length = 0; // 選択肢の数がそれぞれに異なる場合、これが重要
+      select2.options[0] = new Option("選択してください");
       for(var i = 0;i<select1_data.length;i++){
         select1.options[i+1]=new Option(select1_data[i]);
       }
   }
-  function functionName()  {
-  var select1 = document.forms.formName.selectName1; //変数select1を宣言
-  var select2 = document.forms.formName.selectName2; //変数select2を宣言
+  function SetChoice2() {
+    var select1 = document.forms.formName.selectName1;
+    var select2 = document.forms.formName.selectName2; //変数select1を宣言
+    select2.options.length = 0;
+    select2.options[0] = new Option("選択してください");
 
-  select2.options.length = 0; // 選択肢の数がそれぞれに異なる場合、これが重要
-  select2.options[0] = new Option("選択してください");
-  if (select1.options[select1.selectedIndex].value == "肉")
-  {
-
-  select2.options[1] = new Option("牛肉");
-  select2.options[2] = new Option("鶏肉");
-  select2.options[3] = new Option("豚肉");
-  }
-
-  else if (select1.options[select1.selectedIndex].value == "野菜")
-  {
-
-  select2.options[1] = new Option("キャベツ");
-  select2.options[2] = new Option("きゅうり");
-  select2.options[3] = new Option("レタス");
-  select2.options[4] = new Option("たまねぎ");
-  select2.options[5] = new Option("人参");
-  select2.options[6] = new Option("白菜");
-  select2.options[7] = new Option("ジャガイモ");
+    for(var i = 0;i<select2_data.length;i++){
+      if(select1.options[select1.selectedIndex].value != select2_data[i][0]) continue;
+      for (var j = 0;j <select2_data[i].length;j++)
+      select2.options[j+1]=new Option(select2_data[i][j+1]);
+    }
   }
 
-  else if (select1.options[select1.selectedIndex].value == "果物")
-  {
-  select2.options[1] = new Option("リンゴ");
-  select2.options[2] = new Option("もも");
-  select2.options[3] = new Option("キウイ");
-  select2.options[4] = new Option("オレンジ");
-  }
-  else if (select1.options[select1.selectedIndex].value == "魚")
-  {
-  select2.options[1] = new Option("刺身");
-  select2.options[2] = new Option("切り身");
-  }
-  else if (select1.options[select1.selectedIndex].value == "パン")
-  {
-  select2.options[1] = new Option("やまざき");
-  select2.options[2] = new Option("どら焼き");
-  }
-  else if (select1.options[select1.selectedIndex].value == "乳製品")
-  {
-  select2.options[1] = new Option("チーズ");
-  select2.options[2] = new Option("牛乳");
-  select2.options[3] = new Option("ヨーグルト");
-  }
-  else if (select1.options[select1.selectedIndex].value == "惣菜")
-  {
-  select2.options[1] = new Option("弁当");
-  select2.options[2] = new Option("揚げ物");
-  }
-  }
   //-->
-  function creatTable (){
-    // 表の作成開始
-    if(count_col != 1){
-    var table = document.getElementById("table");
-    var tenpo_name = document.getElementById ("tenpo_name").value;
-    var cellphone = document.getElementById ("cellphone").value;
-    var address = document.getElementById ("address").value;
-    var tentyouName = document.getElementById ("tentyouName").value;
-    var data = [count_cord, tenpo_name, cellphone, address, tentyouName];
-    // 表に2次元配列の要素を格納
-    table.style.border ="1px solid";         //枠
 
-      var rows = table.insertRow(-1);        // 新しい行の追加//-1で下に追加する
-        for(j = 0; j < 4; j++){
-          var  cell=rows.insertCell(-1);    //列
-            cellNode = document.createTextNode(data[j]);
-            cell.appendChild(cellNode);     //データノードの作成、ノードの連結
-            cell.style.border ="1px solid"; //枠
-        }
-      //  Number(count_cord);
-      //  parseInt(count_cord);
-        count_cord += 1;
-      //  String(count_cord);
-    //    count_cord.toString(10);
-      }
-  }
-  var count_col;
-  function deleteTable() {
-    //count_col +=1;
-    //if(count_col ==1){
-
-
-    var table = document.getElementById("table");
-    var rows = table.rows.length;
-
-
-    //
-    for (var i = 0; i < rows; i ++) {
-      if(i == 0)continue;
-      var cell = table.rows[i].insertCell(-1);
-
-  //  alert();
-//cell.innerHTML ="削除";
-     var newButton2 = document.createElement("BUTTON");
-     newButton2.textContent="削除";
-     cell.appendChild(newButton2);
-     newButton2.onclick = function() {
-       table.deleteRow(1);
-     }
-    }
-    var newButton = document.createElement("BUTTON");
-    newButton.textContent="編集終了";
-    document.getElementById("table").appendChild(newButton);
-    //--編集終了のボタンを押したときの反応
-              newButton.onclick= function() {
-    // 削除を削除
-                for ( var i = 0; i < rows; i++) {
-                  if (i == 0) continue;
-                  table.rows[i].deleteCell(-1);
-                }
-                newButton.parentNode.removeChild(newButton);
-
-                count_col = 0;
-
-    }
-//}
-
-  }
   </script>
 </head>
 
 <!--以下通常のドロップボタン-->
-<body bgcolor onLoad="SetChoice()">
+<body bgcolor onLoad="SetChoice1()","SetChoice2()">
   <div id="wrapper">
   <div id="contents">
     <h3> <p class="logo">*** 株式会社マルナカ | 特売情報管理ページ***</p></h3>
@@ -158,7 +54,7 @@
       <h5>特売情報選択</h5>
       <form name="formName" method="post" action="./pathToProgramFile">
 <!--選択肢その1-->
-        <select name = "selectName1" onChange="functionName()">
+        <select name = "selectName1" onChange="SetChoice2()">
         </select>
 
 <!--選択肢その2（選択肢その1の項目によって変化）-->
