@@ -87,6 +87,7 @@
 
     }
     var cellOne =[];
+    var newText =[];
 function editTable(obj, name) {
   var table = document.getElementById("table");
 
@@ -94,15 +95,18 @@ function editTable(obj, name) {
   tr = obj.parentNode.parentNode;
   tr1 =obj.parentNode;
   var rows2 = tr.sectionRowIndex;
-//  var cols = tr.sectionColIndex;
-  //alert(rows2);
-//rows.innerHTML ="修正完了";
+if(name == "perf"){
+   newText[0] = document.getElementById("newForm1").value;
+    newText[1] = document.getElementById("newForm2").value;
+     newText[2] = document.getElementById("newForm3").value;
+//  var cellNode = document.createTextNode(newText[0]);
+//alert(newText[0]);
+}
 
 for(var i = 0;i<4;i++){
-  if(i != 3){
+  if(i != 3 && name !="perf"){
  cellOne[2-i] = table.rows[rows2].cells[2-i].innerHTML;
- //document.getElementById("newForm1").value =cellOne[2-i];
-//  alert(cellOne[2-i]);
+ //alert(cellOne[2-i]);
 }
 //alert();
 table.rows[rows2].deleteCell(-1);
@@ -111,17 +115,21 @@ table.rows[rows2].deleteCell(-1);
   if(name =="perf"){
 
 for (var i=0; i<4;i++) {
-  //  var cellOne = table.rows[rows2].cells[1];
-  //var newForm1=document.getElementById("newForm1");
-  //  alert(newForm1.innerHTML);
-//  var cellone = document.getElementById("newForm1").value;
-//  alert(table.rows[rows2].cells[2].innerHTML);
+
     var cell = table.rows[rows2].insertCell(-1);
+    if(i<3){
+    cell.innerHTML =newText[i];
+} else {
+   cell.innerHTML = '<input type="button" value="編集" name="addC" onclick="editTable(this, name)">';
 }
-   cell.innerHTML = '<input type="button" value="編集" name="addDelete" onclick="editTable(this, name)">';
+    //cell.appendChild(cellNode);
+  //  var newText[i] = document.getElementById("newForm1").value;
+    //cellNode = document.createTextNode(newText[i]);
+    //cell.appendChild(cellNode);     //データノードの作成、ノードの連結
+}
+
   }else{
- //var newForm1;
-//  var newForm2 = document.createElement("div");
+
 var cell = table.rows[rows2].insertCell(-1);
   cell.innerHTML = '<input id="newForm1" type="text" name="newForm1" size="8">';
   document.getElementById("newForm1").value =cellOne[0];
@@ -133,8 +141,7 @@ var cell = table.rows[rows2].insertCell(-1);
   document.getElementById("newForm3").value =cellOne[2];
 var cell = table.rows[rows2].insertCell(-1);
 
-//newForm2.appendChild(newForm1);
-  //tr.appendChild(newForm2);
+
 cell.innerHTML = '<input type="button" value="修正完了" name="perf" onclick="editTable(this,name)">';
 }
 }
