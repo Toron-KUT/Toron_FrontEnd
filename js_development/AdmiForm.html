@@ -101,6 +101,7 @@ function editTable(obj, name) {
 for(var i = 0;i<4;i++){
   if(i != 3){
  cellOne[2-i] = table.rows[rows2].cells[2-i].innerHTML;
+ //document.getElementById("newForm1").value =cellOne[2-i];
 //  alert(cellOne[2-i]);
 }
 //alert();
@@ -122,11 +123,14 @@ for (var i=0; i<4;i++) {
  //var newForm1;
 //  var newForm2 = document.createElement("div");
 var cell = table.rows[rows2].insertCell(-1);
-  cell.innerHTML = '<input id="newForm1" type="text" name="newForm1" size="8" value=cellOne[2]>';
+  cell.innerHTML = '<input id="newForm1" type="text" name="newForm1" size="8">';
+  document.getElementById("newForm1").value =cellOne[0];
   var cell = table.rows[rows2].insertCell(-1);
-  cell.innerHTML = '<input id="newForm2" type="text" name="newForm2" size="8" value="い">';
+  cell.innerHTML = '<input id="newForm2" type="text" name="newForm2" size="8">';
+  document.getElementById("newForm2").value =cellOne[1];
   var cell = table.rows[rows2].insertCell(-1);
-  cell.innerHTML = '<input id="newForm3" type="text" name="newForm3" size="8" value="う">';
+  cell.innerHTML = '<input id="newForm3" type="text" name="newForm3" size="8">';
+  document.getElementById("newForm3").value =cellOne[2];
 var cell = table.rows[rows2].insertCell(-1);
 
 //newForm2.appendChild(newForm1);
