@@ -104,21 +104,22 @@ table.rows[rows2].deleteCell(-1);
 //table.rows[rows2].deleteCell(rows2-1);
   //tr.parentNode.deleteRow(tr.sectionRowIndex);
   if(name =="perf"){
-    var cell = table.rows[rows2].insertCell(-1);
-    var cell = table.rows[rows2].insertCell(-1);
-    var cell = table.rows[rows2].insertCell(-1);
-   var cell = table.rows[rows2].insertCell(-1);
+    for(var i = 0;i<4;i++){
+      var cell = table.rows[rows2].insertCell(-1);
+  //    var Name = document.getElementById ("newForm1").value;
+  //alert(Name);
+    }
 
    cell.innerHTML = '<input type="button" value="編集" name="addDelete" onclick="editTable(this, name)">';
   }else{
  //var newForm1;
 //  var newForm2 = document.createElement("div");
 var cell = table.rows[rows2].insertCell(-1);
-  cell.innerHTML = '<input type="text" name="newForm1" size="8" value="あ">';
+  cell.innerHTML = '<input type="text" id="newForm1" name="newForm1" size="8" value="a">';
   var cell = table.rows[rows2].insertCell(-1);
-  cell.innerHTML = '<input type="text" name="newForm2" size="8" value="い">';
+  cell.innerHTML = '<input type="text" id="newForm2" name="newForm2" size="8" value="い">';
   var cell = table.rows[rows2].insertCell(-1);
-  cell.innerHTML = '<input type="text" name="newForm3" size="8" value="う">';
+  cell.innerHTML = '<input type="text" id="newForm3" name="newForm3" size="8" value="う">';
 var cell = table.rows[rows2].insertCell(-1);
 
 //newForm2.appendChild(newForm1);
