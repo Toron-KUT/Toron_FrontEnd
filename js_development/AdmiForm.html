@@ -114,6 +114,7 @@ table.rows[rows2].deleteCell(-1);
 
   if(name =="perf"){
 
+
 for (var i=0; i<4;i++) {
 
     var cell = table.rows[rows2].insertCell(-1);
@@ -128,9 +129,11 @@ for (var i=0; i<4;i++) {
     //cell.appendChild(cellNode);     //データノードの作成、ノードの連結
 }
 
+
   }else{
 
 var cell = table.rows[rows2].insertCell(-1);
+
   cell.innerHTML = '<input id="newForm1" type="text" name="newForm1" size="8">';
   document.getElementById("newForm1").value =cellOne[0];
   var cell = table.rows[rows2].insertCell(-1);
