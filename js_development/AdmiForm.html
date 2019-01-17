@@ -13,7 +13,7 @@
 
     //テーブルに追加する前に、null判定と配列に追加
     function creatdata() {
-      if(count_col != 1){
+      if(count_col != 1 && editFlag !=1){
             var table = document.getElementById("table");
             var shopName = document.getElementById ("shopName").value;
             var shopID = document.getElementById ("shopID").value;
@@ -62,9 +62,6 @@
       cell.innerHTML = '<input type="button" value="編集" name="addDelete" onclick="editTable(this, name)">';
   }
       }
-    //  var endEdit = table.rows[].insertCell(1);
-      //endEdit.innerHTML = '<input type="button" value="編集終了" name="exitDelete" onclick="exitB(this)">';
-    //  if (editFlag == 0){
       var newButton = document.createElement("BUTTON");
       newButton.textContent="編集終了";
       document.getElementById("table").appendChild(newButton);
@@ -81,6 +78,7 @@
                   newButton.parentNode.removeChild(newButton);
 
                   count_col = 0;
+                  if(editFlag == 2) editFlag=0;
 
       }
 }
@@ -89,13 +87,14 @@
     var cellOne =[];
     var newText =[];
 function editTable(obj, name) {
+  editFlag = 1;
   var table = document.getElementById("table");
 
 
   tr = obj.parentNode.parentNode;
-  tr1 =obj.parentNode;
   var rows2 = tr.sectionRowIndex;
 if(name == "perf"){
+  editFlag = 2;
    newText[0] = document.getElementById("newForm1").value;
     newText[1] = document.getElementById("newForm2").value;
      newText[2] = document.getElementById("newForm3").value;
@@ -122,10 +121,6 @@ for (var i=0; i<4;i++) {
 } else {
    cell.innerHTML = '<input type="button" value="編集" name="addC" onclick="editTable(this, name)">';
 }
-    //cell.appendChild(cellNode);
-  //  var newText[i] = document.getElementById("newForm1").value;
-    //cellNode = document.createTextNode(newText[i]);
-    //cell.appendChild(cellNode);     //データノードの作成、ノードの連結
 }
 
   }else{
