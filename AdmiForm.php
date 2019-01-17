@@ -7,7 +7,23 @@
     <title>管理者用店舗管理ページ</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
     <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
+    <script type="text/javascript">
+    var data =[];
+    //data = JSON.parse(;
+    window.onload = function(){
+     var test =<?php include("showStore.php") ?>;
+
+  //  var store_data =
+var test = <?php echo $store_data;//json_encode($store_data); ?>;
+console.log(test);
+//var mydata = JSON.parse(test);
+    alert(test);
+
+   creatTable(mydata);
+}
+    </script>
     <script type="text/javascript">
 
 
@@ -18,12 +34,15 @@
             var shopName = document.getElementById ("shopName").value;
             var shopID = document.getElementById ("shopID").value;
             var userID = document.getElementById ("userID").value;
+
             if ((shopID && shopName && userID) == ""){//空白チェック
              alert("空欄があります");
            } else if(shopID.match(/[^0-9]+/)){//数字チェック
              alert("IDに数字以外が入力されています");
            } else {
               var data = [shopID, shopName, userID];
+            //  var t =JSON.stringify(data);
+            //  alert(t);
               creatTable(data);
             }
           }
@@ -113,7 +132,6 @@ table.rows[rows2].deleteCell(-1);
 
   if(name =="perf"){
 
-
 for (var i=0; i<4;i++) {
 
     var cell = table.rows[rows2].insertCell(-1);
@@ -124,11 +142,9 @@ for (var i=0; i<4;i++) {
 }
 }
 
-
   }else{
 
 var cell = table.rows[rows2].insertCell(-1);
-
   cell.innerHTML = '<input id="newForm1" type="text" name="newForm1" size="8">';
   document.getElementById("newForm1").value =cellOne[0];
   var cell = table.rows[rows2].insertCell(-1);
