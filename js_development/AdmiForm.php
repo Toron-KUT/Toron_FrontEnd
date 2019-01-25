@@ -10,7 +10,7 @@
     <meta name="keywords" content="" />
     <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
     <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
-
+    <script src="http://code.jquery.com/jquery.min.js"></script>
     <script type="text/javascript">
       var data =[];
 
@@ -58,11 +58,20 @@
 
 /*-------------------*/
             var data =[[("store_id"),store_id], [("name"),storeName],[("user_id"),user_id]];
-            var data =JSON.stringify(data);
-            console.log(data);
+            var JSONData =JSON.stringify(data);
+            var data_arr = [[store_id, storeName, user_id]];
+            $.post (
+              "insertStore.php",
+              {"JSON":JSONData},
+              function (data) {
+                alert(data_arr);
+              }
+            );
+
+          //  console.log(data);
 /*-------------------*/
-              var data = [[store_id, storeName, user_id]];
-              creatTable(data);
+
+              creatTable(data_arr);
 
             }
           }
@@ -143,14 +152,20 @@ if(name == "perf"){
   newText[2] = document.getElementById("newForm3").value;
 /*-------------------*/
 
-  updata[0] = [("old_store_id") ,cellOne[0]];
-  updata[1] = [("old_name") ,cellOne[1]];
-  updata[2] = [("old_user_id") ,cellOne[2]];
-  updata[3] = [("new_store_id") ,newText[0]];//そのうち変更がないように
-  updata[4] = [("new_name") ,newText[1]];
-  updata[5] = [("new_user_id") ,newText[2]];
+  //updata[0] = [("old_store_id") ,cellOne[0]];
+  //updata[1] = [("old_name") ,cellOne[1]];
+  updata[0] = [("old_user_id") ,cellOne[2]];//user_id
+  updata[1] = [("new_store_id") ,newText[0]];//そのうち変更がないように
+  updata[2] = [("new_name") ,newText[1]];
+  updata[3] = [("new_user_id") ,newText[2]];
   var JSONData = JSON.stringify(updata);//店舗更新のjsondata
-
+  $.post (
+    "updataStore.php",
+    {"JSON":JSONData},
+/*    function (data) {
+      alert(data_arr);
+    }*/
+  );
   /*----------------*/
 //console.log(updata);
 
@@ -206,7 +221,13 @@ cell.innerHTML = '<input type="button" value="修正完了" name="perf" onclick=
       cellOne[1] = [("name") ,table.rows[rows2].cells[1].innerHTML];
       cellOne[2] = [("user_id") ,table.rows[rows2].cells[2].innerHTML];
       var JSONData = JSON.stringify(cellOne);//店舗削除のjsondata
-
+      $.post (
+        "deleteStore.php",
+        {"JSON":JSONData},
+    /*    function (data) {
+          alert(data_arr);
+        }*/
+      );
 /*-------------------*/
 
       tr.parentNode.deleteRow(tr.sectionRowIndex);
@@ -222,7 +243,7 @@ cell.innerHTML = '<input type="button" value="修正完了" name="perf" onclick=
     --> <h3> <p class="logo">*** 株式会社マルナカ | 店舗管理ページ***</p></h3>
       <p class="description">*** 管理者専用ページです。登録店舗の編集を行えます ***</p>
   <h5>***新規店舗登録フォームはこちら***</h5>
-    <form ><!--action = "" method = “”>入力フォーム-->
+    <form><!--action = "" method = “”>入力フォーム-->
       <div><!--かたまりみたいな-->
       店舗ID　　:
       <input id ="store_id" name="store_id" type="text" size="15"><br>
