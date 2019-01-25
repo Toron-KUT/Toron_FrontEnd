@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
     <script src="http://code.jquery.com/jquery.min.js"></script>
     <script type="text/javascript">
-      var data =[];
+      var data_insert =[];
 
     //data = JSON.parse(;
 //ウィンドウ開いたときに実行される。登録済み店舗取得、配列化
@@ -25,14 +25,14 @@
         var mydata = JSON.parse(test);
 //alert(mydata);
         for (var i = 0; i < mydata.length; i++){
-          data[i] = [];
-          data[i][0] = mydata[i]["store_id"];
-          data[i][1] =mydata[i]["name"];
-          data[i][2] =mydata[i]["user_id"];
+          data_insert[i] = [];
+          data_insert[i][0] = mydata[i]["store_id"];
+          data_insert[i][1] =mydata[i]["name"];
+          data_insert[i][2] =mydata[i]["user_id"];
         }
 
           //console.log(mydata);
-        creatTable(data);
+        creatTable(data_insert);
 }
     </script>
 
@@ -57,21 +57,64 @@
 
 
 /*-------------------*/
-            var data =[[("store_id"),store_id], [("name"),storeName],[("user_id"),user_id]];
-            var JSONData =JSON.stringify(data);
+          //  var data =[[("store_id"),store_id], [("name"),storeName],[("user_id"),user_id]];
+          //  var JSONData =JSON.stringify(data);
+          var data = {
+            store_id : store_id,
+            name : storeName,
+            user_id : user_id
+          }
+          var JSONData =JSON.stringify(data);
             var data_arr = [[store_id, storeName, user_id]];
-            $.post (
-              "insertStore.php",
-              {"JSON":JSONData},
-              function (data) {
-                alert(data_arr);
+            console.log(JSONData);
+            //alert(data);
+//try {
+            $.ajax({
+
+              type:"post",
+            //  dataType: "json",
+              url:"insertStore.php",
+              data:JSON.stringify(data),
+              contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
+            //  dataType: "json"
+
+            }).done(
+              function(data){
+                if(data == "true") {
+                    creatTable(data_arr);
+                } else if(data == "false"){
+                  alert("もう一度入力してください");
+                } else {
+                  alert(data);
+                }
+            //    console.log(JSONData);
+                //リクエストが成功した際に実行する関数
+              //  alert();
+            //    console.log("Data Loaded: " + data);
+                //console.log('成功');
+              }).fail(
+              function() { //失敗した時
+                alert("通信エラーです。もう一度入力してください");
               }
             );
+      //    }
+    /*      catch(e) {
+            console.log(e.massege);
+          }
+          */
+
+          /*  $.post (
+              "insertStore.php",
+              {"JSONData":JSON},
+            //  function (JSON) {
+            //   alert(JSON);
+            //  }
+          );*/
 
           //  console.log(data);
 /*-------------------*/
 
-              creatTable(data_arr);
+
 
             }
           }
@@ -155,10 +198,11 @@ if(name == "perf"){
   //updata[0] = [("old_store_id") ,cellOne[0]];
   //updata[1] = [("old_name") ,cellOne[1]];
   updata[0] = [("old_user_id") ,cellOne[2]];//user_id
-  updata[1] = [("new_store_id") ,newText[0]];//そのうち変更がないように
-  updata[2] = [("new_name") ,newText[1]];
+  updata[1] = [("store_id") ,newText[0]];//そのうち変更がないように
+  updata[2] = [("name") ,newText[1]];
   updata[3] = [("new_user_id") ,newText[2]];
   var JSONData = JSON.stringify(updata);//店舗更新のjsondata
+  console.log(JSONData);
   $.post (
     "updataStore.php",
     {"JSON":JSONData},
