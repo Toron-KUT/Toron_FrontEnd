@@ -17,6 +17,13 @@
   var Data = [[("login_id"),login_id],[("password"),password]];
   var JSONData =JSON.stringify(Data);
   <?php //include("getLoginInfo.php"); ?>
+  $.post (
+    "webLogin.php",
+    {"JSON":JSONData},
+    function (data) {
+      //alert(data_arr);
+    }
+  );
   //  <!--戻り値はidentifi-->
     changepage(IdentificationNumbe);
   }
