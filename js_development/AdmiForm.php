@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -7,39 +8,80 @@
     <title>管理者用店舗管理ページ</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
     <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
-    <script src="http://code.jquery.com/jquery.min.js"></script>
+
+    <script type="text/javascript">
+      var data =[];
+
+    //data = JSON.parse(;
+//ウィンドウ開いたときに実行される。登録済み店舗取得、配列化
+      window.onload = function(){
+      //showStoreの実行
+        <?php include("showStore.php") ?>
+
+        var test = '<?php echo $store_data;//json_encode($store_data); ?>';
+//alert(test);
+        var mydata = JSON.parse(test);
+//alert(mydata);
+        for (var i = 0; i < mydata.length; i++){
+          data[i] = [];
+          data[i][0] = mydata[i]["store_id"];
+          data[i][1] =mydata[i]["name"];
+          data[i][2] =mydata[i]["user_id"];
+        }
+
+          //console.log(mydata);
+        creatTable(data);
+}
+    </script>
+
     <script type="text/javascript">
 
 
     //テーブルに追加する前に、null判定と配列に追加
+    //フォームから入力された場合
+
     function creatdata() {
       if(count_col != 1 && editFlag !=1){
             var table = document.getElementById("table");
-            var shopName = document.getElementById ("shopName").value;
-            var shopID = document.getElementById ("shopID").value;
-            var userID = document.getElementById ("userID").value;
-            if ((shopID && shopName && userID) == ""){//空白チェック
+            var storeName = document.getElementById ("storeName").value;
+            var store_id = document.getElementById ("store_id").value;
+            var user_id = document.getElementById ("user_id").value;
+
+            if ((store_id && storeName && user_id) == ""){//空白チェック
              alert("空欄があります");
-           } else if(shopID.match(/[^0-9]+/)){//数字チェック
+           } else if(store_id.match(/[^0-9]+/)){//数字チェック
              alert("IDに数字以外が入力されています");
            } else {
-              var data = [shopID, shopName, userID];
+
+
+/*-------------------*/
+            var data =[[("store_id"),store_id], [("name"),storeName],[("user_id"),user_id]];
+            var data =JSON.stringify(data);
+            console.log(data);
+/*-------------------*/
+              var data = [[store_id, storeName, user_id]];
               creatTable(data);
+
             }
           }
     }
+
     function creatTable(data){
       // 表の作成開始
       var table = document.getElementById("table");
       // 表に2次元配列の要素を格納
       table.style.border ="1px solid";         //枠
-        var rows = table.insertRow(-1);        // 新しい行の追加//-1で下に追加する
-          for(j = 0; j < 3; j++){
+
+        for (var i = 0; i<data.length; i++){
+          var rows = table.insertRow(-1);        // 新しい行の追加//-1で下に追加する
+          for(j = 0; j < data[0].length; j++){
             var  cell=rows.insertCell(-1);    //列
-              cellNode = document.createTextNode(data[j]);
+              cellNode = document.createTextNode(data[i][j]);
               cell.appendChild(cellNode);     //データノードの作成、ノードの連結
               cell.style.border ="1px solid"; //枠
+            }
           }
     }
 
@@ -50,8 +92,6 @@
       if(count_col ==1){
       var table = document.getElementById("table");
       var rows = table.rows.length;
-
-      //
       for (var i = 0; i < rows; i ++) {
         if(i == 0)continue;
         var cell = table.rows[i].insertCell(-1);
@@ -85,8 +125,9 @@
 }
 
     }
-    var cellOne =[];
-    var newText =[];
+    var cellOne = [];
+    var newText = [];
+    var updata = [];
 function editTable(obj, name) {
   editFlag = 1;
   var table = document.getElementById("table");
@@ -96,24 +137,37 @@ function editTable(obj, name) {
   var rows2 = tr.sectionRowIndex;
 if(name == "perf"){
   editFlag = 2;
-   newText[0] = document.getElementById("newForm1").value;
-    newText[1] = document.getElementById("newForm2").value;
-     newText[2] = document.getElementById("newForm3").value;
-//  var cellNode = document.createTextNode(newText[0]);
-//alert(newText[0]);
+  //新しい
+  newText[0] = document.getElementById("newForm1").value;
+  newText[1] = document.getElementById("newForm2").value;
+  newText[2] = document.getElementById("newForm3").value;
+/*-------------------*/
+
+  updata[0] = [("old_store_id") ,cellOne[0]];
+  updata[1] = [("old_name") ,cellOne[1]];
+  updata[2] = [("old_user_id") ,cellOne[2]];
+  updata[3] = [("new_store_id") ,newText[0]];//そのうち変更がないように
+  updata[4] = [("new_name") ,newText[1]];
+  updata[5] = [("new_user_id") ,newText[2]];
+  var JSONData = JSON.stringify(updata);//店舗更新のjsondata
+
+  /*----------------*/
+//console.log(updata);
+
 }
 
 for(var i = 0;i<4;i++){
   if(i != 3 && name !="perf"){
+//古い
  cellOne[2-i] = table.rows[rows2].cells[2-i].innerHTML;
  //alert(cellOne[2-i]);
+ //cellOne[0] は pri_key
 }
 //alert();
 table.rows[rows2].deleteCell(-1);
 }
 
   if(name =="perf"){
-
 
 for (var i=0; i<4;i++) {
 
@@ -125,31 +179,41 @@ for (var i=0; i<4;i++) {
 }
 }
 
-
   }else{
 
-var cell = table.rows[rows2].insertCell(-1);
-
-  cell.innerHTML = '<input id="newForm1" type="text" name="newForm1" size="8">';
-  document.getElementById("newForm1").value =cellOne[0];
-  var cell = table.rows[rows2].insertCell(-1);
-  cell.innerHTML = '<input id="newForm2" type="text" name="newForm2" size="8">';
-  document.getElementById("newForm2").value =cellOne[1];
-  var cell = table.rows[rows2].insertCell(-1);
-  cell.innerHTML = '<input id="newForm3" type="text" name="newForm3" size="8">';
-  document.getElementById("newForm3").value =cellOne[2];
-var cell = table.rows[rows2].insertCell(-1);
+    var cell = table.rows[rows2].insertCell(-1);
+    cell.innerHTML = '<input id="newForm1" type="text" name="newForm1" size="8">';
+    document.getElementById("newForm1").value =cellOne[0];
+    var cell = table.rows[rows2].insertCell(-1);
+    cell.innerHTML = '<input id="newForm2" type="text" name="newForm2" size="8">';
+    document.getElementById("newForm2").value =cellOne[1];
+    var cell = table.rows[rows2].insertCell(-1);
+    cell.innerHTML = '<input id="newForm3" type="text" name="newForm3" size="8">';
+    document.getElementById("newForm3").value =cellOne[2];
+    var cell = table.rows[rows2].insertCell(-1);
 
 
 cell.innerHTML = '<input type="button" value="修正完了" name="perf" onclick="editTable(this,name)">';
 }
 }
+//データ削除
     function dB(obj) {
       tr = obj.parentNode.parentNode;
+      var rows2 = tr.sectionRowIndex;
+/*-------------------*/
+
+      cellOne[0] = [("store_id") ,table.rows[rows2].cells[0].innerHTML];
+      cellOne[1] = [("name") ,table.rows[rows2].cells[1].innerHTML];
+      cellOne[2] = [("user_id") ,table.rows[rows2].cells[2].innerHTML];
+      var JSONData = JSON.stringify(cellOne);//店舗削除のjsondata
+
+/*-------------------*/
+
       tr.parentNode.deleteRow(tr.sectionRowIndex);
     }
 
     </script>
+
   </head>
   <body>
     <div id="wrapper">
@@ -158,14 +222,14 @@ cell.innerHTML = '<input type="button" value="修正完了" name="perf" onclick=
     --> <h3> <p class="logo">*** 株式会社マルナカ | 店舗管理ページ***</p></h3>
       <p class="description">*** 管理者専用ページです。登録店舗の編集を行えます ***</p>
   <h5>***新規店舗登録フォームはこちら***</h5>
-    <form><!--入力フォーム-->
+    <form ><!--action = "" method = “”>入力フォーム-->
       <div><!--かたまりみたいな-->
       店舗ID　　:
-      <input id ="shopID" name="shopID" type="text" size="15"><br>
+      <input id ="store_id" name="store_id" type="text" size="15"><br>
       店舗名　　:
-        <input id="shopName" name="shopName" type="text" size="30"><br>
+        <input id="storeName" name="storeName" type="text" size="30"><br>
       店長ユーザID　:
-        <input id ="userID" name="userID" type="text" size="15">
+        <input id ="user_id" name="user_id" type="text" size="15">
   　      　  <input name="button" type="button" value="登録" onClick="creatdata()">
       </div>
     </form>
