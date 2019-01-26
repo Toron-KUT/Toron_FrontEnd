@@ -13,7 +13,7 @@
     <script src="http://code.jquery.com/jquery.min.js"></script>
     <script type="text/javascript">
       var data_insert =[];
-
+      var count_storeid;
     //data = JSON.parse(;
 //ウィンドウ開いたときに実行される。登録済み店舗取得、配列化
       window.onload = function(){
@@ -23,14 +23,16 @@
         var test = '<?php echo $store_data;//json_encode($store_data); ?>';
 //alert(test);
         var mydata = JSON.parse(test);
+        console.log(mydata);
 //alert(mydata);
-        for (var i = 0; i < mydata.length; i++){
+        for (var i = 0; i < mydata["stores"].length; i++){
           data_insert[i] = [];
-          data_insert[i][0] = mydata[i]["store_id"];
-          data_insert[i][1] =mydata[i]["name"];
-          data_insert[i][2] =mydata[i]["user_id"];
+          data_insert[i][0] = mydata["stores"][i]["store_id"];
+          data_insert[i][1] =mydata["stores"][i]["name"];
+          data_insert[i][2] =mydata["stores"][i]["clerk_id"];
+          count_storeid =  mydata["stores"][mydata["stores"].length - 1]["store_id"];
         }
-
+console.log(data_insert);
           //console.log(mydata);
         creatTable(data_insert);
 }
@@ -46,23 +48,22 @@
       if(count_col != 1 && editFlag !=1){
             var table = document.getElementById("table");
             var storeName = document.getElementById ("storeName").value;
-            var store_id = document.getElementById ("store_id").value;
+            var store_id = count_storeid;
+            // = document.getElementById ("store_id").value;
             var user_id = document.getElementById ("user_id").value;
 
             if ((store_id && storeName && user_id) == ""){//空白チェック
              alert("空欄があります");
-           } else if(store_id.match(/[^0-9]+/)){//数字チェック
-             alert("IDに数字以外が入力されています");
+
            } else {
 
 
 /*-------------------*/
-          //  var data =[[("store_id"),store_id], [("name"),storeName],[("user_id"),user_id]];
-          //  var JSONData =JSON.stringify(data);
+
           var data = {
             store_id : store_id,
             name : storeName,
-            user_id : user_id
+            clerk_id : user_id
           }
           var JSONData =JSON.stringify(data);
             var data_arr = [[store_id, storeName, user_id]];
@@ -80,38 +81,23 @@
 
             }).done(
               function(data){
+                console.log(data);
                 if(data == "true") {
                     creatTable(data_arr);
                 } else if(data == "false"){
-                  alert("もう一度入力してください");
+                  alert("入力エラーです");
+                  console.log(data);
                 } else {
-                  alert(data);
+                  alert("情報取得ができませんでした");
+                  console.log(data);
                 }
-            //    console.log(JSONData);
-                //リクエストが成功した際に実行する関数
-              //  alert();
-            //    console.log("Data Loaded: " + data);
-                //console.log('成功');
+
               }).fail(
               function() { //失敗した時
                 alert("通信エラーです。もう一度入力してください");
               }
             );
-      //    }
-    /*      catch(e) {
-            console.log(e.massege);
-          }
-          */
 
-          /*  $.post (
-              "insertStore.php",
-              {"JSONData":JSON},
-            //  function (JSON) {
-            //   alert(JSON);
-            //  }
-          );*/
-
-          //  console.log(data);
 /*-------------------*/
 
 
@@ -132,9 +118,10 @@
             var  cell=rows.insertCell(-1);    //列
               cellNode = document.createTextNode(data[i][j]);
               cell.appendChild(cellNode);     //データノードの作成、ノードの連結
-              cell.style.border ="1px solid"; //枠
+            //  cell.style.border ="1px solid"; //枠
             }
           }
+          count_storeid++;
     }
 
     var count_col=0;
@@ -152,7 +139,7 @@
     if(id=="delete"){
     cell.innerHTML = '<input type="button" value="削除" name="addDelete" onclick="dB(this)">';
   } else if(id=="edit"){
-      cell.innerHTML = '<input type="button" value="編集" name="addDelete" onclick="editTable(this, name)">';
+      cell.innerHTML = '<input type="button" value="編集" name="addUpdata" onclick="editTable(this, name)">';
   }
       }
       var newButton = document.createElement("BUTTON");
@@ -187,69 +174,116 @@ function editTable(obj, name) {
 
   tr = obj.parentNode.parentNode;
   var rows2 = tr.sectionRowIndex;
-if(name == "perf"){
-  editFlag = 2;
-  //新しい
-  newText[0] = document.getElementById("newForm1").value;
-  newText[1] = document.getElementById("newForm2").value;
-  newText[2] = document.getElementById("newForm3").value;
-/*-------------------*/
 
-  //updata[0] = [("old_store_id") ,cellOne[0]];
-  //updata[1] = [("old_name") ,cellOne[1]];
-  updata[0] = [("old_user_id") ,cellOne[2]];//user_id
-  updata[1] = [("store_id") ,newText[0]];//そのうち変更がないように
-  updata[2] = [("name") ,newText[1]];
-  updata[3] = [("new_user_id") ,newText[2]];
-  var JSONData = JSON.stringify(updata);//店舗更新のjsondata
-  console.log(JSONData);
-  $.post (
-    "updataStore.php",
-    {"JSON":JSONData},
-/*    function (data) {
-      alert(data_arr);
-    }*/
-  );
-  /*----------------*/
-//console.log(updata);
+  if(name == "perf"){//編集後
+    editFlag = 2;
+    //新しい
+    newText[0] = document.getElementById("newForm1").value;
+    newText[1] = document.getElementById("newForm2").value;
+    newText[2] = document.getElementById("newForm3").value;
+    /*-------------------*/
 
+    //updata[0] = [("old_store_id") ,cellOne[0]];
+    //updata[1] = [("old_name") ,cellOne[1]];
+    /*
+    updata[0] = [("old_user_id") ,cellOne[2]];//user_id
+    updata[1] = [("store_id") ,newText[0]];//そのうち変更がないように
+    updata[2] = [("name") ,newText[1]];
+    updata[3] = [("new_user_id") ,newText[2]];
+    */
+    var data = {
+      old_user_id : cellOne[2],
+      name : document.getElementById("newForm2").value,
+      store_id : document.getElementById("newForm1").value,
+      new_user_id : document.getElementById("newForm3").value
+    }
+    console.log(data);
+   $.ajax({
+
+      type:"post",
+      //  dataType: "json",
+      url:"updataStore.php",
+      data:JSON.stringify(data),
+      contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
+      //dataType: ""
+
+    }).done(
+      function(data){
+        if(data == "true") {
+
+          for (var i=0; i<4;i++) {
+
+            var cell = table.rows[rows2].insertCell(-1);
+            if(i<3){
+              cell.innerHTML =newText[i];
+            } else {
+              cell.innerHTML = '<input type="button" value="編集" name="addC" onclick="editTable(this, name)">';
+            }
 }
 
-for(var i = 0;i<4;i++){
-  if(i != 3 && name !="perf"){
-//古い
- cellOne[2-i] = table.rows[rows2].cells[2-i].innerHTML;
- //alert(cellOne[2-i]);
- //cellOne[0] は pri_key
-}
-//alert();
-table.rows[rows2].deleteCell(-1);
-}
+        } else if(data == "false"){
 
-  if(name =="perf"){
+          alert("エラーです。更新できませんでした");
+          for (var i=0; i<4;i++) {
 
-for (var i=0; i<4;i++) {
+            var cell = table.rows[rows2].insertCell(-1);
+            if(i<3){
+              cell.innerHTML =CellOne[i];
+            } else {
+              cell.innerHTML = '<input type="button" value="編集" name="addC" onclick="editTable(this, name)">';
+            }
+          }
+        }else if(data == ""){
+          alert("なにもかえってないぞ");
+        } else {
+          console.log(data);
+        }
+      }).fail(
+        function() { //失敗した時
+          alert("通信エラーです。");
+        }
+      );
+      /*----------------*/
+      //console.log(updata);
 
-    var cell = table.rows[rows2].insertCell(-1);
-    if(i<3){
-    cell.innerHTML =newText[i];
-} else {
-   cell.innerHTML = '<input type="button" value="編集" name="addC" onclick="editTable(this, name)">';
-}
-}
+    }//if perf終了
 
-  }else{
+    for(var i = 0;i<4;i++){
+      if(i != 3 && name !="perf"){//編集前データ格納
+        //古い
+        cellOne[2-i] = table.rows[rows2].cells[2-i].innerHTML;
+        //alert(cellOne[2-i]);
+        //cellOne[0] は pri_key
+      }
+      //alert();
+      table.rows[rows2].deleteCell(-1);
+    }
 
-    var cell = table.rows[rows2].insertCell(-1);
-    cell.innerHTML = '<input id="newForm1" type="text" name="newForm1" size="8">';
-    document.getElementById("newForm1").value =cellOne[0];
-    var cell = table.rows[rows2].insertCell(-1);
-    cell.innerHTML = '<input id="newForm2" type="text" name="newForm2" size="8">';
-    document.getElementById("newForm2").value =cellOne[1];
-    var cell = table.rows[rows2].insertCell(-1);
-    cell.innerHTML = '<input id="newForm3" type="text" name="newForm3" size="8">';
-    document.getElementById("newForm3").value =cellOne[2];
-    var cell = table.rows[rows2].insertCell(-1);
+    if(name =="perf"){//編集後
+
+      for (var i=0; i<4;i++) {
+
+        var cell = table.rows[rows2].insertCell(-1);
+        if(i<3){
+          cell.innerHTML =newText[i];
+        } else {
+          cell.innerHTML = '<input type="button" value="編集" name="addC" onclick="editTable(this, name)">';
+        }
+      }
+
+    }
+    if(name =="addUpdata"){//編集前
+
+      var cell = table.rows[rows2].insertCell(-1);
+      cell.innerHTML = '<input id="newForm1" type="text" name="newForm1" size="8">';
+      document.getElementById("newForm1").value =cellOne[0];
+      var cell = table.rows[rows2].insertCell(-1);
+      cell.innerHTML = '<input id="newForm2" type="text" name="newForm2" size="8">';
+      document.getElementById("newForm2").value =cellOne[1];
+      var cell = table.rows[rows2].insertCell(-1);
+      cell.innerHTML = '<input id="newForm3" type="text" name="newForm3" size="8">';
+      document.getElementById("newForm3").value =cellOne[2];
+      var cell = table.rows[rows2].insertCell(-1);
 
 
 cell.innerHTML = '<input type="button" value="修正完了" name="perf" onclick="editTable(this,name)">';
@@ -261,20 +295,42 @@ cell.innerHTML = '<input type="button" value="修正完了" name="perf" onclick=
       var rows2 = tr.sectionRowIndex;
 /*-------------------*/
 
-      cellOne[0] = [("store_id") ,table.rows[rows2].cells[0].innerHTML];
-      cellOne[1] = [("name") ,table.rows[rows2].cells[1].innerHTML];
-      cellOne[2] = [("user_id") ,table.rows[rows2].cells[2].innerHTML];
-      var JSONData = JSON.stringify(cellOne);//店舗削除のjsondata
-      $.post (
-        "deleteStore.php",
-        {"JSON":JSONData},
-    /*    function (data) {
-          alert(data_arr);
-        }*/
+    //  cellOne[0] = [("store_id") ,table.rows[rows2].cells[0].innerHTML];
+    //  cellOne[1] = [("name") ,table.rows[rows2].cells[1].innerHTML];
+    //  cellOne[2] = [("user_id") ,table.rows[rows2].cells[2].innerHTML];
+      var data = {
+        store_id : table.rows[rows2].cells[0].innerHTML,
+        clerk_id : table.rows[rows2].cells[2].innerHTML
+      }
+      console.log(data);
+      $.ajax({
+
+        type:"post",
+      //  dataType: "json",
+        url:"deleteStore.php",
+        data:JSON.stringify(data),
+        contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
+      //  dataType: "json"
+
+      }).done(
+        function(data){
+          if(data == "true") {
+              tr.parentNode.deleteRow(tr.sectionRowIndex);
+          } else if(data == "false"){
+            alert("エラーです。削除できませんでした");
+          }else if(data == ""){
+            alert("なにもかえってないぞ");
+          } else {
+            console.log(data);
+          }
+        }).fail(
+        function() { //失敗した時
+          alert("通信エラーです。");
+        }
       );
 /*-------------------*/
 
-      tr.parentNode.deleteRow(tr.sectionRowIndex);
+
     }
 
     </script>
@@ -289,8 +345,8 @@ cell.innerHTML = '<input type="button" value="修正完了" name="perf" onclick=
   <h5>***新規店舗登録フォームはこちら***</h5>
     <form><!--action = "" method = “”>入力フォーム-->
       <div><!--かたまりみたいな-->
-      店舗ID　　:
-      <input id ="store_id" name="store_id" type="text" size="15"><br>
+  <!--    店舗ID　　:
+      <input id ="store_id" name="store_id" type="text" size="15"><br> -->
       店舗名　　:
         <input id="storeName" name="storeName" type="text" size="30"><br>
       店長ユーザID　:

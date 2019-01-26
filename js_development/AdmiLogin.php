@@ -14,18 +14,47 @@
 
   var login_id = document.getElementById("login_id").value;
   var password = document.getElementById("login_pass").value;
-  var Data = [[("login_id"),login_id],[("password"),password]];
-  var JSONData =JSON.stringify(Data);
-  <?php //include("getLoginInfo.php"); ?>
-  $.post (
-    "webLogin.php",
-    {"JSON":JSONData},
-    function (data) {
-      //alert(data_arr);
+//  var Data = [[("login_id"),login_id],[("password"),password]];
+  var data = {
+    login_id : login_id,
+    password :password
+  }
+  $.ajax({
+
+    type:"post",
+  //  dataType: "json",
+    url:"webLogin.php",
+    data:JSON.stringify(data),
+    contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
+  //  dataType: "json"
+
+  }).done(
+    function(data){
+var res = JSON.parse(data);
+      console.log(res);
+      if(data == "true") {
+      //  var res = JSON.parse(data);
+       if (  == "1") {
+         changepage(IdentificationNumbe);
+       } else if( == "2") {
+         changepage(IdentificationNumbe);
+       }
+
+      } else if(data == "false"){
+        alert("入力エラーです");
+        console.log(data);
+      } else {
+        alert("情報取得ができませんでした");
+        console.log(data);
+      }
+
+    }).fail(
+    function() { //失敗した時
+      alert("通信エラーです。もう一度入力してください");
     }
   );
   //  <!--戻り値はidentifi-->
-    changepage(IdentificationNumbe);
+
   }
   function changepage(IdentificationNumber) {
 

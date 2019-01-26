@@ -9,11 +9,40 @@
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
     <script type=text/javascript>
-    var select1_data =["肉","野菜","魚介類・水産加工品","米・麺・パン・粉類","果物","乳製品・豆乳","惣菜"];
-    var select2_data =[["肉","牛肉","鶏肉","豚肉"],["野菜","キャベツ","きゅうり"],["リンゴ"],["刺身"]]
-    </script>
-    <script type = "text/javascript">
-  <!--
+
+
+    var data_insert =[];
+    var select1_data =["野菜・果物","肉・卵","魚介類","米・パン・粉類",
+    "乳製品","惣菜","インスタント・レトルト",
+    "菓子・冷凍","飲料水","その他(食品)","その他(食品外)"];
+    var select2_data =[];
+
+    window.onload = function(){
+      <?php include("??Sale.php") ?>
+      var test = '<?php echo $sale_data;?>';
+      var mydata = JSON.parse(test);
+      console.log(mydata);
+      for (var cat_con = 0;cat_con < 11;cat_con++) {
+        select2_data[cat_con] =[];
+        select2_data[cat_con][0] = select1_data[i];
+        for (var j = 0; j < mydata["price"].length;j++) {
+          if(mydata["price"][j]["categry_id"] == cat_con)
+        select2_data[cat_con][j+1] = mydata["price"][j]["name"];
+          }
+        }
+        <?php include("showSale.php") ?>
+        var test = '<?php echo //$sale_data;?>';
+        var mydata = JSON.parse(test);
+        console.log(mydata);
+        for (var i = 0; i < mydata["price"].length; i++){
+          data_insert[i] = [];
+          data_insert[i][0] = select1_data[mydata["price"][i]["category_id"]];
+          data_insert[i][1] =mydata["price"][i]["name"];
+        }
+        creatTable(data_insert);
+       }
+
+
 
   function SetChoice1() {
       var select1 = document.forms.formName.selectName1; //変数select1を宣言
@@ -150,7 +179,7 @@
         <br><br>
         <table border="1" id = "table">
           <tr>
-            <th>商品コード</th><th>商品名</th><th>商品価格</th>
+            <th>商品カテゴリ</th><th>商品名</th>
           </tr>
 
         </table>

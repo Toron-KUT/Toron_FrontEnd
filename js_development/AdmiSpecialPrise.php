@@ -8,9 +8,12 @@
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
     <script type = "text/javascript">
-    var select_data =[["肉","牛肉","鶏肉","豚肉"],["野菜","キャベツ","きゅうり"],["果物","リンゴ"],["魚","刺身"]];
-    </script>
-    <script type = "text/javascript">
+      var data_insert =[];
+      var select1_data =["野菜・果物","肉・卵","魚介類","米・パン・粉類",
+                        "乳製品","惣菜","インスタント・レトルト",
+                        "菓子・冷凍","飲料水","その他(食品)","その他(食品外)"];
+      var select2_data =[];
+
   <!--
   function SetChoice1() {
       var select1 = document.forms.formName.selectName1; //変数select1を宣言
@@ -174,11 +177,12 @@ function chengeColor(obj) {
 </select>
 <select name = "selectName3">
 <option value = "選択してください">選択してください</option>
-<option value = "10%">10%</option>
-<option value = "20%">20%</option>
-<option value = "30%">30%</option>
-<option value = "40%">40%</option>
-<option value = "50%">50%</option>
+<option value = "10per">10%</option>
+<option value = "20per">20%</option>
+<option value = "30per">30%</option>
+<option value = "40per">40%</option>
+<option value = "50per">50%</option>
+<option value = "50per">50%</option>
 </select>
 <input name="button" type="button" value="登録" onClick="creatdata()">
 <h5>登録された商品</h5>
@@ -187,7 +191,7 @@ function chengeColor(obj) {
 <br><br>
 <table border="1" id = "table">
   <tr>
-    <th>商品コード</th><th>商品名</th><th>定価</th><th>商品価格</th>
+    <th>商品カテゴリ</th><th>商品名</th><th>定価</th><th>商品価格</th>
   </tr>
   <div align="right">
    <input name="button" type="button" value="ログアウト" onClick="logout()">
