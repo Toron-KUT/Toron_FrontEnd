@@ -143,6 +143,7 @@ console.log(data_insert);
     if(id=="delete"){
     cell.innerHTML = '<input type="button" value="削除" name="addDelete" onclick="dB(this)">';
   } else if(id=="edit"){
+    editFlag++;
       cell.innerHTML = '<input type="button" value="編集" name="addUpdata" onclick="editTable(this, name)">';
   }
       }
@@ -151,6 +152,7 @@ console.log(data_insert);
       document.getElementById("table").appendChild(newButton);
       //--編集終了のボタンを押したときの反応
                 newButton.onclick= function() {
+                  if(editFlag == 0) {
                   var table = document.getElementById("table");
                   var rows = table.rows.length;
 
@@ -162,8 +164,8 @@ console.log(data_insert);
                   newButton.parentNode.removeChild(newButton);
 
                   count_col = 0;
-                  if(editFlag == 2) editFlag=0;
-
+                  //editFlag=0;
+}
       }
 }
 
@@ -180,21 +182,14 @@ function editTable(obj, name) {
   var rows2 = tr.sectionRowIndex;
 
   if(name == "perf"){//編集後
-    editFlag = 2;
+  //  editFlag = 2;
     //新しい
     newText[0] = document.getElementById("newForm1").value;
     newText[1] = document.getElementById("newForm2").value;
     newText[2] = document.getElementById("newForm3").value;
     /*-------------------*/
 
-    //updata[0] = [("old_store_id") ,cellOne[0]];
-    //updata[1] = [("old_name") ,cellOne[1]];
-    /*
-    updata[0] = [("old_user_id") ,cellOne[2]];//user_id
-    updata[1] = [("store_id") ,newText[0]];//そのうち変更がないように
-    updata[2] = [("name") ,newText[1]];
-    updata[3] = [("new_user_id") ,newText[2]];
-    */
+
     var data = {
       old_user_id : cellOne[2],
       name : document.getElementById("newForm2").value,
@@ -213,16 +208,18 @@ function editTable(obj, name) {
 
     }).done(
       function(data){
-        console.log(data);
+        //console.log(data);
+        editFlag = 0;
         if(data == "true") {
-  table.rows[rows2].deleteCell(-1);
+
+          table.rows[rows2].deleteCell(-1);
           for (var i=0; i<4;i++) {
 
             var cell = table.rows[rows2].insertCell(-1);
             if(i<3){
               cell.innerHTML =newText[i];
             } else {
-              cell.innerHTML = '<input type="button" value="編集" name="addC" onclick="editTable(this, name)">';
+              cell.innerHTML = '<input type="button" value="編集" name="addUpdata" onclick="editTable(this, name)">';
             }
 }
 
@@ -235,7 +232,7 @@ function editTable(obj, name) {
             if(i<3){
               cell.innerHTML =cellOne[i];
             } else {
-              cell.innerHTML = '<input type="button" value="編集" name="addC" onclick="editTable(this, name)">';
+              cell.innerHTML = '<input type="button" value="編集" name="addUpdata" onclick="editTable(this, name)">';
             }
           }
         }else {
@@ -298,9 +295,6 @@ cell.innerHTML = '<input type="button" value="修正完了" name="perf" onclick=
       var rows2 = tr.sectionRowIndex;
 /*-------------------*/
 
-    //  cellOne[0] = [("store_id") ,table.rows[rows2].cells[0].innerHTML];
-    //  cellOne[1] = [("name") ,table.rows[rows2].cells[1].innerHTML];
-    //  cellOne[2] = [("user_id") ,table.rows[rows2].cells[2].innerHTML];
       var data = {
         store_id : table.rows[rows2].cells[0].innerHTML,
         clerk_id : table.rows[rows2].cells[2].innerHTML
@@ -309,17 +303,15 @@ cell.innerHTML = '<input type="button" value="修正完了" name="perf" onclick=
       $.ajax({
 
         type:"post",
-      //  dataType: "json",
         url:"deleteStore.php",
         data:JSON.stringify(data),
         contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
-      //  dataType: "json"
 
       }).done(
         function(data){
           console.log(data);
           if(data == "true") {
-              tr.parentNode.deleteRow(tr.sectionRowIndex);
+          tr.parentNode.deleteRow(tr.sectionRowIndex);
           } else if(data == "false"){
             alert("エラーです。削除できませんでした");
           }else {
