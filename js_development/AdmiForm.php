@@ -65,9 +65,9 @@ console.log(data_insert);
             name : storeName,
             clerk_id : user_id
           }
-          var JSONData =JSON.stringify(data);
+          //var JSONData =JSON.stringify(data);
             var data_arr = [[store_id, storeName, user_id]];
-            console.log(JSONData);
+        //    console.log(JSONData);
             //alert(data);
 //try {
             $.ajax({
@@ -82,14 +82,18 @@ console.log(data_insert);
             }).done(
               function(data){
                 console.log(data);
+                //var log = JSON.parse(data);
                 if(data == "true") {
+
                     creatTable(data_arr);
-                } else if(data == "false"){
-                  alert("入力エラーです");
+                } else if(data == "false") {
+
+                  alert("もう一度入力してください");
                   console.log(data);
                 } else {
-                  alert("情報取得ができませんでした");
+                  alert("情報取得ができませんでした。もう一度入力してください");
                   console.log(data);
+
                 }
 
               }).fail(
@@ -202,15 +206,16 @@ function editTable(obj, name) {
 
       type:"post",
       //  dataType: "json",
-      url:"updataStore.php",
+      url:"updateStore.php",
       data:JSON.stringify(data),
       contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
       //dataType: ""
 
     }).done(
       function(data){
+        console.log(data);
         if(data == "true") {
-
+  table.rows[rows2].deleteCell(-1);
           for (var i=0; i<4;i++) {
 
             var cell = table.rows[rows2].insertCell(-1);
@@ -221,21 +226,19 @@ function editTable(obj, name) {
             }
 }
 
-        } else if(data == "false"){
+} else if(data == "false"){
 
           alert("エラーです。更新できませんでした");
           for (var i=0; i<4;i++) {
 
             var cell = table.rows[rows2].insertCell(-1);
             if(i<3){
-              cell.innerHTML =CellOne[i];
+              cell.innerHTML =cellOne[i];
             } else {
               cell.innerHTML = '<input type="button" value="編集" name="addC" onclick="editTable(this, name)">';
             }
           }
-        }else if(data == ""){
-          alert("なにもかえってないぞ");
-        } else {
+        }else {
           console.log(data);
         }
       }).fail(
@@ -259,7 +262,7 @@ function editTable(obj, name) {
       table.rows[rows2].deleteCell(-1);
     }
 
-    if(name =="perf"){//編集後
+  /*  if(name =="perf"){//編集後
 
       for (var i=0; i<4;i++) {
 
@@ -271,7 +274,7 @@ function editTable(obj, name) {
         }
       }
 
-    }
+    }*/
     if(name =="addUpdata"){//編集前
 
       var cell = table.rows[rows2].insertCell(-1);
@@ -314,14 +317,13 @@ cell.innerHTML = '<input type="button" value="修正完了" name="perf" onclick=
 
       }).done(
         function(data){
+          console.log(data);
           if(data == "true") {
               tr.parentNode.deleteRow(tr.sectionRowIndex);
           } else if(data == "false"){
             alert("エラーです。削除できませんでした");
-          }else if(data == ""){
+          }else {
             alert("なにもかえってないぞ");
-          } else {
-            console.log(data);
           }
         }).fail(
         function() { //失敗した時
