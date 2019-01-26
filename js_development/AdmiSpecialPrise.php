@@ -13,7 +13,30 @@
                         "乳製品","惣菜","インスタント・レトルト",
                         "菓子・冷凍","飲料水","その他(食品)","その他(食品外)"];
       var select2_data =[];
-
+      window.onload = function(){
+        <?php include("??Sale.php") ?>
+        var test = '<?php echo $sale_data;?>';
+        var mydata = JSON.parse(test);
+        console.log(mydata);
+        for (var cat_con = 0;cat_con < 11;cat_con++) {
+          select2_data[cat_con] =[];
+          select2_data[cat_con][0] = select1_data[i];
+          for (var j = 0; j < mydata["price"].length;j++) {
+            if(mydata["price"][j]["categry_id"] == cat_con)
+          select2_data[cat_con][j+1] = mydata["price"][j]["name"];
+            }
+          }
+          <?php include("showSale.php") ?>
+          var test = '<?php echo //$sale_data;?>';
+          var mydata = JSON.parse(test);
+          console.log(mydata);
+          for (var i = 0; i < mydata["price"].length; i++){
+            data_insert[i] = [];
+            data_insert[i][0] = select1_data[mydata["price"][i]["category_id"]];
+            data_insert[i][1] =mydata["price"][i]["name"];
+          }
+          creatTable(data_insert);
+       }
   <!--
   function SetChoice1() {
       var select1 = document.forms.formName.selectName1; //変数select1を宣言
@@ -182,7 +205,13 @@ function chengeColor(obj) {
 <option value = "30per">30%</option>
 <option value = "40per">40%</option>
 <option value = "50per">50%</option>
-<option value = "50per">50%</option>
+<option value = "10yen">10円引き</option>
+<option value = "20yen">20円引き</option>
+<option value = "30yen">30円引き</option>
+<option value = "50yen">50円引き</option>
+<option value = "100yen">100円引き</option>
+<option value = "150yen">150円引き</option>
+
 </select>
 <input name="button" type="button" value="登録" onClick="creatdata()">
 <h5>登録された商品</h5>
