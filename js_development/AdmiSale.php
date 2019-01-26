@@ -7,6 +7,7 @@
     <title>特売情報管理ページ</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
+    <script src="http://code.jquery.com/jquery.min.js"></script>
     <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
     <script type=text/javascript>
 
@@ -17,9 +18,11 @@
     "菓子・冷凍","飲料水","その他(食品)","その他(食品外)"];
     var select2_data =[];
 
-    window.onload = function(){
-      <?php include("??Sale.php") ?>
-      var test = '<?php echo $sale_data;?>';
+    window.addEventListener("load", function(){
+      alert();
+      /*
+      <?php //include//("??Sale.php") ?>
+      var test = '<?php //echo $sale_data;?>';
       var mydata = JSON.parse(test);
       console.log(mydata);
       for (var cat_con = 0;cat_con < 11;cat_con++) {
@@ -30,8 +33,8 @@
         select2_data[cat_con][j+1] = mydata["price"][j]["name"];
           }
         }
-        <?php include("showSale.php") ?>
-        var test = '<?php echo //$sale_data;?>';
+        <?php //include("showSale.php") ?>
+        var test = '<?php// echo //$sale_data;?>';
         var mydata = JSON.parse(test);
         console.log(mydata);
         for (var i = 0; i < mydata["price"].length; i++){
@@ -40,9 +43,12 @@
           data_insert[i][1] =mydata["price"][i]["name"];
         }
         creatTable(data_insert);
-       }
+        */
+         }, false)
 
+       </script>
 
+       <script type="text/javascript">
 
   function SetChoice1() {
       var select1 = document.forms.formName.selectName1; //変数select1を宣言
