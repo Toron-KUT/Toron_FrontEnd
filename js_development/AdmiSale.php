@@ -7,13 +7,49 @@
     <title>特売情報管理ページ</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
+    <script src="http://code.jquery.com/jquery.min.js"></script>
     <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
     <script type=text/javascript>
-    var select1_data =["肉","野菜","魚介類・水産加工品","米・麺・パン・粉類","果物","乳製品・豆乳","惣菜"];
-    var select2_data =[["肉","牛肉","鶏肉","豚肉"],["野菜","キャベツ","きゅうり"],["リンゴ"],["刺身"]]
-    </script>
-    <script type = "text/javascript">
-  <!--
+
+
+    var data_insert =[];
+    var select1_data =["野菜・果物","肉・卵","魚介類","米・パン・粉類",
+    "乳製品","惣菜","インスタント・レトルト",
+    "菓子・冷凍","飲料水","その他(食品)","その他(食品外)"];
+      var select2_data =[["野菜","キャベツ","きゅうり"],["肉","牛肉","鶏肉","豚肉"],["リンゴ"],["刺身"]];
+    //var select2_data =[];
+
+    window.addEventListener("load", function(){
+
+      /*
+      <?php //include//("??Sale.php") ?>
+      var test = '<?php //echo $sale_data;?>';
+      var mydata = JSON.parse(test);
+      console.log(mydata);
+      for (var cat_con = 0;cat_con < 11;cat_con++) {
+        select2_data[cat_con] =[];
+        select2_data[cat_con][0] = select1_data[i];
+        for (var j = 0; j < mydata["price"].length;j++) {
+          if(mydata["price"][j]["categry_id"] == cat_con)
+        select2_data[cat_con][j+1] = mydata["price"][j]["name"];
+          }
+        }*/
+        <?php include("showSpecialSale.php") ?>;
+        var test = '<?php echo $spSale_data;?>';
+        var mydata = JSON.parse(test);
+
+        console.log(test);
+        for (var i = 0; i < mydata["sp_sale"].length; i++){
+          data_insert[i] = [];
+          data_insert[i][0] = select1_data[mydata["sp_sale"][i]["category_id"] - 1];
+          data_insert[i][1] =mydata["sp_sale"][i]["name"];
+        }
+        creatTable(data_insert);
+         }, false)
+
+       </script>
+
+       <script type="text/javascript">
 
   function SetChoice1() {
       var select1 = document.forms.formName.selectName1; //変数select1を宣言
@@ -66,13 +102,15 @@
     var table = document.getElementById("table");
     // 表に2次元配列の要素を格納
     table.style.border ="1px solid";         //枠
+    for (var i = 0; i<data.length; i++){
       var rows = table.insertRow(-1);        // 新しい行の追加//-1で下に追加する
-        for(j = 0; j < data.length; j++){
+        for(j = 0; j < data[0].length; j++){
           var  cell=rows.insertCell(-1);    //列
-            cellNode = document.createTextNode(data[j]);
+            cellNode = document.createTextNode(data[i][j]);
             cell.appendChild(cellNode);     //データノードの作成、ノードの連結
             cell.style.border ="1px solid"; //枠
         }
+      }
   }
 
   var count_col=0;
@@ -150,7 +188,7 @@
         <br><br>
         <table border="1" id = "table">
           <tr>
-            <th>商品コード</th><th>商品名</th><th>商品価格</th>
+            <th>商品カテゴリ</th><th>商品名</th>
           </tr>
 
         </table>
