@@ -14,7 +14,7 @@
                         "乳製品","惣菜","インスタント・レトルト",
                         "菓子・冷凍","飲料水","その他(食品)","その他(食品外)"];
       var select2_data =[["野菜","キャベツ","きゅうり"],["肉","牛肉","鶏肉","豚肉"],["リンゴ"],["刺身"]];
-        <?php //include("??Sale.php") ?>;
+        <?php //include("??Sale.php") ?>//;
       /*  var test = '<?php// echo $sale_data;?>';
         var mydata = JSON.parse(test);
         console.log(mydata);
@@ -27,19 +27,47 @@
             }
           }*/
           window.addEventListener("load", function(){
+            var store_id = 2;
+            var data = {
+              store_id : store_id
+            }
+            $.ajax({
+              type:"post",
+              url:"showSpecialPrice.php",
+              data:JSON.stringify(data),
+              contentType: 'Content-Type: application/json; charset=UTF-8',
+            }).done(
+              function(data){
+                console.log(data);
+                //var log = JSON.parse(data);
+                if(data != "null") {
+                  var mydata = JSON.parse(data);
+                  console.log(mydata);
+                  for (var i = 0; i < mydata["sp_price"].length; i++){
+                    data_insert[i] = [];
+                    data_insert[i][0] = select1_data[mydata["sp_price"][i]["b.category_id"] - 1];
+                    data_insert[i][1] =mydata["sp_price"][i]["b.name"];
+                    data_insert[i][2] =mydata["sp_price"][i]["b.price"];
+                    if (mydata["sp_price"][i]["rateFlg"] ==  "1") {
+                      data_insert[i][3] =data_insert[i][2] * (1 - mydata["sp_price"][i]["a.discntVal"] * 0.01);
+                    } else {
+                      data_insert[i][3] =data_insert[i][2] - mydata["sp_price"][i]["a.discntVal"];
+                    }
+                  }
+                  creatTable(data_insert);
+                } else {
+                  alert("情報取得ができませんでした。リロードしてください");
+                  console.log(data);
+                }
 
-          <?php include("showSpecialSale.php") ?>;
-          var test = '<?php echo $spSale_data;?>';
-          var mydata = JSON.parse(test);
+              }).fail(
+              function() { //失敗した時
+                alert("通信エラーです。もう一度入力してください");
+              }
+            );
+          <?php //include("showSpecialPrice.php") ?>;
+          //var test = '<?php// echo $spPrice_data;?>';
 
-          console.log(test);
-          for (var i = 0; i < mydata["sp_sale"].length; i++){
-            data_insert[i] = [];
-            data_insert[i][0] = select1_data[mydata["sp_sale"][i]["category_id"] - 1];
-            data_insert[i][1] =mydata["sp_sale"][i]["name"];
-            data_insert[i][2] =mydata["sp_sale"][i]["price"];
-          }
-          creatTable(data_insert);
     //   }
     }, false)
        </script>
@@ -52,7 +80,7 @@
       var select2 = document.forms.formName.selectName2; //変数select2を宣言
 
 
-      for(var i = 0;i<select1_data.length;i++){
+      for(var i = 0;i<select1_data.length - 1;i++){
         select1.options[i+1]=new Option(select1_data[i]);
       }
 

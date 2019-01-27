@@ -16,10 +16,11 @@
     var select1_data =["野菜・果物","肉・卵","魚介類","米・パン・粉類",
     "乳製品","惣菜","インスタント・レトルト",
     "菓子・冷凍","飲料水","その他(食品)","その他(食品外)"];
-    var select2_data =[];
+      var select2_data =[["野菜","キャベツ","きゅうり"],["肉","牛肉","鶏肉","豚肉"],["リンゴ"],["刺身"]];
+    //var select2_data =[];
 
     window.addEventListener("load", function(){
-      alert();
+
       /*
       <?php //include//("??Sale.php") ?>
       var test = '<?php //echo $sale_data;?>';
@@ -32,18 +33,18 @@
           if(mydata["price"][j]["categry_id"] == cat_con)
         select2_data[cat_con][j+1] = mydata["price"][j]["name"];
           }
-        }
-        <?php //include("showSale.php") ?>
-        var test = '<?php// echo //$sale_data;?>';
+        }*/
+        <?php include("showSpecialSale.php") ?>;
+        var test = '<?php echo $spSale_data;?>';
         var mydata = JSON.parse(test);
-        console.log(mydata);
-        for (var i = 0; i < mydata["price"].length; i++){
+
+        console.log(test);
+        for (var i = 0; i < mydata["sp_sale"].length; i++){
           data_insert[i] = [];
-          data_insert[i][0] = select1_data[mydata["price"][i]["category_id"]];
-          data_insert[i][1] =mydata["price"][i]["name"];
+          data_insert[i][0] = select1_data[mydata["sp_sale"][i]["category_id"] - 1];
+          data_insert[i][1] =mydata["sp_sale"][i]["name"];
         }
         creatTable(data_insert);
-        */
          }, false)
 
        </script>
@@ -101,13 +102,15 @@
     var table = document.getElementById("table");
     // 表に2次元配列の要素を格納
     table.style.border ="1px solid";         //枠
+    for (var i = 0; i<data.length; i++){
       var rows = table.insertRow(-1);        // 新しい行の追加//-1で下に追加する
-        for(j = 0; j < data.length; j++){
+        for(j = 0; j < data[0].length; j++){
           var  cell=rows.insertCell(-1);    //列
-            cellNode = document.createTextNode(data[j]);
+            cellNode = document.createTextNode(data[i][j]);
             cell.appendChild(cellNode);     //データノードの作成、ノードの連結
             cell.style.border ="1px solid"; //枠
         }
+      }
   }
 
   var count_col=0;
