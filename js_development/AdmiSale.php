@@ -16,24 +16,37 @@
     var select1_data =["野菜・果物","肉・卵","魚介類","米・パン・粉類",
     "乳製品","惣菜","インスタント・レトルト",
     "菓子・冷凍","飲料水","その他(食品)","その他(食品外)"];
-      var select2_data =[["野菜","キャベツ","きゅうり"],["肉","牛肉","鶏肉","豚肉"],["リンゴ"],["刺身"]];
+    //  var select2_data =[["野菜","キャベツ","きゅうり"],["肉","牛肉","鶏肉","豚肉"],["リンゴ"],["刺身"]];
     //var select2_data =[];
-
+    var select2_data  =[];
+    var suf = [0,0,0,0,0,0,0,0,0,0,0];//カテゴリの数カウント添え字
+  //  var sel4 = [];
     window.addEventListener("load", function(){
+      for (var i = 0; i < select1_data.length; i++) {
+        select2_data[i]  = [];
+    //    sel4[i] = [];
+        select2_data[i][0] = select1_data[i];
+      //  sel4[i][0] = select1_data[i];
 
-      /*
-      <?php //include//("??Sale.php") ?>
-      var test = '<?php //echo $sale_data;?>';
+      }
+      <?php include("showProductData.php") ?>;
+      var test = '<?php echo $product_data;?>';
       var mydata = JSON.parse(test);
-      console.log(mydata);
-      for (var cat_con = 0;cat_con < 11;cat_con++) {
-        select2_data[cat_con] =[];
-        select2_data[cat_con][0] = select1_data[i];
-        for (var j = 0; j < mydata["price"].length;j++) {
-          if(mydata["price"][j]["categry_id"] == cat_con)
-        select2_data[cat_con][j+1] = mydata["price"][j]["name"];
-          }
-        }*/
+      //console.log(mydata);
+    //  for (var cat_con = 0;cat_con < select1_data.length ;cat_con++) {
+
+      //  select2_data[cat_con][0] = select1_data[i];
+        for (var j = 0; j < mydata["product_data"].length;j++) {
+
+//console.log(suf[con-1]);
+        //  if(mydata["price"][j]["categry_id"] == cat_con)
+        var con = mydata["product_data"][j]["category_id"];
+        suf[con-1]++;
+
+        select2_data[con-1][suf[con-1]] = mydata["product_data"][j]["name"];
+      //  sel4[con-1][suf[con-1]] = mydata["product_data"][j]["price"];
+        }
+
         <?php include("showSpecialSale.php") ?>;
         var test = '<?php echo $spSale_data;?>';
         var mydata = JSON.parse(test);
@@ -83,17 +96,43 @@
           if ((sel1 || sel2)  == "選択してください"){//空白チェック
            alert("選択してください");
          } else {
-            var data = [sel1, sel2];
-            var Data = [[]]
-            var JSONData =JSON.stringify(Data);
-            $.post (
-              "webLogin.php",
-              {"JSON":JSONData},
-              function (data) {
-                //alert(data_arr);
+            var data_arr = [[sel1, sel2]];
+            var data = {
+              product_id : sel2//
+            }
+            console.log(data);
+            $.ajax({
+
+              type:"post",
+            //  dataType: "json",
+              url:"updateSetSpecialSale.php",
+              data:JSON.stringify(data),
+              contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
+            //  dataType: "json"
+
+            }).done(
+              function(data){
+                console.log(data);
+                //var log = JSON.parse(data);
+                if(data == "true") {
+
+                    creatTable(data_arr);
+                } else if(data == "false") {
+
+                  alert("もう一度入力してください");
+                  console.log(data);
+                } else {
+                  alert("情報取得ができませんでした。もう一度入力してください");
+                  console.log(data);
+
+                }
+
+              }).fail(
+              function() { //失敗した時
+                alert("通信エラーです。もう一度入力してください");
               }
             );
-            creatTable(data);
+
           }
         }
   }
@@ -158,7 +197,33 @@
 
   function dB(obj) {
     tr = obj.parentNode.parentNode;
-    tr.parentNode.deleteRow(tr.sectionRowIndex);
+    var rows2 = tr.sectionRowIndex;
+    var data = {
+      product_name : table.rows[rows2].cells[1].innerHTML
+    }
+    console.log(data);
+    $.ajax({
+
+      type:"post",
+      url:"updateDeleteSpecialSale.php",
+      data:JSON.stringify(data),
+      contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
+
+    }).done(
+      function(data){
+        console.log(data);
+        if(data == "true") {
+        tr.parentNode.deleteRow(tr.sectionRowIndex);
+        } else if(data == "false"){
+          alert("エラーです。削除できませんでした");
+        }else {
+          alert("なにもかえってないぞ");
+        }
+      }).fail(
+      function() { //失敗した時
+        alert("通信エラーです。");
+      }
+    );
   }
   //-->
 
