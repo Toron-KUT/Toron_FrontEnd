@@ -98,7 +98,7 @@
          } else {
             var data_arr = [[sel1, sel2]];
             var data = {
-              product_id : sel2//
+              product_name : sel2//
             }
             console.log(data);
             $.ajax({
