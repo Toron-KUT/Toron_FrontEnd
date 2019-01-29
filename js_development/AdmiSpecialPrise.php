@@ -1,3 +1,11 @@
+
+<?php
+
+  if(empty($_POST['test2'])){
+
+      header("LOCATION: AdmiLogin.php" );
+  }
+?>
 <!DOCTYPE html >
 <html lang="ja">
 <head>
@@ -13,49 +21,66 @@
       var select1_data =["野菜・果物","肉・卵","魚介類","米・パン・粉類",
                         "乳製品","惣菜","インスタント・レトルト",
                         "菓子・冷凍","飲料水","その他(食品)","その他(食品外)"];
-      var select2_data =[["野菜","キャベツ","きゅうり"],["肉","牛肉","鶏肉","豚肉"],["リンゴ"],["刺身"]];
-        <?php //include("??Sale.php") ?>//;
-      /*  var test = '<?php// echo $sale_data;?>';
-        var mydata = JSON.parse(test);
-        console.log(mydata);
-        for (var cat_con = 0;cat_con < 11;cat_con++) {
-          select2_data[cat_con] =[];
-          select2_data[cat_con][0] = select1_data[i];
-          for (var j = 0; j < mydata["price"].length;j++) {
-            if(mydata["price"][j]["categry_id"] == cat_con)
-          select2_data[cat_con][j+1] = mydata["price"][j]["name"];
-            }
-          }*/
+    //  var select2_data =[["野菜","キャベツ","きゅうり"],["肉","牛肉","鶏肉","豚肉"],["リンゴ"],["刺身"]];
+    var select2_data  =[];
+    var suf = [0,0,0,0,0,0,0,0,0,0,0];//カテゴリの数カウント添え字
+    var sel4 = []
           window.addEventListener("load", function(){
-            var store_id = 2;
+//console.log(suf);
+            for (var i = 0; i < select1_data.length; i++) {
+              select2_data[i]  = [];
+              sel4[i] = [];
+              select2_data[i][0] = select1_data[i];
+              sel4[i][0] = select1_data[i];
+
+            }
+        <?php include("http://krlab.info.kochi-tech.ac.jp/~goohira/php/showProductData.php") ?>;
+        var test = '<?php echo $product_data;?>';
+        var mydata = JSON.parse(test);
+        //console.log(mydata);
+      //  for (var cat_con = 0;cat_con < select1_data.length ;cat_con++) {
+
+        //  select2_data[cat_con][0] = select1_data[i];
+          for (var j = 0; j < mydata["product_data"].length;j++) {
+
+//console.log(suf[con-1]);
+          //  if(mydata["price"][j]["categry_id"] == cat_con)
+          var con = mydata["product_data"][j]["category_id"];
+          suf[con-1]++;
+
+          select2_data[con-1][suf[con-1]] = mydata["product_data"][j]["name"];
+          sel4[con-1][suf[con-1]] = mydata["product_data"][j]["price"];
+          }
+
+            var store_id = 1;
             var data = {
               store_id : store_id
             }
             $.ajax({
               type:"post",
-              url:"showSpecialPrice.php",
+              url:"http://krlab.info.kochi-tech.ac.jp/~goohira/php/showSpecialPrice.php",
               data:JSON.stringify(data),
               contentType: 'Content-Type: application/json; charset=UTF-8',
             }).done(
               function(data){
-                console.log(data);
+              //  console.log(data);
                 //var log = JSON.parse(data);
-                if(data != "null") {
+                if(data != "") {
                   var mydata = JSON.parse(data);
-                  console.log(mydata);
+                //  console.log(mydata);
                   for (var i = 0; i < mydata["sp_price"].length; i++){
                     data_insert[i] = [];
-                    data_insert[i][0] = select1_data[mydata["sp_price"][i]["b.category_id"] - 1];
-                    data_insert[i][1] =mydata["sp_price"][i]["b.name"];
-                    data_insert[i][2] =mydata["sp_price"][i]["b.price"];
+                    data_insert[i][0] = select1_data[mydata["sp_price"][i]["category_id"] - 1];
+                    data_insert[i][1] =mydata["sp_price"][i]["name"];
+                    data_insert[i][2] =mydata["sp_price"][i]["price"];
                     if (mydata["sp_price"][i]["rateFlg"] ==  "1") {
-                      data_insert[i][3] =data_insert[i][2] * (1 - mydata["sp_price"][i]["a.discntVal"] * 0.01);
+                      data_insert[i][3] =data_insert[i][2] * (1 - mydata["sp_price"][i]["discntVal"] * 0.01);
                     } else {
-                      data_insert[i][3] =data_insert[i][2] - mydata["sp_price"][i]["a.discntVal"];
+                      data_insert[i][3] =data_insert[i][2] - mydata["sp_price"][i]["discntVal"];
                     }
                   }
                   creatTable(data_insert);
-                } else {
+                } else if(data == ""){
                   alert("情報取得ができませんでした。リロードしてください");
                   console.log(data);
                 }
@@ -65,10 +90,7 @@
                 alert("通信エラーです。もう一度入力してください");
               }
             );
-          <?php //include("showSpecialPrice.php") ?>;
-          //var test = '<?php// echo $spPrice_data;?>';
 
-    //   }
     }, false)
        </script>
 
@@ -93,10 +115,12 @@
 
     for(var i = 0;i<select1_data.length-1;i++){
       if(select1.options[select1.selectedIndex].value != select1_data[i]) continue;
-      for (var j = 0;j <select2_data[i].length;j++)
+
+      for (var j = 0;j <select2_data[i].length -1;j++) {
       select2.options[j+1]=new Option(select2_data[i][j+1]);
     }
   }
+}
   function creatdata() {
     if((count_col || editFlag) != 1 ){
       var select1 = document.forms.formName.selectName1;
@@ -105,11 +129,62 @@
       var sel1 = select1.options[select1.selectedIndex].value;
       var sel2 = select2.options[select2.selectedIndex].value;
       var sel3 = select3.options[select3.selectedIndex].value;
+      var sel_genka = sel4[select1.selectedIndex-1][select2.selectedIndex];
+      if ((sel3 - 0) < 1) {
+      var sel_price = Math.floor((sel4[select1.selectedIndex-1][select2.selectedIndex]-0) * (sel3-0));
+      var discntVal = sel3 * 100;
+      var rate = 1;
+      //alert();
+      //sel_price = Math.floor(sel_price);
+    } else {
+      var sel_price = Number(sel4[select1.selectedIndex-1][select2.selectedIndex]) - Number(sel3);
+      var rate = 0;
+    }
+
+    //  console.log(Number(sel4[select1.selectedIndex-1][select2.selectedIndex])- sel3);
           if ((sel1 || sel2 || sel3)  == "選択してください"){//空白チェック
            alert("選択してください");
          } else {
-            var data = [sel1, sel2, sel3];
-            creatTable(data);
+            var data_arr = [[sel1, sel2, sel_genka, sel_price]];
+            var data = {
+              product_name : sel1,
+              discntVal : discntVal,
+              rateFlg : rate,
+              store_id : "1"
+            }
+            $.ajax({
+
+              type:"post",
+            //  dataType: "json",
+              url:"http://krlab.info.kochi-tech.ac.jp/~goohira/php/insertSpecialPrice.php",
+              data:JSON.stringify(data),
+              contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
+            //  dataType: "json"
+
+            }).done(
+              function(data){
+                console.log(data);
+                //var log = JSON.parse(data);
+                if(data == "true") {
+
+                    creatTable(data_arr);
+                } else if(data == "false") {
+
+                  alert("もう一度入力してください");
+                  console.log(data);
+                } else {
+                  alert("情報取得ができませんでした。もう一度入力してください");
+                  console.log(data);
+
+                }
+
+              }).fail(
+              function() { //失敗した時
+                alert("通信エラーです。もう一度入力してください");
+              }
+            );
+
+
           }
         }
   }
@@ -171,7 +246,35 @@
 
   function dB(obj) {
     tr = obj.parentNode.parentNode;
-    tr.parentNode.deleteRow(tr.sectionRowIndex);
+  var rows2 = tr.sectionRowIndex;
+    //tr.parentNode.deleteRow(tr.sectionRowIndex);
+    var data = {
+      product_name : table.rows[rows2].cells[1].innerHTML,
+      store_id : 1
+    }
+    console.log(data);
+    $.ajax({
+
+      type:"post",
+      url:"http://krlab.info.kochi-tech.ac.jp/~goohira/php/deleteSpecialPrice.php",
+      data:JSON.stringify(data),
+      contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
+
+    }).done(
+      function(data){
+        console.log(data);
+        if(data == "true") {
+        tr.parentNode.deleteRow(tr.sectionRowIndex);
+        } else if(data == "false"){
+          alert("エラーです。削除できませんでした");
+        }else {
+          alert("なにもかえってないぞ");
+        }
+      }).fail(
+      function() { //失敗した時
+        alert("通信エラーです。");
+      }
+    );
   }
 
   function SetUpdataSpecialSale(){
@@ -212,7 +315,35 @@
 }
 function chengeColor(obj) {
   tr = obj.parentNode.parentNode;
-  tr.style.color = "red";
+  var rows2 = tr.sectionRowIndex;
+  var data = {
+    product_name : table.rows[rows2].cells[1].innerHTML,
+    store_id : 1
+  }
+  console.log(data);
+  $.ajax({
+
+    type:"post",
+    url:"http://krlab.info.kochi-tech.ac.jp/~goohira/php/soldout.php",
+    data:JSON.stringify(data),
+    contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
+
+  }).done(
+    function(data){
+      console.log(data);
+      if(data == "true") {
+        tr.style.color = "red";
+      } else if(data == "false"){
+        alert("エラーです。削除できませんでした");
+      }else {
+        alert("なにもかえってないぞ");
+      }
+    }).fail(
+    function() { //失敗した時
+      alert("通信エラーです。");
+    }
+  );
+
 }
   </script>
 </head>
@@ -237,17 +368,17 @@ function chengeColor(obj) {
 </select>
 <select name = "selectName3">
 <option value = "選択してください">選択してください</option>
-<option value = "10%">10%</option>
-<option value = "20%">20%</option>
-<option value = "30%">30%</option>
-<option value = "40%">40%</option>
-<option value = "50円引き">50%</option>
-<option value = "10円引き">10円引き</option>
-<option value = "20円引き">20円引き</option>
-<option value = "30円引き">30円引き</option>
-<option value = "50円引き">50円引き</option>
-<option value = "100円引き">100円引き</option>
-<option value = "150円引き">150円引き</option>
+<option value = "0.9">10%</option>
+<option value = "0.8">20%</option>
+<option value = "0.7">30%</option>
+<option value = "0.6">40%</option>
+<option value = "0.5">50%</option>
+<option value = "10">10円引き</option>
+<option value = "20">20円引き</option>
+<option value = "30">30円引き</option>
+<option value = "50">50円引き</option>
+<option value = "100">100円引き</option>
+<option value = "150">150円引き</option>
 
 </select>
 <input name="button" type="button" value="登録" onClick="creatdata()">
@@ -260,7 +391,7 @@ function chengeColor(obj) {
     <th>商品カテゴリ</th><th>商品名</th><th>定価</th><th>商品価格</th>
   </tr>
   <div align="right">
-   <input name="button" type="button" value="ログアウト" onClick="logout()">
+   <input name="button" type="button" value="ログアウト" onClick="location.href='./AdmiLogin.php'">
  </div>
 </table>
 </body>
