@@ -16,7 +16,7 @@
       var count_storeid;
     //data = JSON.parse(;
 //ウィンドウ開いたときに実行される。登録済み店舗取得、配列化
-      window.onload = function(){
+      window.addEventListener("load", function(){
       //showStoreの実行
         <?php include("showStore.php") ?>
 
@@ -35,7 +35,7 @@
 console.log(data_insert);
           //console.log(mydata);
         creatTable(data_insert);
-}
+}, false)
     </script>
 
     <script type="text/javascript">

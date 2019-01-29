@@ -20,7 +20,8 @@
   var data = {
     login_id : login_id,
     password :password
-  }
+  };
+  console.log(data);
 //  alert("1");
     $.ajax({
     type:"post",
@@ -32,21 +33,24 @@
 
   }).done(
     function(data){
-      console.log(data);
+    //  console.log(data);
 //var res = JSON.parse(data);
   //    console.log(res);
     //  alert("3");
+console.log(data);
 
-      if(data != "null") {
+      if(data != "") {
+        console.log(data);
         var res = JSON.parse(data);
         var IdentificationNumbe =res["flg"]; //res[info][0];
+          console.log(IdentificationNumbe);
        if (IdentificationNumbe  != "0") {
          changepage(IdentificationNumbe);
        } else {
          alert("あなたは利用できません。もしくはログイン情報が間違っています")
        }
 
-      } else {
+     } else if(data == ""){
         alert("入力情報が間違っている可能性があります");
         console.log(data);
       }
@@ -62,15 +66,16 @@
 
   function changepage(IdentificationNumber) {
 
+//alert();
   //  var IdentificationNumber = 2;
     if (IdentificationNumber == "2") {
-    //  <!--管理社-->
-      window.location.replace("AdmiSale.php");
+      document.forms[1].submit();
+      //window.location.replace("AdmiSale.php");
     } else if (IdentificationNumber == "1") {
       //<!--店長-->
-      window.location.replace("AdmiSpecialPrise.php");
+      //window.location.replace("AdmiSpecialPrise.php");
+      document.forms[2].submit();
     } else {
-    //  window.location.replace = "AdmiSpecialPrise.html";//テスト用
       alert("ログイン情報に誤りがあります");
     }
   }
@@ -90,6 +95,14 @@
   PassWord　:
     <input id="login_pass" name="login_pass" type="password" size="30">
   <input name="button" type="button" value="送信" onClick="AuthentivationUsed()">
+</form>
+
+<form method="POST" action="AdmiSale.php">
+    <input type="hidden" name="test" value='sucsess'>
+</form>
+
+<form method="POST" action="AdmiSpecialprise.php">
+    <input type="hidden" name="test2" value='sucess'>
 </form>
 
 </body>

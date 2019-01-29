@@ -1,3 +1,11 @@
+
+<?php
+
+  if(empty($_POST['test2'])){
+
+      header("LOCATION: AdmiLogin.php" );
+  }
+?>
 <!DOCTYPE html >
 <html lang="ja">
 <head>
@@ -57,7 +65,7 @@
               function(data){
               //  console.log(data);
                 //var log = JSON.parse(data);
-                if(data != "null") {
+                if(data != "") {
                   var mydata = JSON.parse(data);
                 //  console.log(mydata);
                   for (var i = 0; i < mydata["sp_price"].length; i++){
@@ -72,7 +80,7 @@
                     }
                   }
                   creatTable(data_insert);
-                } else {
+                } else if(data == ""){
                   alert("情報取得ができませんでした。リロードしてください");
                   console.log(data);
                 }
@@ -386,7 +394,7 @@ function chengeColor(obj) {
     <th>商品カテゴリ</th><th>商品名</th><th>定価</th><th>商品価格</th>
   </tr>
   <div align="right">
-   <input name="button" type="button" value="ログアウト" onClick="logout()">
+   <input name="button" type="button" value="ログアウト" onClick="location.href='./AdmiLogin.php'">
  </div>
 </table>
 </body>

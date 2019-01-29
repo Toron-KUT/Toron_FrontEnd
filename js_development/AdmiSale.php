@@ -1,3 +1,10 @@
+<?php
+
+  if(empty($_POST['test'])){
+
+      header("LOCATION: AdmiLogin.php" );
+  }
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -9,6 +16,7 @@
     <meta name="keywords" content="" />
     <script src="http://code.jquery.com/jquery.min.js"></script>
     <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
+
     <script type=text/javascript>
 
 
@@ -47,7 +55,7 @@
       //  sel4[con-1][suf[con-1]] = mydata["product_data"][j]["price"];
         }
 
-        <?php include("showSpecialSale.php") ?>;
+        <?php include("showSpecialSale.php") ?>
         var test = '<?php echo $spSale_data;?>';
         var mydata = JSON.parse(test);
 
@@ -104,11 +112,9 @@
             $.ajax({
 
               type:"post",
-            //  dataType: "json",
               url:"updateSetSpecialSale.php",
               data:JSON.stringify(data),
               contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
-            //  dataType: "json"
 
             }).done(
               function(data){
@@ -266,7 +272,7 @@
           </ul>
         </div>
         <div align="right">
-         <input name="button" type="button" value="ログアウト" onClick="">
+         <input name="button" type="button" value="ログアウト" onClick="location.href='./AdmiLogin.php'">
        </div>
       </body>
 </html>
