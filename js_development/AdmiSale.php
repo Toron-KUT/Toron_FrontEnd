@@ -37,7 +37,7 @@
       //  sel4[i][0] = select1_data[i];
 
       }
-      <?php include("showProductData.php") ?>;
+      <?php include("http://krlab.info.kochi-tech.ac.jp/~goohira/php/showProductData.php") ?>;
       var test = '<?php echo $product_data;?>';
       var mydata = JSON.parse(test);
       //console.log(mydata);
@@ -55,7 +55,7 @@
       //  sel4[con-1][suf[con-1]] = mydata["product_data"][j]["price"];
         }
 
-        <?php include("showSpecialSale.php") ?>
+        <?php include("http://krlab.info.kochi-tech.ac.jp/~goohira/php/showSpecialSale.php") ?>
         var test = '<?php echo $spSale_data;?>';
         var mydata = JSON.parse(test);
 
@@ -112,7 +112,7 @@
             $.ajax({
 
               type:"post",
-              url:"updateSetSpecialSale.php",
+              url:"http://krlab.info.kochi-tech.ac.jp/~goohira/php/updateSetSpecialSale.php",
               data:JSON.stringify(data),
               contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
 
@@ -211,7 +211,7 @@
     $.ajax({
 
       type:"post",
-      url:"updateDeleteSpecialSale.php",
+      url:"http://krlab.info.kochi-tech.ac.jp/~goohira/php/updateDeleteSpecialSale.php",
       data:JSON.stringify(data),
       contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
 
@@ -267,8 +267,8 @@
         <div align="right">
           <p >*** サイト内リンク ***</p>
           <ul class="localnavi">
-            <li><a href="AdmiForm.html"> 店舗管理ページ </a></li>
-            <li><a href="AdmiSale.html"> 特売情報管理ページ </a></li>
+            <li><a href="AdmiForm.php"> 店舗管理ページ </a></li>
+            <li><a href="AdmiSale.php"> 特売情報管理ページ </a></li>
           </ul>
         </div>
         <div align="right">

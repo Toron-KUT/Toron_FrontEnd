@@ -18,7 +18,7 @@
 //ウィンドウ開いたときに実行される。登録済み店舗取得、配列化
       window.addEventListener("load", function(){
       //showStoreの実行
-        <?php include("showStore.php") ?>
+        <?php include("http://krlab.info.kochi-tech.ac.jp/~goohira/php/showStore.php") ?>
 
         var test = '<?php echo $store_data;//json_encode($store_data); ?>';
 //alert(test);
@@ -74,7 +74,7 @@ console.log(data_insert);
 
               type:"post",
             //  dataType: "json",
-              url:"insertStore.php",
+              url:"http://krlab.info.kochi-tech.ac.jp/~goohira/php/insertStore.php",
               data:JSON.stringify(data),
               contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
             //  dataType: "json"
@@ -201,7 +201,7 @@ function editTable(obj, name) {
 
       type:"post",
       //  dataType: "json",
-      url:"updateStore.php",
+      url:"http://krlab.info.kochi-tech.ac.jp/~goohira/php/updateStore.php",
       data:JSON.stringify(data),
       contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
       //dataType: ""
@@ -303,7 +303,7 @@ cell.innerHTML = '<input type="button" value="修正完了" name="perf" onclick=
       $.ajax({
 
         type:"post",
-        url:"deleteStore.php",
+        url:"http://krlab.info.kochi-tech.ac.jp/~goohira/php/deleteStore.php",
         data:JSON.stringify(data),
         contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
 
@@ -361,8 +361,8 @@ cell.innerHTML = '<input type="button" value="修正完了" name="perf" onclick=
     <div align="right">
       <p >*** サイト内リンク ***</p>
       <ul class="localnavi">
-        <li><a href="AdmiForm.html"> 店舗管理ページ </a></li>
-        <li><a href="AdmiSale.html"> 特売情報管理ページ </a></li>
+        <li><a href="AdmiForm.php"> 店舗管理ページ </a></li>
+        <li><a href="AdmiSale.php"> 特売情報管理ページ </a></li>
       </ul>
     </div>
     <div align="right">
