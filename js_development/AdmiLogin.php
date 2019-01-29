@@ -26,7 +26,7 @@
     $.ajax({
     type:"post",
   //  dataType: "json",
-    url:"http://krlab.info.kochi-tech.ac.jp/~goohira/php/webLogin.php",
+    url:"webLogin.php",
     data:JSON.stringify(data),
     contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
   //  dataType: "json"

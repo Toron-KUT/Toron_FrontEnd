@@ -34,7 +34,7 @@
               sel4[i][0] = select1_data[i];
 
             }
-        <?php include("http://krlab.info.kochi-tech.ac.jp/~goohira/php/showProductData.php") ?>;
+        <?php include("showProductData.php") ?>;
         var test = '<?php echo $product_data;?>';
         var mydata = JSON.parse(test);
         //console.log(mydata);
@@ -58,7 +58,7 @@
             }
             $.ajax({
               type:"post",
-              url:"http://krlab.info.kochi-tech.ac.jp/~goohira/php/showSpecialPrice.php",
+              url:"showSpecialPrice.php",
               data:JSON.stringify(data),
               contentType: 'Content-Type: application/json; charset=UTF-8',
             }).done(
@@ -156,7 +156,7 @@
 
               type:"post",
             //  dataType: "json",
-              url:"http://krlab.info.kochi-tech.ac.jp/~goohira/php/insertSpecialPrice.php",
+              url:"insertSpecialPrice.php",
               data:JSON.stringify(data),
               contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
             //  dataType: "json"
@@ -256,7 +256,7 @@
     $.ajax({
 
       type:"post",
-      url:"http://krlab.info.kochi-tech.ac.jp/~goohira/php/deleteSpecialPrice.php",
+      url:"deleteSpecialPrice.php",
       data:JSON.stringify(data),
       contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
 
@@ -324,7 +324,7 @@ function chengeColor(obj) {
   $.ajax({
 
     type:"post",
-    url:"http://krlab.info.kochi-tech.ac.jp/~goohira/php/soldout.php",
+    url:"soldout.php",
     data:JSON.stringify(data),
     contentType: 'Content-Type: application/json; charset=UTF-8', // リクエストの Content-Type
 
