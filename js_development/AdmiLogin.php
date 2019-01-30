@@ -101,7 +101,7 @@ console.log(data);
     <input type="hidden" name="test" value='sucsess'>
 </form>
 
-<form method="POST" action="AdmiSpecialprise.php">
+<form method="POST" action="AdmiSpecialPrise.php">
     <input type="hidden" name="test2" value='sucess'>
 </form>
 
