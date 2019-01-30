@@ -366,7 +366,7 @@ cell.innerHTML = '<input type="button" value="修正完了" name="perf" onclick=
       </ul>
     </div>
     <div align="right">
-     <input name="button" type="button" value="ログアウト" onClick="location.href='./AdmiLogin.html'">
+     <input name="button" type="button" value="ログアウト" onClick="location.href='./AdmiLogin.php'">
    </div>
   </body>
 </html>
